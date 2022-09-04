@@ -1,0 +1,37 @@
+import { Component, OnInit } from '@angular/core';
+import {LoginService} from "../../service/login.service";
+import {Router} from "@angular/router";
+import {FormArray, FormControl, FormGroup, Validators} from "@angular/forms";
+
+@Component({
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.css']
+})
+export class LoginComponent implements OnInit {
+
+  constructor(private loginService: LoginService, private router: Router) {
+  }
+
+  ngOnInit(): void {
+  }
+
+  loginForm = new FormGroup({
+    username: new FormControl("", [Validators.required, Validators.email, Validators.maxLength(50)]),
+    password: new FormControl("", [Validators.required, Validators.minLength(4), Validators.maxLength(20)])
+  })
+
+  login(){
+    if (this.loginForm.valid) {
+      this.loginService.login(this.loginForm.value).subscribe((data)=>{
+        this.loginService.setUserToken(data);
+        this.loginService.setToken(data.token);
+        // this.router.navigate(["/"])
+      })
+    } else {
+      alert("Please checkout form!");
+      this.router.navigate(["/login"]);
+    }
+
+  }
+}
