@@ -18,6 +18,9 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import { LoginComponent } from './auth/login/login.component';
 import {RouterModule} from "@angular/router";
 import {AuthInterceptor} from "./auth.interceptor";
+import {AngularFireStorageModule} from "@angular/fire/compat/storage";
+import {AngularFireModule} from "@angular/fire/compat";
+import {environment} from "../environments/environment";
 
 @NgModule({
     declarations: [
@@ -46,8 +49,8 @@ import {AuthInterceptor} from "./auth.interceptor";
         AppRoutingModule,
         RouterModule,
         // CarouselModule,
-        // AngularFireStorageModule,
-        // AngularFireModule.initializeApp(environment.firebaseConfig, "cloud")
+        AngularFireStorageModule,
+        AngularFireModule.initializeApp(environment.firebaseConfig, "cloud")
     ],
 
     providers: [
