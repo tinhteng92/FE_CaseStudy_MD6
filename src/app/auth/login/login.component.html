@@ -7,29 +7,34 @@
           <div class="row">
             <div class="col-md-9 col-lg-8 mx-auto pl-5 pr-5">
               <h3 class="login-heading mb-4">Wellcome back!</h3>
-              <form>
+              <form [formGroup]="loginForm" (ngSubmit)="login()">
                 <div class="form-label-group">
-                  <input type="email" id="inputEmail" class="form-control"
+                  <input type="email" id="inputEmail" formControlName="username" class="form-control"
                          placeholder="Email address">
                   <label for="inputEmail">Email</label>
+                  <p style="color: red" *ngIf="!loginForm.get('username')?.valid && loginForm.get('username')?.touched">Blank is not allowed, format: example@gmail.com, maxlength: 50</p>
                 </div>
                 <div class="form-label-group">
-                  <input type="password" id="inputPassword" class="form-control"
+                  <input type="password" id="inputPassword" formControlName="password" class="form-control"
                          placeholder="Password">
                   <label for="inputPassword">Password</label>
+                  <p style="color: red" *ngIf="!loginForm.get('password')?.valid && loginForm.get('password')?.touched">Blank is not allowed, minlength: 4, maxlength: 20</p>
                 </div>
                 <div class="custom-control custom-checkbox mb-3">
                   <input type="checkbox" class="custom-control-input" id="customCheck1">
-                  <label class="custom-control-label" for="customCheck1">Nhớ mật khẩu</label>
+                  <label class="custom-control-label" for="customCheck1">Remember me</label>
                 </div>
-                <a href="index.html"
-                   class="btn btn-lg btn-outline-primary btn-block btn-login text-uppercase font-weight-bold mb-2">Đăng nhập</a>
+                <button type="submit" class="btn btn-lg btn-outline-primary btn-block btn-login text-uppercase font-weight-bold mb-2" style="margin-right: 10px">Login</button>
+                <button class="btn btn-lg btn-outline-secondary btn-block btn-login text-uppercase font-weight-bold mb-2" routerLink="/">Cancel</button>
                 <div class="text-center pt-3">
-                  Bạn chưa có tài khoản? <a class="font-weight-bold" href="register.html">Đăng ký ngay</a>
+                  Do not have an account?
+                  <a class="font-weight-bold" routerLink="/register-seller">Sign up a Seller</a>
+                  <span><=></span>
+                  <a class="font-weight-bold" routerLink="/register-customer">Sign up a Customer</a>
                 </div>
               </form>
               <hr class="my-4">
-              <p class="text-center">ĐĂNG NHẬP BẰNG TÀI KHOẢN MXH</p>
+              <p class="text-center">LOG IN WITH SOCIAL ACCOUNT</p>
               <div class="row">
                 <div class="col pr-2">
                   <button
@@ -49,3 +54,4 @@
     </div>
   </div>
 </div>
+

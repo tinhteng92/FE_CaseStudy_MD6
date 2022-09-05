@@ -7,26 +7,48 @@
         <div class="container">
           <div class="row">
             <div class="col-md-9 col-lg-8 mx-auto pl-5 pr-5">
-              <h3 class="login-heading mb-4">Đăng ký thành viên nhận ngay ưu đãi!</h3>
-              <form>
-                <div class="form-label-group">
-                  <input type="email" id="inputEmail" class="form-control"
-                         placeholder="Email address">
-                  <label for="inputEmail">Email address / Mobile</label>
-                </div>
-                <div class="form-label-group">
-                  <input type="password" id="inputPassword" class="form-control"
-                         placeholder="Password">
-                  <label for="inputPassword">Password</label>
+              <h3 class="login-heading mb-4">Sign up as a seller and receive special offers!</h3>
+              <form [formGroup]="registerSellerForm" (ngSubmit)="registerSeller()">
+                <div class="form-label-group mb-4">
+                  <input type="text" id="name" formControlName="name" class="form-control" placeholder="Enter name">
+                  <label for="name">Enter name</label>
+                  <p style="color: red" *ngIf="!registerSellerForm.get('name')?.valid && registerSellerForm.get('name')?.touched">Blank is not allowed.</p>
                 </div>
                 <div class="form-label-group mb-4">
-                  <input type="text" id="ptext" class="form-control" placeholder="Promocode">
-                  <label for="ptext">Promocode</label>
+                  <input type="text" id="phoneNumber" formControlName="phoneNumber" class="form-control" placeholder="Enter a number phone">
+                  <label for="phoneNumber">Enter a number phone</label>
+                  <p style="color: red" *ngIf="!registerSellerForm.get('phoneNumber')?.valid && registerSellerForm.get('phoneNumber')?.touched">Blank is not allowed, start with 0, includes 10 numbers</p>
                 </div>
-                <a href="index.html"
-                   class="btn btn-lg btn-outline-primary btn-block btn-login text-uppercase font-weight-bold mb-2">Đăng nhập</a>
+                <div class="form-label-group mb-4">
+                  <input type="text" id="avatar" formControlName="avatar" class="form-control" placeholder="Enter avatar">
+                  <label for="avatar">Enter avatar</label>
+                  <p style="color: red" *ngIf="!registerSellerForm.get('avatar')?.valid && registerSellerForm.get('avatar')?.touched">Blank is not allowed.</p>
+                </div>
+                <div class="form-label-group mb-4">
+                  <input type="text" id="address" formControlName="address" class="form-control" placeholder="Enter address">
+                  <label for="address">Enter address</label>
+                  <p style="color: red" *ngIf="!registerSellerForm.get('address')?.valid && registerSellerForm.get('address')?.touched">Blank is not allowed.</p>
+                </div>
+                <div formGroupName="appUser">
+                  <div class="form-label-group">
+                    <input type="email" id="username" formControlName="username" class="form-control"
+                           placeholder="Enter username">
+                    <label for="username">Enter username</label>
+                    <p style="color: red" *ngIf="!registerSellerForm.get('appUser')?.get('username')?.valid && registerSellerForm.get('appUser')?.get('username')?.touched">Blank is not allowed, format: example@gmail.com, maxlength: 50</p>
+                    <p style="color: red" *ngIf="check">Duplicate user name, please enter another user name</p>
+                  </div>
+                  <div class="form-label-group">
+                    <input type="password" id="password" formControlName="password" class="form-control"
+                           placeholder="Enter password">
+                    <label for="password">Enter password</label>
+                    <p style="color: red" *ngIf="!registerSellerForm.get('appUser')?.get('password')?.valid && registerSellerForm.get('appUser')?.get('password')?.touched">Blank is not allowed, minlength: 4, maxlength: 20</p>
+                  </div>
+                </div>
+
+                <button type="submit" class="btn btn-lg btn-outline-primary btn-block btn-login text-uppercase font-weight-bold mb-2" style="margin-right: 10px">Register</button>
+                <button class="btn btn-lg btn-outline-secondary btn-block btn-login text-uppercase font-weight-bold mb-2" routerLink="/">Cancel</button>
                 <div class="text-center pt-3">
-                  Bạn đã có tài khoản? <a class="font-weight-bold" href="login.html">Đăng nhập ngay</a>
+                  Do you already have an account? <a class="font-weight-bold" routerLink="/login">Login now</a>
                 </div>
               </form>
             </div>
