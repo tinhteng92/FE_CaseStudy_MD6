@@ -5,7 +5,6 @@ import {DetailProductComponent} from "./homeshow/detail-product/detail-product.c
 import {DetailSellerComponent} from "./homeshow/detail-seller/detail-seller.component";
 import {CustomerRegisterComponent} from "./auth/customer-register/customer-register.component";
 import {SellerRegisterComponent} from "./auth/seller-register/seller-register.component";
-import {ShowlistProductComponent} from "./homeshow/showlist-product/showlist-product.component";
 import {ShowlistSellerComponent} from "./homeshow/showlist-seller/showlist-seller.component";
 import {LoginComponent} from "./auth/login/login.component";
 
@@ -34,10 +33,6 @@ const routes: Routes = [{
   {
     path: 'register-seller',
     component: SellerRegisterComponent,
-  },
-  {
-    path: 'showlist-product',
-    component: ShowlistProductComponent,
   },
   {
     path: 'showlist-seller',

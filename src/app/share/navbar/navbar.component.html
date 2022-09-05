@@ -1,186 +1,54 @@
-<div class="homepage-header">
-  <div class="overlay"></div>
-  <nav class="navbar navbar-expand-lg navbar-dark osahan-nav">
-    <div class="container">
-      <a class="navbar-brand" href="index.html"><img alt="logo" src="assets/img/favicon.png"></a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
-              aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item active">
-            <a class="nav-link" routerLink="/">Home <span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/login" *ngIf="!check">Log in <span class="sr-only"></span></a>
-            <a class="nav-link" (click)="logOut()" *ngIf="check">Log out <span class="sr-only"></span></a>
+<nav class="navbar navbar-expand-lg navbar-light bg-light osahan-nav shadow-sm">
+  <div class="container">
+    <a class="navbar-brand" href="index.html"><img alt="logo" src="assets/img/logo.png"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active">
+          <a class="nav-link" routerLink="/">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/login" *ngIf="!check">Log in <span class="sr-only"></span></a>
+          <a class="nav-link" (click)="logOut()" *ngIf="check">Log out <span class="sr-only"></span></a>
 
-          </li>
-          <li class="nav-item dropdown dropdown-cart">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
-               aria-haspopup="true" aria-expanded="false">
-              <i class="fas fa-shopping-basket"></i> Cart
-              <span class="badge badge-success">5</span>
-            </a>
-            <div class="dropdown-menu dropdown-cart-top p-0 dropdown-menu-right shadow-sm border-0">
-              <div class="dropdown-cart-top-body border-top p-4">
-                <p class="mb-2"><i class="icofont-ui-press text-danger food-item"></i> Chicken Tikka
-                  Sub
-                  12" (30 cm) x 1 <span class="float-right text-secondary">314.000</span></p>
-                <p class="mb-2"><i class="icofont-ui-press text-success food-item"></i> Corn & Peas
-                  Salad x 1 <span class="float-right text-secondary">209.000</span></p>
-                <p class="mb-2"><i class="icofont-ui-press text-success food-item"></i> Veg Seekh
-                  Sub 6"
-                  (15 cm) x 1 <span class="float-right text-secondary">133.000</span></p>
-                <p class="mb-2"><i class="icofont-ui-press text-danger food-item"></i> Chicken Tikka
-                  Sub
-                  12" (30 cm) x 1 <span class="float-right text-secondary">314.000</span></p>
-                <p class="mb-2"><i class="icofont-ui-press text-danger food-item"></i> Corn & Peas
-                  Salad
-                  x 1 <span class="float-right text-secondary">209.000</span></p>
-              </div>
-              <div class="dropdown-cart-top-footer border-top p-4">
-                <p class="mb-0 font-weight-bold text-secondary">Tổng tiền <span
-                  class="float-right text-dark">499.000</span></p>
-                <!-- <small class="text-info">Extra charges may apply</small> -->
-              </div>
-              <div class="dropdown-cart-top-footer border-top p-2">
-                <a class="btn btn-success btn-block btn-lg" href="checkout.html"> Thanh toán</a>
-              </div>
+        </li>
+        <li class="nav-item dropdown dropdown-cart">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
+             aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-shopping-basket"></i> Cart
+            <span class="badge badge-success">5</span>
+          </a>
+          <div class="dropdown-menu dropdown-cart-top p-0 dropdown-menu-right shadow-sm border-0">
+            <div class="dropdown-cart-top-body border-top p-4">
+              <p class="mb-2"><i class="icofont-ui-press text-danger food-item"></i> Chicken Tikka
+                Sub
+                12" (30 cm) x 1 <span class="float-right text-secondary">314.000</span></p>
+              <p class="mb-2"><i class="icofont-ui-press text-success food-item"></i> Corn & Peas
+                Salad x 1 <span class="float-right text-secondary">209.000</span></p>
+              <p class="mb-2"><i class="icofont-ui-press text-success food-item"></i> Veg Seekh
+                Sub 6"
+                (15 cm) x 1 <span class="float-right text-secondary">133.000</span></p>
+              <p class="mb-2"><i class="icofont-ui-press text-danger food-item"></i> Chicken Tikka
+                Sub
+                12" (30 cm) x 1 <span class="float-right text-secondary">314.000</span></p>
+              <p class="mb-2"><i class="icofont-ui-press text-danger food-item"></i> Corn & Peas
+                Salad
+                x 1 <span class="float-right text-secondary">209.000</span></p>
             </div>
-          </li>
-        </ul>
-      </div>
+            <div class="dropdown-cart-top-footer border-top p-4">
+              <p class="mb-0 font-weight-bold text-secondary">Tổng tiền <span
+                class="float-right text-dark">499.000</span></p>
+              <!-- <small class="text-info">Extra charges may apply</small> -->
+            </div>
+            <div class="dropdown-cart-top-footer border-top p-2">
+              <a class="btn btn-success btn-block btn-lg" href="checkout.html"> Thanh toán</a>
+            </div>
+          </div>
+        </li>
+      </ul>
     </div>
-  </nav>
-  <section class="pt-5 pb-5 homepage-search-block position-relative">
-    <div class="banner-overlay"></div>
-    <div class="container">
-      <div class="row d-flex align-items-center py-lg-4">
-        <div class="col-lg-8 mx-auto">
-          <div class="homepage-search-title text-center">
-            <h1 class="mb-2 display-4 text-shadow text-white font-weight-normal"><span
-              class="font-weight-bold">Món ngon dành riêng cho bạn 🇮🇳
-                                </span></h1>
-            <h5 class="mb-5 text-shadow text-white-50 font-weight-normal">Danh sách nhà hàng với nhiều
-              món ngon ưu đãi</h5>
-          </div>
-          <div class="homepage-search-form">
-            <form class="form-noborder">
-              <div class="form-row">
-                <div class="col-lg-3 col-md-3 col-sm-12 form-group">
-                  <div class="location-dropdown">
-                    <i class="icofont-location-arrow"></i>
-                    <select class="custom-select form-control-lg">
-                      <option> Tìm kiếm nhanh </option>
-                      <option> Ăn sáng </option>
-                      <option> Ăn trưa </option>
-                      <option> Ăn tối </option>
-                      <option> Cafés </option>
-                    </select>
-                  </div>
-                </div>
-                <div class="col-lg-7 col-md-7 col-sm-12 form-group">
-                  <input type="text" placeholder="Chọn món theo sở thích"
-                         class="form-control form-control-lg">
-                  <!-- <a class="locate-me" href="#"><i class="icofont-ui-pointer"></i> Locate Me</a> -->
-                </div>
-                <div class="col-lg-2 col-md-2 col-sm-12 form-group">
-                  <a href="listing.html" class="btn btn-primary btn-block btn-lg btn-gradient">Tìm
-                    kiếm</a>
-
-                </div>
-              </div>
-            </form>
-          </div>
-          <h6 class="mt-4 text-shadow text-white font-weight-normal">Ví dụ. Pizzas, Gà rán,
-            Nem chua...</h6>
-          <div class="owl-carousel owl-carousel-category owl-theme">
-            <div class="item">
-              <div class="osahan-category-item">
-                <a href="#">
-                  <img class="img-fluid" src="assets/img/list/1.png" alt="">
-                  <h6>American</h6>
-                  <p>156</p>
-                </a>
-              </div>
-            </div>
-            <div class="item">
-              <div class="osahan-category-item">
-                <a href="#">
-                  <img class="img-fluid" src="assets/img/list/2.png" alt="">
-                  <h6>Pizza</h6>
-                  <p>120</p>
-                </a>
-              </div>
-            </div>
-            <div class="item">
-              <div class="osahan-category-item">
-                <a href="#">
-                  <img class="img-fluid" src="assets/img/list/3.png" alt="">
-                  <h6>Healthy</h6>
-                  <p>130</p>
-                </a>
-              </div>
-            </div>
-            <div class="item">
-              <div class="osahan-category-item">
-                <a href="#">
-                  <img class="img-fluid" src="assets/img/list/4.png" alt="">
-                  <h6>Vegetarian</h6>
-                  <p>120</p>
-                </a>
-              </div>
-            </div>
-            <div class="item">
-              <div class="osahan-category-item">
-                <a href="#">
-                  <img class="img-fluid" src="assets/img/list/5.png" alt="">
-                  <h6>Chinese</h6>
-                  <p>111</p>
-                </a>
-              </div>
-            </div>
-            <div class="item">
-              <div class="osahan-category-item">
-                <a href="#">
-                  <img class="img-fluid" src="assets/img/list/6.png" alt="">
-                  <h6>Hamburgers</h6>
-                  <p>958</p>
-                </a>
-              </div>
-            </div>
-            <div class="item">
-              <div class="osahan-category-item">
-                <a href="#">
-                  <img class="img-fluid" src="assets/img/list/7.png" alt="">
-                  <h6>Dessert</h6>
-                  <p>56</p>
-                </a>
-              </div>
-            </div>
-            <div class="item">
-              <div class="osahan-category-item">
-                <a href="#">
-                  <img class="img-fluid" src="assets/img/list/8.png" alt="">
-                  <h6>Chicken</h6>
-                  <p>40</p>
-                </a>
-              </div>
-            </div>
-            <div class="item">
-              <div class="osahan-category-item">
-                <a href="#">
-                  <img class="img-fluid" src="assets/img/list/9.png" alt="">
-                  <h6>Indian</h6>
-                  <p>156</p>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-</div>
+  </div>
+</nav>
