@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {LoginService} from "../../service/login/login.service";
 import {Router} from "@angular/router";
 import {FormArray, FormControl, FormGroup, Validators} from "@angular/forms";
+import {finalize, Observable} from "rxjs";
+import {AngularFireStorage} from "@angular/fire/compat/storage";
 
 @Component({
   selector: 'app-seller-register',
@@ -9,10 +11,41 @@ import {FormArray, FormControl, FormGroup, Validators} from "@angular/forms";
   styleUrls: ['./seller-register.component.css']
 })
 export class SellerRegisterComponent implements OnInit {
+  title = "cloudsSorage";
+  fb: string = "https://icon-library.com/images/user-icon-jpg/user-icon-jpg-24.jpg";
+  downloadURL: Observable<string> | undefined;
+  // constructor( ) {}
+
+  onFileSelected(event: Event) {
+    var n = Date.now();
+    // @ts-ignore
+    const file = event.target.files[0];
+    const filePath = `RoomsImages/${n}`;
+    const fileRef = this.storage.ref(filePath);
+    const task = this.storage.upload(`RoomsImages/${n}`, file);
+    task
+      .snapshotChanges()
+      .pipe(
+        finalize(() => {
+          this.downloadURL = fileRef.getDownloadURL();
+          this.downloadURL.subscribe(url => {
+            if (url) {
+              this.fb = url;
+            }
+            console.log(this.fb);
+          });
+        })
+      )
+      .subscribe(url => {
+        if (url) {
+          console.log(url);
+        }
+      });
+  }
 
   check: boolean = false;
 
-  constructor(private loginService: LoginService, private router: Router) {
+  constructor(private loginService: LoginService, private router: Router,private storage: AngularFireStorage) {
   }
 
   ngOnInit(): void {
@@ -21,7 +54,7 @@ export class SellerRegisterComponent implements OnInit {
   registerSellerForm = new FormGroup({
     name: new FormControl("", Validators.required),
     phoneNumber: new FormControl("", [Validators.required, Validators.pattern("^0[0-9]{9}$")]),
-    avatar: new FormControl("", Validators.required),
+    avatar: new FormControl(""),
     address: new FormControl("", Validators.required),
     isAccept: new FormControl(false),
     appUser: new FormGroup({
