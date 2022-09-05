@@ -20,7 +20,15 @@
                   <p style="color: red" *ngIf="!registerSellerForm.get('phoneNumber')?.valid && registerSellerForm.get('phoneNumber')?.touched">Blank is not allowed, start with 0, includes 10 numbers</p>
                 </div>
                 <div class="form-label-group mb-4">
-                  <input type="text" id="avatar" formControlName="avatar" class="form-control" placeholder="Enter avatar">
+<!--                  <input type="text" id="avatar" formControlName="avatar" class="form-control" placeholder="Enter avatar">-->
+                  <input type="file"
+                         id="avatar"
+                         #userPhoto
+                         (change)="onFileSelected($event)"
+                         name="image"
+                         autocomplete="off"
+                         class="form-control"
+                  />
                   <label for="avatar">Enter avatar</label>
                   <p style="color: red" *ngIf="!registerSellerForm.get('avatar')?.valid && registerSellerForm.get('avatar')?.touched">Blank is not allowed.</p>
                 </div>
