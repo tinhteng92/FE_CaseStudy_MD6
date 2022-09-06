@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {LoginService} from "../../service/login/login.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-navbar',
@@ -7,19 +8,19 @@ import {LoginService} from "../../service/login/login.service";
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-  check: boolean = false;
-  constructor(private loginService: LoginService) { }
+
+  constructor(public loginService: LoginService, private router: Router) { }
 
   ngOnInit(): void {
-    let userToken = this.loginService.getUserToken();
-    if (userToken != null) {
-      this.check = true;
-    }
+
   }
 
   logOut() {
     this.loginService.deleteUserToken();
     this.loginService.deleteToken();
-    this.check = false;
+    this.loginService.check = false;
+    this.router.navigate(["/"]);
   }
+
+
 }

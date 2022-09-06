@@ -7,6 +7,7 @@ import {UserToken} from "../../model/UserToken";
   providedIn: 'root'
 })
 export class LoginService {
+  public check = false;
   constructor(private http:HttpClient) { }
 
   login(user: any): Observable<UserToken>{
