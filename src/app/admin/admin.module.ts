@@ -7,6 +7,8 @@ import { HomeAdminComponent } from './home-admin/home-admin.component';
 import { SellerManagementComponent } from './seller-management/seller-management.component';
 import { NotAllowSellerListComponent } from './not-allow-seller-list/not-allow-seller-list.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { WaitingAcceptSellerComponent } from './waiting-accept-seller/waiting-accept-seller.component';
+
 
 
 
@@ -15,7 +17,9 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
     DetailSellerManagementComponent,
     HomeAdminComponent,
     SellerManagementComponent,
-    NotAllowSellerListComponent
+    NotAllowSellerListComponent,
+    WaitingAcceptSellerComponent,
+
   ],
 
     imports: [
