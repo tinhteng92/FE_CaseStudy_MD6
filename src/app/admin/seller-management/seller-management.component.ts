@@ -1,4 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import {Page} from "../../model/Page";
+import {AdminService} from "../../service/admin/admin.service";
+import {Seller} from "../../model/seller";
+import {ActivatedRoute, Router} from "@angular/router";
+import {ScriptService} from "../../script.service";
+
+
 
 @Component({
   selector: 'app-seller-management',
@@ -7,9 +14,37 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SellerManagementComponent implements OnInit {
 
-  constructor() { }
+  constructor(private script: ScriptService, private adminService: AdminService, private activatedRoute: ActivatedRoute,
+              private router: Router) { }
 
+  page!: Page;
+  sellers: Seller[] = []
   ngOnInit(): void {
+    // this.script.load('googleapis',
+    //   'bootstrapcdn', 'min', 'bundle', 'select2', 'owl-carousel', 'owl-carousel', 'custom', 'loader').then(data => {
+    // }).catch(error => console.log(error));
+    this.adminService.showActiveSeller(0).subscribe((data) => {
+      this.page = data
+      this.sellers = this.page.content;
+    })
+  }
+
+  showActiveSeller(page: number){
+    if (page >= 0 && this.page.totalPages) {
+      this.adminService.showActiveSeller(page).subscribe((data) => {
+        this.page = data;
+        this.sellers = this.page.content;
+      })
+    }
+  }
+  counter(i: number) {
+    return new Array(i);
+  }
+
+  deleteSeller(id: any) {
+    this.adminService.deleteSeller(id).subscribe(data => {
+      this.router.navigate(['/admin']);
+    }, e => console.log(e));
   }
 
 }
