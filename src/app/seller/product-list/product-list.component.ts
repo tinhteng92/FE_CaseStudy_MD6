@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import {Seller} from "../../model/Seller";
+import {AdminService} from "../../service/admin/admin.service";
+import {Product} from "../../model/Product";
+import {SellerService} from "../../service/seller/seller.service";
+import {LoginService} from "../../service/login/login.service";
 
 @Component({
   selector: 'app-product-list',
@@ -7,9 +12,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductListComponent implements OnInit {
 
-  constructor() { }
+  products: Product[] = [];
+
+  constructor (private sellerService: SellerService, public loginService : LoginService) { }
 
   ngOnInit(): void {
+    this.getRequest();
+  }
+
+  getRequest(){
+    this.sellerService.showListProducts(this.loginService.getUserToken().name).subscribe(products => {
+      this.products = products;
+    })
   }
 
 }
