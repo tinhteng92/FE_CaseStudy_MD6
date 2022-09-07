@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
+import {Page} from "../../model/Page";
 
 @Injectable({
   providedIn: 'root'
@@ -8,6 +9,7 @@ import {Observable} from "rxjs";
 export class AdminService {
   API = 'http://localhost:8080/admin';
   info: any;
+
   constructor(private httpClient: HttpClient) { }
 
   showListRequestSeller(): Observable<any>{
@@ -20,5 +22,12 @@ export class AdminService {
     return this.httpClient.post(this.API+`/accept/${id}`, this.info);
   }
 
-  // showActiveSeller(isActive: boolean, )
+  showActiveSeller(page: number): Observable<any>{
+    return this.httpClient.get<Page>(this.API+`/show/${page}`)
+  }
+
+  deleteSeller(id: number) {
+    return this.httpClient.get(this.API+`/delete/${id}`)
+  }
+
 }
