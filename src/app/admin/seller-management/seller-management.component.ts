@@ -43,6 +43,7 @@ export class SellerManagementComponent implements OnInit {
 
   deleteSeller(id: any) {
     this.adminService.deleteSeller(id).subscribe(data => {
+      this.showActiveSeller(0);
       this.router.navigate(['/admin']);
     }, e => console.log(e));
   }
