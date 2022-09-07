@@ -11,8 +11,8 @@ export class SellerService {
   info: any;
   constructor(private httpClient: HttpClient) { }
 
-  showListProducts(userName : any): Observable<any>{
-    return this.httpClient.get<any>(this.API, userName);
+  showListProducts(page: number,userName : any): Observable<any>{
+    return this.httpClient.get<any>(this.API+`/show/${page}`, userName);
   }
 
 }

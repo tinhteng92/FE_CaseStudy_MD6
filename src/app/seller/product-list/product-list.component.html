@@ -2,10 +2,10 @@
      aria-labelledby="orders-tab"></div>
   <h4 class="font-weight-bold mt-0 mb-4">Product List</h4>
   <div class="bg-white card mb-4 order-list shadow-sm">
-    <div class="gold-members p-4">
+    <div class="gold-members p-4" *ngFor="let product of products">
       <a href="#">
         <div class="media">
-          <img class="mr-4" src="assets/img/3.jpg" alt="Generic placeholder image">
+          <img class="mr-4" src="{{product.image}}" alt="Generic placeholder image">
           <div class="media-body">
                                                     <span class="float-right text-info">Delivered on Mon, Nov 12, 7:18
                                                         PM <i class="icofont-check-circled text-success"></i></span>
@@ -36,6 +36,11 @@
           </div>
         </div>
       </a>
+    </div>
+    <div class="clearfix">
+      <button (click)="showListProducts(page.number -1)" class="btn btn-info">Previous</button>
+      <span>{{page.number + 1}}</span>/<span>{{page.totalPages}}</span>
+      <button (click)="showListProducts(page.number + 1)" class="btn btn-info">Next</button>
     </div>
   </div>
 
