@@ -1,1 +1,49 @@
-<p>create-product works!</p>
+<div style="padding: 20px; background-color: antiquewhite; border-radius: 9px;">
+  <form [formGroup]="createProductForm" (ngSubmit)="createProduct()">
+    <div class="form-label-group mb-4">
+      <input type="text" id="name" formControlName="name" class="form-control" >
+      <label for="name">Enter Product Name</label>
+      <p style="color: red" *ngIf="!createProductForm.get('name')?.valid && createProductForm.get('name')?.touched">Required Information.</p>
+    </div>
+    <div class="form-label-group mb-4">
+      <select id="productCategory" formControlName="productCategory" class="form-control" >
+        <option>Fruits</option>
+        <option>Vegetables</option>
+        <option>Juices</option>
+        <option>Dried</option>
+      </select>
+    </div>
+    <div class="form-label-group mb-4">
+      <input type="text" id="price" formControlName="price" class="form-control" >
+      <label for="price">Enter Price</label>
+      <p style="color: red" *ngIf="!createProductForm.get('price')?.valid && createProductForm.get('price')?.touched">Required Information.</p>
+    </div>
+    <div class="form-label-group mb-4">
+      <input type="number" id="quantityStorage" formControlName="quantityStorage" class="form-control" >
+      <label for="quantityStorage">Enter Quantity Storage</label>
+      <p style="color: red" *ngIf="!createProductForm.get('quantityStorage')?.valid && createProductForm.get('quantityStorage')?.touched">Required Information, at least 1 && maximum 999 Products</p>
+    </div>
+    <div class="form-label-group mb-4" >
+      <input type="file"
+             id="avatar"
+             #userPhoto
+             (change)="onFileSelected($event)"
+             name="image"
+             autocomplete="off"
+             class="form-control"
+      />
+      <label for="avatar">Upload Product Picture</label>
+      <p style="color: red" *ngIf="!createProductForm.get('avatar')?.valid && createProductForm.get('avatar')?.touched">Required Information.</p>
+    </div>
+    <div class="form-label-group mb-4">
+      <input type="text" id="description" formControlName="description" class="form-control" >
+      <label for="description">Enter Product Description</label>
+      <p style="color: red" *ngIf="!createProductForm.get('description')?.valid && createProductForm.get('description')?.touched">Required Information, give some product's description!</p>
+    </div>
+
+
+
+    <button type="submit" class="btn btn-lg btn-outline-primary btn-block btn-login text-uppercase font-weight-bold mb-2" style="margin-right: 10px">Create</button>
+  </form>
+</div>
+
