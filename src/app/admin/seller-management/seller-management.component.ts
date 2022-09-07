@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {Page} from "../../model/Page";
 import {AdminService} from "../../service/admin/admin.service";
-import {Seller} from "../../model/seller";
 import {ActivatedRoute, Router} from "@angular/router";
 import {ScriptService} from "../../script.service";
+import {Seller} from "../../model/Seller";
 
 
 
