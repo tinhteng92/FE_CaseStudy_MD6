@@ -33,6 +33,11 @@
                   <p style="color: red" *ngIf="!registerSellerForm.get('avatar')?.valid && registerSellerForm.get('avatar')?.touched">Blank is not allowed.</p>
                 </div>
                 <div class="form-label-group mb-4">
+                  <input type="text" id="imageBanner" formControlName="imageBanner" class="form-control" placeholder="Enter image banner">
+                  <label for="imageBanner">Enter image banner</label>
+                  <p style="color: red" *ngIf="!registerSellerForm.get('imageBanner')?.valid && registerSellerForm.get('imageBanner')?.touched">Blank is not allowed.</p>
+                </div>
+                <div class="form-label-group mb-4">
                   <input type="text" id="address" formControlName="address" class="form-control" placeholder="Enter address">
                   <label for="address">Enter address</label>
                   <p style="color: red" *ngIf="!registerSellerForm.get('address')?.valid && registerSellerForm.get('address')?.touched">Blank is not allowed.</p>
