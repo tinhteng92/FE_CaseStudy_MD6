@@ -1,6 +1,6 @@
 <div class="tab-pane fade show active" id="orders" role="tabpanel"
      aria-labelledby="orders-tab"></div>
-  <h4 class="font-weight-bold mt-0 mb-4">Product List</h4>
+  <h4 class="font-weight-bold mt-0 mb-4">Shop's List Product</h4>
   <div class="bg-white card mb-4 order-list shadow-sm"*ngFor="let product of products |paginate: {itemsPerPage :4, currentPage :p}" >
     <div class="gold-members p-4" >
       <a href="#">
@@ -26,10 +26,10 @@
               <button class="btn btn-sm btn-outline-primary" href="#"><a><i
                 class="icofont-edit-alt"></i> EDIT</a></button>
               <button class="btn btn-sm btn-primary" href="detail.html"><a><i
-                class="icofont-delete-alt"></i> EDIT</a></button>
+                class="icofont-delete-alt"></i> REMOVE</a></button>
             </div>
             <p class="mb-0 text-black text-primary pt-2"><span
-              class="text-black font-weight-bold"> Quantity Product: </span>--{{product.price}}--
+              class="text-black font-weight-bold">Price: </span>${{product.price}}
             </p>
           </div>
         </div>
