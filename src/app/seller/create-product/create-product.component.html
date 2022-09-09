@@ -1,4 +1,4 @@
-<div style="padding: 20px; background-color: antiquewhite; border-radius: 9px;">
+<div style="padding: 20px; background-color: antiquewhite; border-radius: 20px;">
   <form [formGroup]="createProductForm" (ngSubmit)="createProduct()">
     <div class="form-label-group mb-4">
       <input type="text" id="name" formControlName="name" class="form-control" >
@@ -6,7 +6,8 @@
       <p style="color: red" *ngIf="!createProductForm.get('name')?.valid && createProductForm.get('name')?.touched">Required Information.</p>
     </div>
     <div class="form-label-group mb-4">
-      <select id="productCategory" formControlName="productCategory" class="form-control">
+      <select id="productCategory" formControlName="productCategory" class="form-control" [(ngModel)]="month" #month required >
+        <option [ngValue]="null" [disabled]="true" >All</option>
         <option  *ngFor="let productCategory of productCategories" [ngValue]="productCategory" >{{productCategory.nameCategory}}
         </option>
       </select>
@@ -23,22 +24,21 @@
     </div>
     <div class="form-label-group mb-4" >
       <input type="file"
-             id="avatar"
+             id="image"
              #userPhoto
              (change)="onFileSelected($event)"
-             name="image"
              autocomplete="off"
              class="form-control"
       />
-      <label for="avatar">Upload Product Picture</label>
-      <p style="color: red" *ngIf="!createProductForm.get('avatar')?.valid && createProductForm.get('avatar')?.touched">Required Information.</p>
+      <label for="image">Upload Product Picture</label>
+      <p style="color: red" *ngIf="!createProductForm.get('image')?.valid && createProductForm.get('image')?.touched">Required Information.</p>
     </div>
     <div class="form-label-group mb-4">
       <input type="text" id="description" formControlName="description" class="form-control" >
       <label for="description">Enter Product Description</label>
       <p style="color: red" *ngIf="!createProductForm.get('description')?.valid && createProductForm.get('description')?.touched">Required Information, give some product's description!</p>
     </div>
-    <button type="submit" class="btn btn-lg btn-outline-primary btn-block btn-login text-uppercase font-weight-bold mb-2" style="margin-right: 10px">Create</button>
+    <button type="submit" class="btn btn-lg btn-outline-primary btn-block btn-login text-uppercase font-weight-bold mb-2" style="margin-right: 10px">Create your Product</button>
   </form>
 </div>
 

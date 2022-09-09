@@ -15,7 +15,6 @@ import {Product} from "../../model/Product";
   styleUrls: ['./create-product.component.css']
 })
 export class CreateProductComponent implements OnInit {
-
   title = "cloudsSorage";
   fb: string = "https://icon-library.com/images/user-icon-jpg/user-icon-jpg-24.jpg";
   downloadURL: Observable<string> | undefined;
