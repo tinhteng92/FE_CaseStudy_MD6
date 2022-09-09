@@ -47,7 +47,6 @@ export class CreateProductComponent implements OnInit {
   }
 
   check: boolean = false;
-  productCategories: ProductCategory[] = [];
 
   constructor(private sellerService: SellerService, private router: Router, private storage: AngularFireStorage,
               private productCategoryService: ProductCategoryService, private loginService: LoginService) {
@@ -57,6 +56,7 @@ export class CreateProductComponent implements OnInit {
     this.getCategory()
   }
 
+  productCategories: ProductCategory[] = [];
   getCategory() {
     this.productCategoryService.getCategory().subscribe(data => {
       this.productCategories = data;

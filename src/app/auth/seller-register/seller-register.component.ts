@@ -72,6 +72,7 @@ export class SellerRegisterComponent implements OnInit {
       this.loginService.checkUserName(this.registerSellerForm.value.appUser?.username).subscribe((data) => {
         console.log("data-username" + data);
         if (data) {
+          this.registerSellerForm.get("avatar")?.setValue(this.fb);
           this.loginService.registerSeller(this.registerSellerForm.value).subscribe((data) => {
             console.log("data");
             console.log(data);
