@@ -6,8 +6,7 @@
       <p style="color: red" *ngIf="!createProductForm.get('name')?.valid && createProductForm.get('name')?.touched">Required Information.</p>
     </div>
     <div class="form-label-group mb-4">
-      <select id="productCategory" formControlName="productCategory" class="form-control" [(ngModel)]="month" #month required >
-        <option [ngValue]="null" [disabled]="true" >All</option>
+      <select id="productCategory" formControlName="productCategory" class="form-control"  >
         <option  *ngFor="let productCategory of productCategories" [ngValue]="productCategory" >{{productCategory.nameCategory}}
         </option>
       </select>
