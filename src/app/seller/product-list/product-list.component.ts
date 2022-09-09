@@ -29,23 +29,12 @@ export class ProductListComponent implements OnInit {
   constructor(private script: ScriptService, private sellerService: SellerService,public loginService : LoginService,private activatedRoute: ActivatedRoute,
               private router: Router) { }
   p: any;
-  page!: Page;
   products: Product[] = []
   ngOnInit(): void {
     console.log("username: ", this.loginService.getUserToken().username)
     this.sellerService.showListProducts(this.loginService.getUserToken().username, 0 ).subscribe((data) => {
-      this.page = data
       this.products = data.content;
       console.log(this.products)
     })
-  }
-
-  showListProducts(page: number){
-    if (page >= 0 && this.page.totalPages) {
-      this.sellerService.showListProducts(this.loginService.getUserToken().username, page).subscribe((data) => {
-        this.page = data;
-        this.products = this.page.content;
-      })
-    }
   }
 }
