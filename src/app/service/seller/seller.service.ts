@@ -26,4 +26,8 @@ export class SellerService {
     console.log("product",product)
     return this.httpClient.post<any>(this.API+`/save-product/`+userId,product);
   }
+
+  getThisSeller(sellerId: number):Observable<any>{
+    return this.httpClient.get<any>(this.API+`/${sellerId}`);
+  }
 }
