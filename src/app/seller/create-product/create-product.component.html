@@ -6,11 +6,9 @@
       <p style="color: red" *ngIf="!createProductForm.get('name')?.valid && createProductForm.get('name')?.touched">Required Information.</p>
     </div>
     <div class="form-label-group mb-4">
-      <select id="productCategory" formControlName="productCategory" class="form-control" >
-        <option>Fruits</option>
-        <option>Vegetables</option>
-        <option>Juices</option>
-        <option>Dried</option>
+      <select id="productCategory" formControlName="productCategory" class="form-control">
+        <option  *ngFor="let productCategory of productCategories" [ngValue]="productCategory" >{{productCategory.nameCategory}}
+        </option>
       </select>
     </div>
     <div class="form-label-group mb-4">
@@ -40,9 +38,6 @@
       <label for="description">Enter Product Description</label>
       <p style="color: red" *ngIf="!createProductForm.get('description')?.valid && createProductForm.get('description')?.touched">Required Information, give some product's description!</p>
     </div>
-
-
-
     <button type="submit" class="btn btn-lg btn-outline-primary btn-block btn-login text-uppercase font-weight-bold mb-2" style="margin-right: 10px">Create</button>
   </form>
 </div>

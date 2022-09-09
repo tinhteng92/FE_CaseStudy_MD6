@@ -1,9 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {finalize, Observable} from "rxjs";
-import {LoginService} from "../../service/login/login.service";
 import {Router} from "@angular/router";
 import {AngularFireStorage} from "@angular/fire/compat/storage";
 import {FormArray, FormControl, FormGroup, Validators} from "@angular/forms";
+import {SellerService} from "../../service/seller/seller.service";
+import {ProductCategory} from "../../model/ProductCategory";
+import {ProductCategoryService} from "../../service/product-category/product-category.service";
+import {LoginService} from "../../service/login/login.service";
+import {Product} from "../../model/Product";
 
 @Component({
   selector: 'app-create-product',
@@ -15,8 +19,6 @@ export class CreateProductComponent implements OnInit {
   title = "cloudsSorage";
   fb: string = "https://icon-library.com/images/user-icon-jpg/user-icon-jpg-24.jpg";
   downloadURL: Observable<string> | undefined;
-  // constructor( ) {}
-
   onFileSelected(event: Event) {
     var n = Date.now();
     // @ts-ignore
@@ -45,26 +47,39 @@ export class CreateProductComponent implements OnInit {
   }
 
   check: boolean = false;
+  productCategories: ProductCategory[] = [];
 
-  constructor(private loginService: LoginService, private router: Router,private storage: AngularFireStorage) {
+  constructor(private sellerService: SellerService, private router: Router, private storage: AngularFireStorage,
+              private productCategoryService: ProductCategoryService, private loginService: LoginService) {
   }
 
   ngOnInit(): void {
+    this.getCategory()
+  }
+
+  getCategory() {
+    this.productCategoryService.getCategory().subscribe(data => {
+      this.productCategories = data;
+    })
   }
 
   createProductForm = new FormGroup({
     name: new FormControl("", Validators.required),
-    productCategory: new FormControl("", Validators.required),
+    productCategory: new FormControl(""),
     price: new FormControl("", Validators.required),
     quantityStorage: new FormControl("", [Validators.required, Validators.pattern("([1-9]|[1-9][0-9]|[1-9][0-9][0-9])")]),
-    avatar: new FormControl(""),
+    image: new FormControl(""),
     description: new FormControl("", Validators.required),
   })
 
-  createProduct(){
-    if (this.createProductForm.valid){
-      this.createProductForm.get("avatar")?.setValue(this.fb);
-      this.loginService.registerCustomer(this.createProductForm.value).subscribe((data) => {
+
+  createProduct() {
+    let userID = this.loginService.getUserToken().id;
+    let productToCreate = this.createProductForm.value;
+    console.log("product to create: ", productToCreate)
+    if (this.createProductForm.valid) {
+      this.createProductForm.get("image")?.setValue(this.fb);
+      this.sellerService.createProduct(productToCreate, userID).subscribe((data) => {
         console.log("data");
         console.log(data);
         this.router.navigate(["/seller"]);

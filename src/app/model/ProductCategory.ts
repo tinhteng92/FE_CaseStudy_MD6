@@ -1,9 +1,9 @@
 export class ProductCategory{
   id:number;
-  name:string;
+  nameCategory:string;
 
-  constructor(id: number, name: string) {
+  constructor(id: number, nameCategory: string) {
     this.id = id;
-    this.name = name;
+    this.nameCategory = nameCategory;
   }
 }
