@@ -1,7 +1,7 @@
 <div class="tab-pane fade show active" id="orders" role="tabpanel"
      aria-labelledby="orders-tab"></div>
   <h4 class="font-weight-bold mt-0 mb-4">Product List</h4>
-  <div class="bg-white card mb-4 order-list shadow-sm"*ngFor="let product of products">
+  <div class="bg-white card mb-4 order-list shadow-sm"*ngFor="let product of products |paginate: {itemsPerPage :4, currentPage :p}" >
     <div class="gold-members p-4" >
       <a href="#">
         <div class="media">
@@ -36,9 +36,9 @@
       </a>
     </div>
   </div>
-<div class="clearfix">
-  <button (click)="showListProducts(page.number -1)" class="btn btn-info">Previous</button>
-  <span>{{page.number + 1}}</span>/<span>{{page.totalPages}}</span>
-  <button (click)="showListProducts(page.number + 1)" class="btn btn-info">Next</button>
+<div>
+  <pagination-controls class="btn btn-sm btn-outline-primary" class="myPagination" (pageChange)="p = $event">
+  </pagination-controls>
 </div>
+
 

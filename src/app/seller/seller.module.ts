@@ -17,6 +17,7 @@ import { OrderSellerWaitConfirmComponent } from './order-seller-wait-confirm/ord
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {NavbarComponent} from "../share/navbar/navbar.component";
 import {FooterComponent} from "../share/footer/footer.component";
+import {NgxPaginationModule} from "ngx-pagination";
 
 
 @NgModule({
@@ -35,13 +36,14 @@ import {FooterComponent} from "../share/footer/footer.component";
     OrderSellerWaitConfirmComponent
   ],
 
-  imports: [
-    FormsModule,
-    CommonModule,
-   SellerRoutingModule,
-    ReactiveFormsModule,
-    // NgxPaginationModule,
-    // CarouselModule,
-  ]
+    imports: [
+        FormsModule,
+        CommonModule,
+        SellerRoutingModule,
+        ReactiveFormsModule,
+        NgxPaginationModule,
+        // NgxPaginationModule,
+        // CarouselModule,
+    ]
 })
 export class SellerModule { }
