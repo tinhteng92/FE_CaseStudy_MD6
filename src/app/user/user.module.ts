@@ -13,6 +13,7 @@ import { EditUserAvatarComponent } from './edit-user-avatar/edit-user-avatar.com
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {SellerModule} from "../seller/seller.module";
 import { WishlistComponent } from './wishlist/wishlist.component';
+import { ThanksComponent } from './thanks/thanks.component';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { WishlistComponent } from './wishlist/wishlist.component';
     OrderDetailUserComponent,
     OrderUserComponent,
     EditUserAvatarComponent,
-    WishlistComponent
+    WishlistComponent,
+    ThanksComponent
   ],
   imports: [
     CommonModule,

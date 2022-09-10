@@ -19,7 +19,8 @@ export class ProductListComponent implements OnInit {
   }
 
   getRequest(){
-    this.sellerService.showListProducts(this.loginService.getUserToken().name).subscribe(products => {
+    alert(this.loginService.getUserToken().userName);
+    this.sellerService.showListProducts(this.loginService.getUserToken().userName).subscribe(products => {
       this.products = products;
     })
   }
