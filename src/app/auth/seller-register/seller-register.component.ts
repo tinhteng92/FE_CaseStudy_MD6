@@ -55,8 +55,10 @@ export class SellerRegisterComponent implements OnInit {
     name: new FormControl("", Validators.required),
     phoneNumber: new FormControl("", [Validators.required, Validators.pattern("^0[0-9]{9}$")]),
     avatar: new FormControl(""),
+    imageBanner: new FormControl(""),
     address: new FormControl("", Validators.required),
     isAccept: new FormControl(false),
+    isActive: new FormControl(true),
     appUser: new FormGroup({
       username: new FormControl("", [Validators.required, Validators.email, Validators.maxLength(50)]),
       password: new FormControl("", [Validators.required, Validators.minLength(4), Validators.maxLength(20)]),

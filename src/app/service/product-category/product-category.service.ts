@@ -19,4 +19,32 @@ export class ProductCategoryService {
   showDetailProduct(id: number): Observable<any>{
     return this.httpClient.get(this.API +`/product-detail/${id}`)
   }
+
+  showSaleList(id: number): Observable<any>{
+    return this.httpClient.get(this.API + `/sale/${id}`)
+  }
+
+  showProductImageList(id: number): Observable<any>{
+    return this.httpClient.get(this.API + `/product-img/${id}`)
+  }
+
+  showProductBySold(): Observable<any>{
+    return this.httpClient.get(this.API + `/top-sold`)
+  }
+
+  showProductByPriceDown(): Observable<any>{
+    return this.httpClient.get(this.API + `/price-down`)
+  }
+
+  showProductByPriceUp(): Observable<any>{
+    return this.httpClient.get(this.API + `/price-up`)
+  }
+
+  showProductByCategory(id: number): Observable<any> {
+    return this.httpClient.get(this.API + `/category/${id}`)
+  }
+
+  showCategories(): Observable<any> {
+    return this.httpClient.get(this.API + `/category`)
+  }
 }

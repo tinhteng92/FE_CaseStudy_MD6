@@ -21,15 +21,17 @@ const routes: Routes = [
         path: 'edit-customer-change-avatar',
         component: EditUserAvatarComponent
       },
-      {
-        path: 'order-user',
-        component: OrderUserComponent, children: [
-          { path: 'user-order-detail',
-            component: OrderDetailUserComponent
-          }
-        ]
-      }
-    ]}
+
+    ]},
+  {
+    path: 'order-user',
+    component: OrderUserComponent, children: [
+
+    ]
+  },
+  { path: 'user-order-detail',
+    component: OrderDetailUserComponent
+  }
 ];
 
 @NgModule({

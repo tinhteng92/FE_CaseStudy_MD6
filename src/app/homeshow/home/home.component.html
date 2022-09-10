@@ -2,26 +2,26 @@
 <section class="section pt-5 pb-5 bg-white homepage-add-section">
   <div class="container">
     <div class="row">
-      <div class="col-md-3 col-6">
+      <div class="col-md-3 col-6" *ngFor="let category of categoryList">
         <div class="products-box">
-          <a href="listing.html"><img alt="" src="../../../assets/img/category-1.jpg" class="img-fluid rounded">Fruits</a>
+          <a (click)="filterByCategory(category.id)" ><img  alt="" src="{{category.imageCategory}}" class="img-fluid rounded">{{category.nameCategory}}</a>
         </div>
       </div>
-      <div class="col-md-3 col-6">
-        <div class="products-box">
-          <a href="listing.html"><img alt="" src="../../../assets/img/category-2.jpg" class="img-fluid rounded">Vegetables</a>
-        </div>
-      </div>
-      <div class="col-md-3 col-6">
-        <div class="products-box">
-          <a href="listing.html"><img alt="" src="../../../assets/img/category-3.jpg" class="img-fluid rounded">Juices</a>
-        </div>
-      </div>
-      <div class="col-md-3 col-6">
-        <div class="products-box">
-          <a href="listing.html"><img alt="" src="../../../assets/img/category-4.jpg" class="img-fluid rounded">Dried</a>
-        </div>
-      </div>
+<!--      <div class="col-md-3 col-6">-->
+<!--        <div class="products-box">-->
+<!--          <a href="listing.html"><img alt="" src="../../../assets/img/category-2.jpg" class="img-fluid rounded">Vegetables</a>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      <div class="col-md-3 col-6">-->
+<!--        <div class="products-box">-->
+<!--          <a href="listing.html"><img alt="" src="../../../assets/img/category-3.jpg" class="img-fluid rounded">Juices</a>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      <div class="col-md-3 col-6">-->
+<!--        <div class="products-box">-->
+<!--          <a href="listing.html"><img alt="" src="../../../assets/img/category-4.jpg" class="img-fluid rounded">Dried</a>-->
+<!--        </div>-->
+<!--      </div>-->
     </div>
   </div>
 </section>
@@ -32,12 +32,12 @@
         <div class="dropdown float-right">
           <a class="btn btn-outline-info dropdown-toggle btn-sm border-white-btn" href="#" role="button"
              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Sort by: <span class="text-theme">Distance</span> &nbsp;&nbsp;
+            Sort by: <span class="text-theme">Price</span> &nbsp;&nbsp;
           </a>
           <div class="dropdown-menu dropdown-menu-right shadow-sm border-0 ">
-            <a class="dropdown-item" href="#">Distance</a>
-            <a class="dropdown-item" href="#">No Of Offers</a>
-            <a class="dropdown-item" href="#">Rating</a>
+            <a class="dropdown-item" (click)="priceUp()" >Price Up</a>
+            <a class="dropdown-item" (click)="priceDown()" >Price Down</a>
+<!--            <a class="dropdown-item" href="#">Rating</a>-->
           </div>
         </div>
         <h4 class="font-weight-bold mt-0 mb-3">OFFERS <small class="h6 mb-0 ml-2">200 shops
@@ -166,14 +166,13 @@
             </div>
           </div>
         </div>
+
         <div class="row" >
-
-
           <div class="col-md-4 col-sm-6 mb-4 pb-2" *ngFor=" let product of products |paginate: {itemsPerPage :5, currentPage :p}" >
             <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
               <div class="list-card-image">
                 <div class="star position-absolute"><span class="badge badge-success"><i
-                  class="icofont-star"></i> 3.1 (300+)</span></div>
+                  class="icofont-star"></i> 3.1 ({{product.sold}}+)</span></div>
                 <div class="favourite-heart text-danger position-absolute"><a href="detail.html"><i
                   class="icofont-heart"></i></a></div>
                 <div class="member-plan position-absolute"><span
@@ -184,16 +183,17 @@
               </div>
               <div class="p-3 position-relative">
                 <div class="list-card-body">
-                  <h6 class="mb-1"><a href="detail.html" class="text-black">{{product.name}}</a></h6>
-                  <p class="text-gray mb-3">{{product.price}}</p>
+                  <h6 class="mb-1"><a  [routerLink]="['/detail-product', product.id]" class="text-black">{{product.name}}</a></h6>
+<!--                  <p class="text-gray mb-3">Price: {{product.price}}</p>-->
                   <p class="text-gray mb-3 time"><span
                     class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2"><i
-                    class="icofont-home"></i>{{product.seller.name}}</span> <span
-                    class="float-right text-black-50"> {{product.seller.address}}</span></p>
+                    class="icofont-home"></i>{{product.seller.name}}</span> </p>
+<!--                  <span class="float-right text-black-50"> {{}}</span>-->
+                  <p class="text-gray mb-3">Add: {{product.seller.address}}</p>
+
                 </div>
                 <div class="list-card-badge">
-                  <span class="badge badge-success">OFFER</span> <small>65% off | Use Coupon
-                  OSAHAN50</small>
+                  <span class="badge badge-success">Price</span> {{product.price}}
                 </div>
               </div>
             </div>

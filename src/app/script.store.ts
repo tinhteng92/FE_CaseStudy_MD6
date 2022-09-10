@@ -10,7 +10,6 @@ export const ScriptStore: ScriptStore[] = [
   {name: 'bundle', src: 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js'},
   {name: 'select2', src: 'assets/vendor/select2/js/select2.min.js'},
   {name: 'owl-carousel', src: 'assets/vendor/owl-carousel/owl.carousel.js'},
-  {name: 'owl-carousel', src: 'assets/vendor/owl-carousel/owl.carousel.js'},
   {name: 'custom', src: 'assets/js/custom.js'},
   {name: 'loader', src: 'assets/js/rocket-loader.min.js'},
 
