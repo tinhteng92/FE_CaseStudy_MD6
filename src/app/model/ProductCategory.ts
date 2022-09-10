@@ -1,9 +1,20 @@
 export class ProductCategory{
-  id:number;
-  name:string;
+  // private _id:number;
+  // private _name:string;
+  //
+  // constructor(id: number, name: string) {
+  //   this._id = id;
+  //   this._name = name;
+  // }
 
-  constructor(id: number, name: string) {
+  id!: number;
+  nameCategory!: string;
+  imageCategory!: string;
+
+
+  constructor(id: number, nameCategory: string, imageCategory: string) {
     this.id = id;
-    this.name = name;
+    this.nameCategory = nameCategory;
+    this.imageCategory = imageCategory;
   }
 }
