@@ -39,7 +39,8 @@ export class LoginComponent implements OnInit {
           }
 
         } else {
-          alert("Email or password is wrong, please re-enter!");
+          alert("Email or password is wrong, please re-enter! \n"
+          + "Or The account has not been confirmed, please wait for the mail");
           this.router.navigate(["/login"]);
         }
 
