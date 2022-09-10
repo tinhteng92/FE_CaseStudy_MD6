@@ -37,4 +37,10 @@ export class ProductListComponent implements OnInit {
       console.log(this.products)
     })
   }
+
+  deleteProduct(idProduct: number){
+    this.sellerService.deleteProduct(idProduct).subscribe((data) => {
+      alert("xóa thành c")
+    })
+  }
 }

@@ -30,4 +30,12 @@ export class SellerService {
   getThisSeller(sellerId: number):Observable<any>{
     return this.httpClient.get<any>(this.API+`/${sellerId}`);
   }
+
+  getProduct(idProduct: number):Observable<any>{
+    return this.httpClient.get<any>(this.API+`/get-product/${idProduct}`);
+  }
+
+  deleteProduct(idProduct: number):Observable<any>{
+    return this.httpClient.get<any>(this.API+`/delete-product/${idProduct}`);
+  }
 }
