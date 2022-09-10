@@ -74,10 +74,10 @@ export class CreateProductComponent implements OnInit {
 
   createProduct() {
     let userID = this.loginService.getUserToken().id;
+    this.createProductForm.get("image")?.setValue(this.fb);
     let productToCreate = this.createProductForm.value;
     console.log("product to create: ", productToCreate)
     if (this.createProductForm.valid) {
-      this.createProductForm.get("image")?.setValue(this.fb);
       this.sellerService.createProduct(productToCreate, userID).subscribe((data) => {
         console.log("data");
         console.log(data);
