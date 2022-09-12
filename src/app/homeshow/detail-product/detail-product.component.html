@@ -1,17 +1,16 @@
 <section class="restaurant-detailed-banner">
   <div class="text-center">
-    <img class="img-fluid cover" src="../../../assets/img/bia-seller.png">
+    <img class="img-fluid cover" src="{{product.seller.imageBanner}}">
   </div>
   <div class="restaurant-detailed-header">
     <div class="container">
       <div class="row d-flex align-items-end">
         <div class="col-md-8">
           <div class="restaurant-detailed-header-left">
-            <img class="img-fluid mr-3 float-left" alt="osahan" src="assets/img/1.jpg">
-            <h2 class="text-white">Bánh Tráng Cuốn Thịt Heo Hoàng Bèo</h2>
-            <p class="text-white mb-1"><i class="icofont-location-pin"></i> 40 Duy Tân, Quận Cầu Giấy,
-              Hà Nội </p>
-            <p class="text-white mb-0"><i class="icofont-food-cart"></i> #banhtrang, #thitheo</p>
+            <img class="img-fluid mr-3 float-left" alt="osahan" src="{{product.seller.avatar}}">
+            <h2 class="text-white">{{product.seller.name}}</h2>
+            <p class="text-white mb-1"><i class="icofont-location-pin"></i>{{product.seller.address}} </p>
+            <p class="text-white mb-0"><i class="icofont-food-cart"></i> {{product.seller.phoneNumber}}</p>
           </div>
         </div>
         <div class="col-md-4">
@@ -29,21 +28,22 @@
   </div>
 
 </section>
+
 <section class="offer-dedicated-nav bg-white border-top-0 shadow-sm">
   <div class="container">
     <div class="row">
       <div class="col-md-12">
                     <span class="restaurant-detailed-action-btn float-right">
                         <button class="btn btn-light btn-sm border-light-btn" type="button"><i
-                          class="icofont-heart text-danger"></i> Yêu thích</button>
+                          class="icofont-heart text-danger"></i></button>
                         <button class="btn btn-light btn-sm border-light-btn" type="button"><i
-                          class="icofont-cauli-flower text-success"></i> Xem cửa hàng</button>
+                          class="icofont-cauli-flower text-success"></i> Shop's detail</button>
                     </span>
         <ul class="nav" id="pills-tab" role="tablist">
           <li class="nav-item">
             <a class="nav-link active" id="pills-order-online-tab" data-toggle="pill"
                href="#pills-order-online" role="tab" aria-controls="pills-order-online"
-               aria-selected="true">Mua hàng</a>
+               aria-selected="true">Product Information</a>
           </li>
           <!-- <li class="nav-item">
               <a class="nav-link" id="pills-reviews-tab" data-toggle="pill" href="#pills-reviews"
@@ -65,215 +65,162 @@
               <div id="#menu" class="bg-white rounded shadow-sm p-4 mb-4">
                 <div class="address-map float-right ml-5">
                   <div class="mapouter">
-                    <!-- <div class="gmap_canvas"><iframe width="300" height="170" id="gmap_canvas"
-                            src="https://maps.google.com/maps?q=university%20of%20san%20francisco&amp;t=&amp;z=9&amp;ie=UTF8&amp;iwloc=&amp;output=embed"
-                            frameborder="0" scrolling="no" marginheight="0"
-                            marginwidth="0"></iframe></div> -->
-                    <img width="300" height="170" class="img-fluid" src="assets/img/list/1.png">
+
+                    <img width="300" height="170" class="img-fluid" src="{{product.image}}">
                   </div>
                 </div>
-                <h5 class="mb-4">Bánh Tráng Cuốn Thịt Heo Hoàng Bèo</h5>
-                <p class="mb-3">
-                  <span class="fa fa-location-arrow locationicon"></span>40 Duy Tân, <i
-                  class="fa fa-map" aria-hidden="true"></i> Quận Cầu Giấy, Hà Nội
-                </p>
-                <p class="mb-2 text-black"><i class="icofont-phone-circle text-primary mr-2"></i>
-                  +91 01234-56789, +91 01234-56789</p>
-                <p class="mb-2 text-black"><i class="icofont-email text-primary mr-2"></i> <a
+                <h5 class="mb-4">{{product.name}}</h5>
+<!--                <p class="mb-3">-->
+<!--                  <span class="fa fa-location-arrow locationicon"></span>40 Duy Tân, <i-->
+<!--                  class="fa fa-map" aria-hidden="true"></i> Quận Cầu Giấy, Hà Nội-->
+<!--                </p>-->
+                <br>
+<!--                <p class="mb-2 text-black"><i class="icofont-phone-circle text-primary mr-2"></i>-->
+<!--                  +91 01234-56789, +91 01234-56789</p>-->
+<!--                <br>-->
+                <p class="mb-2 text-black"><i class="icofont-bill-alt text-primary mr-2"></i> <a
                   href="https://thaotrinh.info/cdn-cgi/l/email-protection"
                   class="__cf_email__"
-                  data-cfemail="97fef6faf8e4f6fff6f9d7f0faf6fefbb9f4f8fa">30.000đ -
-                  100.000đ</a>
+                  data-cfemail="97fef6faf8e4f6fff6f9d7f0faf6fefbb9f4f8fa">Price: {{product.price}}</a>
                 </p>
-                <p class="mb-2 text-black"><i class="icofont-clock-time text-primary mr-2"></i>
-                  Today 11am – 5pm, 6pm – 11pm
-                  <span class="badge badge-success"> OPEN NOW </span>
+                <p class="mb-2 text-black"><i class="icofont-clock-time text-primary mr-2"></i>Sold:
+                  {{product.sold}}
+<!--                  <span class="badge badge-success"> OPEN NOW </span>-->
                 </p>
                 <hr class="clearfix">
-                <p class="text-black mb-0"> Ba mẹ cho bạc cho vàng 😳. KHÔNG BẰNG NHẬN ĐƯỢC KH ĐÁNH
-                  5⭐️ -😍. Ace LH cho quán để sử lý đơn hàng tại số dt ở dưới 👇</p>
+                <p class="text-black mb-0">{{product.description}}</p>
                 <hr class="clearfix">
+
+                // Show list hình ảnh ở đây
+
+
                 <div
                   class="owl-carousel owl-theme owl-carousel-five offers-interested-carousel mb-3">
-                  <div class="item">
+                  <div class="item" *ngFor="let imgP of productImageList">
                     <div class="mall-category-item">
                       <a href="#">
-                        <img class="img-fluid" src="assets/img/list/1.png">
+                        <img class="img-fluid" src="{{imgP.image}}">
                         <h6>Burgers</h6>
                       </a>
                     </div>
                   </div>
-                  <div class="item">
-                    <div class="mall-category-item">
-                      <a href="#">
-                        <img class="img-fluid" src="assets/img/list/2.png">
-                        <h6>Sandwiches</h6>
-                      </a>
-                    </div>
-                  </div>
-                  <div class="item">
-                    <div class="mall-category-item">
-                      <a href="#">
-                        <img class="img-fluid" src="assets/img/list/3.png">
-                        <h6>Soups</h6>
-                      </a>
-                    </div>
-                  </div>
-                  <div class="item">
-                    <div class="mall-category-item">
-                      <a href="#">
-                        <img class="img-fluid" src="assets/img/list/4.png">
-                        <h6>Pizzas</h6>
-                      </a>
-                    </div>
-                  </div>
-                  <div class="item">
-                    <div class="mall-category-item">
-                      <a href="#">
-                        <img class="img-fluid" src="assets/img/list/5.png">
-                        <h6>Pastas</h6>
-                      </a>
-                    </div>
-                  </div>
-                  <div class="item">
-                    <div class="mall-category-item">
-                      <a href="#">
-                        <img class="img-fluid" src="assets/img/list/6.png">
-                        <h6>Chinese</h6>
-                      </a>
-                    </div>
-                  </div>
+
+
+
                 </div>
+
+
                 <h5 class="mt-4 mb-4">Coupons</h5>
-                <p class="mb-3">Danh sách mã giảm giá của cửa hàng</p>
-                <div class="border-btn-main mb-4">
-                  <a class="border-btn text-success mr-2" href="#"><i
-                    class="icofont-check-circled"></i> 20% tổng đơn</a>
-                  <a class="border-btn text-danger mr-2" href="#"><i
-                    class="icofont-close-circled"></i> 5% tổng đơn</a>
-                  <a class="border-btn text-success mr-2" href="#"><i
-                    class="icofont-check-circled"></i>Giảm 27k</a>
+                <p class="mb-3">List of store discount codes</p>
+                <div class="border-btn-main mb-4" *ngFor="let sale of saleList">
+                  <a  class=" border-btn text-success mr-2" href="#"><i
+                    class="icofont-check-circled"></i> {{sale.name}}</a>
                 </div>
+
+                // Em tự thêm đường dẫn vào giỏ hàng nhé
+                <a class=" btn btn-success" href="#"   >Add to cart</a>
+
+
               </div>
+
+
               <div id="#" class="bg-white rounded shadow-sm p-4 mb-4 explore-outlets">
                 <h5 class="mb-4">Món dành riêng cho bạn</h5>
-                <h6 class="mb-3">
-                                        <span class="badge badge-success"><i class="icofont-tags"></i> 15%
-                                            giảm giá </span>
-                  <span class="badge badge-success"><i class="icofont-tags"></i> Giảm 25k</span>
-                </h6>
-                <div
-                  class="owl-carousel owl-theme owl-carousel-five offers-interested-carousel mb-3">
-                  <div class="item">
-                    <div class="mall-category-item">
-                      <a href="#">
-                        <img class="img-fluid" src="assets/img/list/1.png">
-                        <h6>Burgers</h6>
-                        <small>5 ITEMS</small>
-                      </a>
-                    </div>
-                  </div>
-                  <div class="item">
-                    <div class="mall-category-item">
-                      <a href="#">
-                        <img class="img-fluid" src="assets/img/list/2.png">
-                        <h6>Sandwiches</h6>
-                        <small>8 ITEMS</small>
-                      </a>
-                    </div>
-                  </div>
-                  <div class="item">
-                    <div class="mall-category-item">
-                      <a href="#">
-                        <img class="img-fluid" src="assets/img/list/3.png">
-                        <h6>Soups</h6>
-                        <small>2 ITEMS</small>
-                      </a>
-                    </div>
-                  </div>
-                  <div class="item">
-                    <div class="mall-category-item">
-                      <a href="#">
-                        <img class="img-fluid" src="assets/img/list/4.png">
-                        <h6>Pizzas</h6>
-                        <small>56 ITEMS</small>
-                      </a>
-                    </div>
-                  </div>
-                  <div class="item">
-                    <div class="mall-category-item">
-                      <a href="#">
-                        <img class="img-fluid" src="assets/img/list/5.png">
-                        <h6>Pastas</h6>
-                        <small>10 ITEMS</small>
-                      </a>
-                    </div>
-                  </div>
-                  <div class="item">
-                    <div class="mall-category-item">
-                      <a href="#">
-                        <img class="img-fluid" src="assets/img/list/6.png">
-                        <h6>Chinese</h6>
-                        <small>25 ITEMS</small>
-                      </a>
-                    </div>
-                  </div>
-                </div>
+                // Show list sản phẩm cùng người bán
+<!--                <h6 class="mb-3">-->
+<!--                                        <span class="badge badge-success"><i class="icofont-tags"></i> 15%-->
+<!--                                            giảm giá </span>-->
+<!--                  <span class="badge badge-success"><i class="icofont-tags"></i> Giảm 25k</span>-->
+<!--                </h6>-->
+<!--                <div-->
+<!--                  class="owl-carousel owl-theme owl-carousel-five offers-interested-carousel mb-3">-->
+<!--                  <div class="item">-->
+<!--                    <div class="mall-category-item">-->
+<!--                      <a href="#">-->
+<!--                        <img class="img-fluid" src="assets/img/list/1.png">-->
+<!--                        <h6>Burgers</h6>-->
+<!--                        <small>5 ITEMS</small>-->
+<!--                      </a>-->
+<!--                    </div>-->
+<!--                  </div>-->
+<!--                  <div class="item">-->
+<!--                    <div class="mall-category-item">-->
+<!--                      <a href="#">-->
+<!--                        <img class="img-fluid" src="assets/img/list/2.png">-->
+<!--                        <h6>Sandwiches</h6>-->
+<!--                        <small>8 ITEMS</small>-->
+<!--                      </a>-->
+<!--                    </div>-->
+<!--                  </div>-->
+<!--                  <div class="item">-->
+<!--                    <div class="mall-category-item">-->
+<!--                      <a href="#">-->
+<!--                        <img class="img-fluid" src="assets/img/list/3.png">-->
+<!--                        <h6>Soups</h6>-->
+<!--                        <small>2 ITEMS</small>-->
+<!--                      </a>-->
+<!--                    </div>-->
+<!--                  </div>-->
+<!--                  <div class="item">-->
+<!--                    <div class="mall-category-item">-->
+<!--                      <a href="#">-->
+<!--                        <img class="img-fluid" src="assets/img/list/4.png">-->
+<!--                        <h6>Pizzas</h6>-->
+<!--                        <small>56 ITEMS</small>-->
+<!--                      </a>-->
+<!--                    </div>-->
+<!--                  </div>-->
+<!--                  <div class="item">-->
+<!--                    <div class="mall-category-item">-->
+<!--                      <a href="#">-->
+<!--                        <img class="img-fluid" src="assets/img/list/5.png">-->
+<!--                        <h6>Pastas</h6>-->
+<!--                        <small>10 ITEMS</small>-->
+<!--                      </a>-->
+<!--                    </div>-->
+<!--                  </div>-->
+<!--                  <div class="item">-->
+<!--                    <div class="mall-category-item">-->
+<!--                      <a href="#">-->
+<!--                        <img class="img-fluid" src="assets/img/list/6.png">-->
+<!--                        <h6>Chinese</h6>-->
+<!--                        <small>25 ITEMS</small>-->
+<!--                      </a>-->
+<!--                    </div>-->
+<!--                  </div>-->
+<!--                </div>-->
               </div>
-              <div class="row">
-                <h5 class="mb-4 mt-3 col-md-12">Mọi người cũng thích</h5>
-                <div class="col-md-4 col-sm-6 mb-4">
+
+              // Sản phẩm được bán nhiều nhất
+
+              <div class="row" >
+                <h5 class="mb-4 mt-3 col-md-12">Top selling products</h5>
+
+
+
+                <div class="col-md-4 col-sm-6 mb-4" *ngFor="let p of topSoldProduct">
                   <div
                     class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
                     <div class="list-card-image">
-                      <!-- <div class="star position-absolute"><span class="badge badge-success"><i
-                                  class="icofont-star"></i> 3.1 (300+)</span></div> -->
+                      <div class="star position-absolute"><span class="badge badge-success"><i
+                                  class="icofont-star"></i> 3.1 ({{p.sold}}+)</span></div>
                       <div class="favourite-heart text-danger position-absolute"><a
                         href="#"><i class="icofont-heart"></i></a></div>
                       <div class="member-plan position-absolute"><span
                         class="badge badge-dark">Promoted</span></div>
                       <a href="#">
-                        <img src="assets/img/list/7.png" class="img-fluid item-img">
+                        <img src="{{p.image}}" class="img-fluid item-img">
                       </a>
                     </div>
                     <div class="p-3 position-relative">
                       <div class="list-card-body">
-                        <h6 class="mb-1"><a href="#" class="text-black">Gafood - Gà Ủ Muối</a></h6>
-                        <p class="text-gray mb-2">Bạch Mai</p>
-                        <p class="text-gray time mb-0"><a
-                          class="btn btn-link btn-sm text-black" href="#">30.000 <span
-                          class="badge badge-success">5% Giảm</span></a> <span
-                          class="float-right">
-                                                            <a class="btn btn-outline-secondary btn-sm" href="#">Mua ngay</a>
-                                                        </span>
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-4 col-sm-6 mb-4">
-                  <div
-                    class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
-                    <div class="list-card-image">
-                      <!-- <div class="star position-absolute"><span class="badge badge-success"><i
-                                  class="icofont-star"></i> 3.1 (300+)</span></div> -->
-                      <div class="favourite-heart text-danger position-absolute"><a
-                        href="#"><i class="icofont-heart"></i></a></div>
-                      <div class="member-plan position-absolute"><span
-                        class="badge badge-dark">Promoted</span></div>
-                      <a href="#">
-                        <img src="assets/img/list/8.png" class="img-fluid item-img">
-                      </a>
-                    </div>
-                    <div class="p-3 position-relative">
-                      <div class="list-card-body">
-                        <h6 class="mb-1"><a href="#" class="text-black">Trà Sữa - Đường 18
+                        <h6 class="mb-1"><a href="#" class="text-black">{{p.name}}
                         </a>
                         </h6>
-                        <p class="text-gray mb-2">P. Mộ Lao, Hà Đông, Hà Nội</p>
+                        <p class="text-gray mb-2">{{p.seller.name}}</p>
                         <p class="text-gray time mb-0"><a
-                          class="btn btn-link btn-sm text-black" href="#">5.000 <span
-                          class="badge badge-primary">Giảm</span></a> <span
+                          class="btn btn-link btn-sm text-black" ><span
+                          class="badge badge-primary">Price</span>{{p.price}} </a> <span
                           class="float-right">
                                                             <a class="btn btn-outline-secondary btn-sm" href="#">Mua ngay</a>
                                                         </span>
@@ -282,37 +229,11 @@
                     </div>
                   </div>
                 </div>
-                <div class="col-md-4 col-sm-6 mb-4">
-                  <div
-                    class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
-                    <div class="list-card-image">
-                      <!-- <div class="star position-absolute"><span class="badge badge-success"><i
-                                  class="icofont-star"></i> 3.1 (300+)</span></div> -->
-                      <div class="favourite-heart text-danger position-absolute"><a
-                        href="#"><i class="icofont-heart"></i></a></div>
-                      <div class="member-plan position-absolute"><span
-                        class="badge badge-dark">Promoted</span></div>
-                      <a href="#">
-                        <img src="assets/img/list/9.png" class="img-fluid item-img">
-                      </a>
-                    </div>
-                    <div class="p-3 position-relative">
-                      <div class="list-card-body">
-                        <h6 class="mb-1"><a href="#" class="text-black">Linh Sam Quán - Nem Chua Rán</a></h6>
-                        <p class="text-gray mb-2">P. Bồ Đề, Long Biên, Hà Nội</p>
-                        <p class="text-gray time mb-0"><a
-                          class="btn btn-link btn-sm text-black" href="#">50.000 <span
-                          class="badge badge-info">Giảm</span></a> <span
-                          class="float-right">
-                                                            <a class="btn btn-outline-secondary btn-sm" href="#">Mua ngay </a>
-                                                        </span>
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+
               </div>
             </div>
+
+            //Comment, đánh giá ở đây
             <!-- <div class="tab-pane fade" id="pills-reviews" role="tabpanel"
                 aria-labelledby="pills-reviews-tab">
                 <div id="ratings-and-reviews"
@@ -656,15 +577,6 @@
           <a href="checkout.html" class="btn btn-success btn-block btn-lg">Thanh toán <i
             class="icofont-long-arrow-right"></i></a>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
-<section class="section pt-5 pb-5 text-center bg-white">
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-12">
-        <h5 class="m-0">Operate food store or restaurants? <a href="login.html">Work With Us</a></h5>
       </div>
     </div>
   </div>

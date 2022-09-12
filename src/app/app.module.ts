@@ -20,6 +20,7 @@ import {AuthInterceptor} from "./auth.interceptor";
 import {AngularFireStorageModule} from "@angular/fire/compat/storage";
 import {AngularFireModule} from "@angular/fire/compat";
 import {environment} from "../environments/environment";
+import {NgxPaginationModule} from "ngx-pagination";
 
 @NgModule({
     declarations: [
@@ -48,7 +49,8 @@ import {environment} from "../environments/environment";
         RouterModule,
         // CarouselModule,
         AngularFireStorageModule,
-        AngularFireModule.initializeApp(environment.firebaseConfig, "cloud")
+        AngularFireModule.initializeApp(environment.firebaseConfig, "cloud"),
+        NgxPaginationModule
     ],
 
     providers: [
