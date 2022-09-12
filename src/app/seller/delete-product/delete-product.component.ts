@@ -30,7 +30,7 @@ export class DeleteProductComponent implements OnInit {
       alert("Complete Delete Product");
     })
   }
-   cancelDelete(){
+   cancel(){
      this.router.navigate(["/seller"]);
    }
 }

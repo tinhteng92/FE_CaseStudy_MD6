@@ -3,6 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import { Page } from 'src/app/model/Page';
 import {UserToken} from "../../model/UserToken";
+import {Product} from "../../model/Product";
 
 @Injectable({
   providedIn: 'root'
@@ -37,5 +38,9 @@ export class SellerService {
 
   deleteProduct(idProduct: number):Observable<any>{
     return this.httpClient.get<any>(this.API+`/delete-product/${idProduct}`);
+  }
+
+  editProduct(product: Product,idProduct: number ):Observable<any>{
+    return  this.httpClient.post<any>(this.API+`/save-product/`+idProduct,product);
   }
 }
