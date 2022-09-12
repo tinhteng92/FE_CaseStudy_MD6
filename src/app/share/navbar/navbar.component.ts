@@ -70,4 +70,11 @@ export class NavbarComponent implements OnInit{
     this.productListToCart = this.cartService.productListToCart;
     this.cartService.totalCart -= +totalOneProduct;
   }
+
+  orderClosing() {
+    for (let i = 0; i < this.cartService.productListToCart.length; i++) {
+      this.cartService.quantityAProductAfterOrder[i] = +this.quantity[i].innerHTML;
+      this.cartService.totalPriceAProductAfterOrder[i] = +this.totalOneProductArray[i].innerHTML;
+    }
+  }
 }

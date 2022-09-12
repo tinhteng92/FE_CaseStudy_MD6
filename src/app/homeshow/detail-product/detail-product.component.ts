@@ -7,6 +7,7 @@ import {ProductImage} from "../../model/ProductImage";
 import {Sale} from "../../model/Sale";
 import {ScriptService} from "../../script.service";
 import {CartService} from "../../service/cart/cart.service";
+import {OrderService} from "../../service/order/order.service";
 
 @Component({
   selector: 'app-detail-product',
@@ -21,7 +22,7 @@ export class DetailProductComponent implements OnInit {
   topSoldProduct: Product [] =[];
 
   constructor(private script: ScriptService, private productService: ProductCategoryService, private activatedRoute: ActivatedRoute,
-              private router: Router, private cartService: CartService) {
+              private router: Router, private cartService: CartService, private orderService: OrderService ) {
 
     this.activatedRoute.paramMap.subscribe((paramMap: ParamMap) => {
       this.id = paramMap.get('id');
@@ -81,6 +82,7 @@ export class DetailProductComponent implements OnInit {
               this.router.navigate(["/"]);
               this.productService.showSaleList(this.product.seller.id).subscribe(sales => {
                 this.saleList = sales;
+                this.orderService.saleListToSeller = sales;
               })
             })
             this.productService.showProductImageList(id).subscribe(images =>{
@@ -106,6 +108,7 @@ export class DetailProductComponent implements OnInit {
           this.router.navigate(["/"]);
           this.productService.showSaleList(this.product.seller.id).subscribe(sales => {
             this.saleList = sales;
+            this.orderService.saleListToSeller = sales;
             // console.log(this.product.seller.id)
             // console.log(sales)
           })
