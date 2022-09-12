@@ -1,33 +1,35 @@
 import {Component, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {LoginService} from "../../service/login/login.service";
 import {Router} from "@angular/router";
+import {Product} from "../../model/Product";
+import {CartService} from "../../service/cart/cart.service";
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
-export class NavbarComponent implements OnInit {
+export class NavbarComponent implements OnInit{
   quantity = document.getElementsByClassName("count-number-input");
   totalOneProductArray = document.getElementsByClassName("classTotalOneProduct");
-  priceProduct!: number[];
+  productListToCart: Product[] = [];
   newQuantity!: number;
   totalCart: number = 0;
-  constructor(public loginService: LoginService, private router: Router) { }
+  constructor(public loginService: LoginService, private router: Router, public cartService: CartService) { }
 
 
   ngOnInit(): void {
-    this.newQuantity = 0;
-    this.priceProduct = [10,5];
-    for (let i = 0; i < this.totalOneProductArray.length; i++) {
-      this.totalOneProductArray[i].innerHTML = String(this.priceProduct[i] * +this.quantity[i].innerHTML);
-      this.totalCart += +this.totalOneProductArray[i].innerHTML;
+    if (this.cartService.indexOfDuplicateProduct == -1) {
+      this.productListToCart = this.cartService.productListToCart;
+      this.newQuantity = 0;
     }
   }
 
   logOut() {
-    this.loginService.deleteUserToken();
-    this.loginService.deleteToken();
+    localStorage.clear();
+    this.cartService.productListToCart = [];
+    this.productListToCart = this.cartService.productListToCart;
+    this.cartService.totalCart = 0;
     this.loginService.check = false;
     this.router.navigate(["/"]);
   }
@@ -37,7 +39,7 @@ export class NavbarComponent implements OnInit {
 
     this.quantity[index].innerHTML = String(this.newQuantity);
 
-    this.totalOneProductArray[index].innerHTML = String(this.priceProduct[index] * Number(this.quantity[index].innerHTML));
+    this.totalOneProductArray[index].innerHTML = String(this.productListToCart[index].price * Number(this.quantity[index].innerHTML));
     this.totalPriceCartPlus();
   }
 
@@ -45,11 +47,9 @@ export class NavbarComponent implements OnInit {
     if (Number(this.quantity[index].innerHTML) > 1) {
       this.newQuantity = Number(this.quantity[index].innerHTML) - 1;
       this.quantity[index].innerHTML = String(this.newQuantity);
-      this.totalOneProductArray[index].innerHTML = String(this.priceProduct[index] * Number(this.quantity[index].innerHTML));
+      this.totalOneProductArray[index].innerHTML = String(this.productListToCart[index].price * Number(this.quantity[index].innerHTML));
       this.totalPriceCartMinus(index);
     }
-
-
   }
 
   totalPriceCartPlus() {
@@ -57,14 +57,17 @@ export class NavbarComponent implements OnInit {
     for (let i = 0; i < this.totalOneProductArray.length; i++) {
       totalCart += Number(this.totalOneProductArray[i].innerHTML);
     }
-    this.totalCart = totalCart;
+    this.cartService.totalCart = totalCart;
   }
 
   totalPriceCartMinus(index: number) {
-    this.totalCart -= +this.priceProduct[index];
+    this.cartService.totalCart -= +this.productListToCart[index].price;
   }
 
   deleteOneProduct(index : number) {
-    // duyet mang product
+    let totalOneProduct = this.totalOneProductArray[index].innerHTML;
+    this.cartService.productListToCart.splice(index,1);
+    this.productListToCart = this.cartService.productListToCart;
+    this.cartService.totalCart -= +totalOneProduct;
   }
 }
