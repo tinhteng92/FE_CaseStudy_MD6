@@ -18,10 +18,12 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {NavbarComponent} from "../share/navbar/navbar.component";
 import {FooterComponent} from "../share/footer/footer.component";
 import {NgxPaginationModule} from "ngx-pagination";
+import {DeleteProductComponent} from "./delete-product/delete-product.component";
 
 
 @NgModule({
   declarations: [
+    DeleteProductComponent,
     CreateProductComponent,
     SellerProfileComponent,
     EditProductComponent,

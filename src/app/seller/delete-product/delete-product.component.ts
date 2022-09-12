@@ -24,4 +24,13 @@ export class DeleteProductComponent implements OnInit {
     })
   }
 
+  deleteProduct(idProduct: number){
+    this.sellerService.deleteProduct(idProduct).subscribe((data) => {
+      this.router.navigate(["/seller"]);
+      alert("Complete Delete Product");
+    })
+  }
+   cancelDelete(){
+     this.router.navigate(["/seller"]);
+   }
 }

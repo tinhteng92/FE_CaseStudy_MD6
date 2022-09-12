@@ -11,6 +11,7 @@ import {OrderSellerWaitConfirmComponent} from "./order-seller-wait-confirm/order
 import {OrderSellerDetailComponent} from "./order-seller-detail/order-seller-detail.component";
 import {OrderSellerCompleteComponent} from "./order-seller-complete/order-seller-complete.component";
 import {OrderSellerCancelComponent} from "./order-seller-cancel/order-seller-cancel.component";
+import {DeleteProductComponent} from "./delete-product/delete-product.component";
 
 const routes: Routes = [
   { path: '',
@@ -23,6 +24,10 @@ const routes: Routes = [
       {
         path: 'create-product',
         component: CreateProductComponent
+      },
+      {
+        path: 'delete-product/:id',
+        component: DeleteProductComponent
       },
       {
         path: 'edit-product/:id',

@@ -38,9 +38,5 @@ export class ProductListComponent implements OnInit {
     })
   }
 
-  deleteProduct(idProduct: number){
-    this.sellerService.deleteProduct(idProduct).subscribe((data) => {
-      alert("xóa thành c")
-    })
-  }
+
 }
