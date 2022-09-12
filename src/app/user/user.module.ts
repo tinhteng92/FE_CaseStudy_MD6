@@ -13,6 +13,8 @@ import { EditUserAvatarComponent } from './edit-user-avatar/edit-user-avatar.com
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {SellerModule} from "../seller/seller.module";
 import { WishlistComponent } from './wishlist/wishlist.component';
+import {NgxPaginationModule} from "ngx-pagination";
+import {CarouselModule} from "ngx-owl-carousel-o";
 
 
 @NgModule({
@@ -32,7 +34,9 @@ import { WishlistComponent } from './wishlist/wishlist.component';
     UserRoutingModule,
     ReactiveFormsModule,
     FormsModule,
-    SellerModule
+    SellerModule,
+    NgxPaginationModule,
+    CarouselModule,
   ]
 })
 export class UserModule { }

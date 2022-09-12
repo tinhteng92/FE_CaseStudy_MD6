@@ -17,25 +17,24 @@ export class SellerManagementComponent implements OnInit {
               private router: Router) {
   }
 
-  page!: Page;
+  p: any;
   sellers: Seller[] = []
+
+
 
   ngOnInit(): void {
     this.script.load('bundle').then(data => {
     }).catch(error => console.log(error));
-    this.adminService.showActiveSeller(0).subscribe((data) => {
-      this.page = data
-      this.sellers = this.page.content;
+    this.adminService.showActiveSeller().subscribe((data) => {
+      this.sellers = data
     })
   }
 
-  showActiveSeller(page: number) {
-    if (page >= 0 && this.page.totalPages) {
-      this.adminService.showActiveSeller(page).subscribe((data) => {
-        this.page = data;
-        this.sellers = this.page.content;
-      })
-    }
+  showActiveSeller() {
+    this.adminService.showActiveSeller().subscribe(data => {
+      this.sellers = data
+    })
+
   }
 
   counter(i: number) {
@@ -44,7 +43,31 @@ export class SellerManagementComponent implements OnInit {
 
   deleteSeller(id: any) {
     this.adminService.deleteSeller(id).subscribe(data => {
-      this.showActiveSeller(0);
+      this.showActiveSeller();
+      this.router.navigate(['/admin']);
+    }, e => console.log(e));
+  }
+
+
+
+  search(search: string) {
+    this.adminService.showActiveSeller().subscribe(sellers => {
+
+      let searchSeller: Seller[] = [];
+      for (const seller of sellers) {
+        if (seller.name?.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+          .replace(/đ/g, 'd').replace(/Đ/g, 'D').includes(search.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+            .replace(/đ/g, 'd').replace(/Đ/g, 'D'))) {
+          searchSeller.push(seller)
+        }
+      }
+      this.sellers = searchSeller;
+    })
+  }
+
+  controlSeller(id: number) {
+    this.adminService.controlSeller(id).subscribe(data => {
+      this.showActiveSeller();
       this.router.navigate(['/admin']);
     }, e => console.log(e));
   }

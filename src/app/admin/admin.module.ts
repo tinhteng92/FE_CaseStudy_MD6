@@ -8,7 +8,8 @@ import { SellerManagementComponent } from './seller-management/seller-management
 import { NotAllowSellerListComponent } from './not-allow-seller-list/not-allow-seller-list.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { WaitingAcceptSellerComponent } from './waiting-accept-seller/waiting-accept-seller.component';
-
+import {NgxPaginationModule} from "ngx-pagination";
+import { SellerDetailComponent } from './seller-detail/seller-detail.component';
 
 
 
@@ -19,6 +20,7 @@ import { WaitingAcceptSellerComponent } from './waiting-accept-seller/waiting-ac
     SellerManagementComponent,
     NotAllowSellerListComponent,
     WaitingAcceptSellerComponent,
+    SellerDetailComponent,
 
   ],
 
@@ -28,7 +30,7 @@ import { WaitingAcceptSellerComponent } from './waiting-accept-seller/waiting-ac
         FormsModule,
         ReactiveFormsModule,
         AdminRoutingModule,
-
+        NgxPaginationModule,
 
     ]
 })

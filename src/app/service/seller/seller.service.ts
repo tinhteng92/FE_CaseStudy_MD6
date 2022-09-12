@@ -15,4 +15,8 @@ export class SellerService {
     return this.httpClient.get<any>(this.API, userName);
   }
 
+  showListSale(userName: string): Observable<any> {
+    return this.httpClient.post(this.API + `/sale/${userName}`, this.info);
+
+  }
 }
