@@ -7,6 +7,7 @@
     </div>
     <div class="form-label-group mb-4">
       <select id="productCategory" formControlName="productCategory" class="form-control"  >
+        <option [ngValue]="true">-- Select Product's Category --</option>
         <option  *ngFor="let productCategory of productCategories" [ngValue]="productCategory" >{{productCategory.nameCategory}}
         </option>
       </select>
