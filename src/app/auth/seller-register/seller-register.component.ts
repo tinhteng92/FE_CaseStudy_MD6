@@ -12,10 +12,8 @@ import {AngularFireStorage} from "@angular/fire/compat/storage";
 })
 export class SellerRegisterComponent implements OnInit {
   title = "cloudsSorage";
-  fb: string = "https://icon-library.com/images/user-icon-jpg/user-icon-jpg-24.jpg";
+  avatar: string = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8czzbrLzXJ9R_uhKyMiwj1iGxKhJtH7pwlQ&usqp=CAU";
   downloadURL: Observable<string> | undefined;
-  // constructor( ) {}
-
   onFileSelected(event: Event) {
     var n = Date.now();
     // @ts-ignore
@@ -30,9 +28,9 @@ export class SellerRegisterComponent implements OnInit {
           this.downloadURL = fileRef.getDownloadURL();
           this.downloadURL.subscribe(url => {
             if (url) {
-              this.fb = url;
+              this.avatar = url;
             }
-            console.log(this.fb);
+            console.log(this.avatar);
           });
         })
       )
@@ -43,8 +41,37 @@ export class SellerRegisterComponent implements OnInit {
       });
   }
 
-  check: boolean = false;
+  imageBanner: string = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8czzbrLzXJ9R_uhKyMiwj1iGxKhJtH7pwlQ&usqp=CAU";
+  downloadURLBanner: Observable<string> | undefined;
+  onFileSelectedBanner(event: Event) {
+    var n = Date.now();
+    // @ts-ignore
+    const file = event.target.files[0];
+    const filePath = `RoomsImages/${n}`;
+    const fileRef = this.storage.ref(filePath);
+    const task = this.storage.upload(`RoomsImages/${n}`, file);
+    task
+      .snapshotChanges()
+      .pipe(
+        finalize(() => {
+          this.downloadURLBanner = fileRef.getDownloadURL();
+          this.downloadURLBanner.subscribe(url => {
+            if (url) {
+              this.imageBanner = url;
+            }
+            console.log(this.imageBanner);
+          });
+        })
+      )
+      .subscribe(url => {
+        if (url) {
+          console.log(url);
+        }
+      });
+  }
 
+
+  check: boolean = false;
   constructor(private loginService: LoginService, private router: Router,private storage: AngularFireStorage) {
   }
 
@@ -74,6 +101,8 @@ export class SellerRegisterComponent implements OnInit {
       this.loginService.checkUserName(this.registerSellerForm.value.appUser?.username).subscribe((data) => {
         console.log("data-username" + data);
         if (data) {
+          this.registerSellerForm.get("avatar")?.setValue(this.avatar);
+          this.registerSellerForm.get("imageBanner")?.setValue(this.imageBanner);
           this.loginService.registerSeller(this.registerSellerForm.value).subscribe((data) => {
             console.log("data");
             console.log(data);

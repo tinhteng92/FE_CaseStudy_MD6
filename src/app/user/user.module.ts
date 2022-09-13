@@ -13,6 +13,7 @@ import { EditUserAvatarComponent } from './edit-user-avatar/edit-user-avatar.com
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {SellerModule} from "../seller/seller.module";
 import { WishlistComponent } from './wishlist/wishlist.component';
+import { ThanksComponent } from './thanks/thanks.component';
 import {NgxPaginationModule} from "ngx-pagination";
 import {CarouselModule} from "ngx-owl-carousel-o";
 
@@ -27,7 +28,8 @@ import {CarouselModule} from "ngx-owl-carousel-o";
     OrderDetailUserComponent,
     OrderUserComponent,
     EditUserAvatarComponent,
-    WishlistComponent
+    WishlistComponent,
+    ThanksComponent
   ],
   imports: [
     CommonModule,

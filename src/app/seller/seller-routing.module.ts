@@ -15,6 +15,7 @@ import {SaleManagementComponent} from "./sale-management/sale-management.compone
 import {CreateSaleComponent} from "./create-sale/create-sale.component";
 import {EditSaleComponent} from "./edit-sale/edit-sale.component";
 import {DeleteSaleComponent} from "./delete-sale/delete-sale.component";
+import {DeleteProductComponent} from "./delete-product/delete-product.component";
 
 const routes: Routes = [
   { path: '',
@@ -27,6 +28,10 @@ const routes: Routes = [
       {
         path: 'create-product',
         component: CreateProductComponent
+      },
+      {
+        path: 'delete-product/:id',
+        component: DeleteProductComponent
       },
       {
         path: 'edit-product/:id',

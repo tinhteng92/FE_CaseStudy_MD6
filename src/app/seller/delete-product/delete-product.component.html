@@ -1,0 +1,27 @@
+<p>delete-product works!</p>
+<div class="modal fade" id="delete-product-modal" tabindex="-1" role="dialog" aria-labelledby="add-address"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="add-address" style="color: #dc3545">Delete Product</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true" (click)="cancel()">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <h5 style="text-align: center;color: #d39e00">DO YOU REALLY WISH TO DELETE THIS PRODUCT</h5><br>
+        <h6 style="color: #dc3545">*Name Product: {{product.name}}</h6>
+        <h6 style="color: #dc3545">*Description Product: {{product.description}}</h6>
+        <img  src="{{product.image}}" style="border-radius: 10px;width: 250px; height: 150px">
+        <h6 style="color: #d39e00;text-align: center">---  This product will be removed from your shop  ---</h6>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn d-flex w-50 text-center justify-content-center btn-outline-primary" (click)="cancel()"
+                data-dismiss="modal">CANCEL
+        </button><button type="button" (click)="deleteProduct(product.id)" data-dismiss="modal"
+                         class="btn d-flex w-50 text-center justify-content-center btn-primary">SUBMIT</button>
+      </div>
+    </div>
+  </div>
+</div>

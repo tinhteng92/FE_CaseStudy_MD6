@@ -6,6 +6,7 @@ import {EditUserComponent} from "./edit-user/edit-user.component";
 import {EditUserAvatarComponent} from "./edit-user-avatar/edit-user-avatar.component";
 import {OrderUserComponent} from "./order-user/order-user.component";
 import {OrderDetailUserComponent} from "./order-detail-user/order-detail-user.component";
+import {ThanksComponent} from "./thanks/thanks.component";
 
 const routes: Routes = [
   {path: '',
@@ -20,18 +21,21 @@ const routes: Routes = [
       {
         path: 'edit-customer-change-avatar',
         component: EditUserAvatarComponent
-      },
-
+      }
     ]},
   {
     path: 'order-user',
-    component: OrderUserComponent, children: [
-
-    ]
+    component: OrderUserComponent
   },
-  { path: 'user-order-detail',
+  {
+    path: 'thanks',
+    component: ThanksComponent
+  },
+
+  { path: 'order-detail-user',
     component: OrderDetailUserComponent
   }
+
 ];
 
 @NgModule({

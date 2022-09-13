@@ -19,10 +19,8 @@ export class SellerDetailComponent implements OnInit {
       this.id = paramMap.get('id');
       this.adminService.showDetailSeller(this.id).subscribe(data => {
         this.seller = data;
-        console.log(data)
+        console.log("detail Sellerrrrrrrrr" + this.seller.appUser.username)
       });
-
-
     })
   }
 
