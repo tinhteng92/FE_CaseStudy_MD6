@@ -5,6 +5,7 @@ import {SellerManagementComponent} from "./seller-management/seller-management.c
 import {NotAllowSellerListComponent} from "./not-allow-seller-list/not-allow-seller-list.component";
 import {DetailSellerManagementComponent} from "./detail-seller-management/detail-seller-management.component";
 import {WaitingAcceptSellerComponent} from "./waiting-accept-seller/waiting-accept-seller.component";
+import {SellerDetailComponent} from "./seller-detail/seller-detail.component";
 
 const routes: Routes = [
   {
@@ -22,11 +23,15 @@ const routes: Routes = [
         path: 'waiting-accept-seller',
         component: WaitingAcceptSellerComponent
       },
+      {
+        path: 'seller-detail/:id',
+        component: SellerDetailComponent
+      },
 
     ]
   },
   {
-    path: 'detail-seller/:id',
+    path: 'detail-seller',
     component: DetailSellerManagementComponent
   }
 ];

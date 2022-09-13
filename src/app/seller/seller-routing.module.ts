@@ -11,6 +11,10 @@ import {OrderSellerWaitConfirmComponent} from "./order-seller-wait-confirm/order
 import {OrderSellerDetailComponent} from "./order-seller-detail/order-seller-detail.component";
 import {OrderSellerCompleteComponent} from "./order-seller-complete/order-seller-complete.component";
 import {OrderSellerCancelComponent} from "./order-seller-cancel/order-seller-cancel.component";
+import {SaleManagementComponent} from "./sale-management/sale-management.component";
+import {CreateSaleComponent} from "./create-sale/create-sale.component";
+import {EditSaleComponent} from "./edit-sale/edit-sale.component";
+import {DeleteSaleComponent} from "./delete-sale/delete-sale.component";
 
 const routes: Routes = [
   { path: '',
@@ -35,6 +39,24 @@ const routes: Routes = [
       {
         path: 'edit-seller-avatar',
         component: EditSellerAvatarComponent
+      },
+      {
+        path: 'sale-management',
+        component: SaleManagementComponent, children: [
+
+          {
+            path: 'edit-sale',
+            component: EditSaleComponent
+          },
+          {
+            path: 'delete-sale',
+            component: DeleteSaleComponent
+          },
+        ]
+      },
+      {
+        path: 'create-sale',
+        component: CreateSaleComponent
       },
       {
         path: 'order-seller',

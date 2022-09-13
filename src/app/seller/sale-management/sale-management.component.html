@@ -1,5 +1,11 @@
 <title>Bootstrap User Management Data Table</title>
-
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <style>
   body {
     color: #566787;
@@ -111,15 +117,15 @@
     vertical-align: middle;
     line-height: 10px;
   }
-  .text-success {
-    color: #10c469;
-  }
+  /*.text-success {*/
+  /*  color: #10c469;*/
+  /*}*/
   .text-info {
     color: #62c9e8;
   }
-  .text-warning {
-    color: #FFC107;
-  }
+  /*.text-warning {*/
+  /*  color: #FFC107;*/
+  /*}*/
   .text-danger {
     color: #ff5b5b;
   }
@@ -194,14 +200,14 @@
       <div class="table-title">
         <div class="row">
           <div class="col-xs-5">
-            <h2><b>Seller List</b></h2>
+            <h2><b>Sale Management</b></h2>
           </div>
-          <div class="search-box">
-            <i class="icofont-search"></i>
-            <input type="text" class="form-control"  #find (input)="search(find.value)" placeholder="Search&hellip;">
-          </div>
+<!--          <div class="search-box">-->
+<!--            <i class="icofont-search"></i>-->
+<!--            <input type="text" class="form-control"  #find (input)="search(find.value)" placeholder="Search&hellip;">-->
+<!--          </div>-->
           <div class="col-xs-7">
-            <!--            <a href="#" class="btn btn-primary"><i class="material-icons">&#xE147;</i> <span>Add New User</span></a>-->
+                        <a routerLink="/seller/create-sale" class="btn btn-primary"><i class="material-icons">&#xE147;</i> <span>Add New Sale</span></a>
             <!--            <a href="#" class="btn btn-primary"><i class="material-icons">&#xE24D;</i> <span>Export to Excel</span></a>-->
           </div>
         </div>
@@ -211,24 +217,27 @@
         <tr>
           <th>#</th>
           <th>Name</th>
-          <th>Phone Number</th>
-          <th>Address</th>
+          <th>Price Down</th>
+          <th>Start At</th>
+          <th>End At</th>
           <th>Status</th>
           <th>Action</th>
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let seller of sellers |paginate: {itemsPerPage :5, currentPage :p}, index as i" id="myTab">
+        <tr *ngFor="let sale of saleList, index as i" id="myTab">
           <td>{{i + 1}}</td>
-          <td><a class="nav-link active" [routerLink]="['/admin/seller-detail', seller.id]"  id="orders-tab" data-toggle="tab" href="#orders" role="tab"
-                 aria-controls="orders" aria-selected="true">
-            {{seller.name}}</a></td>
-          <td>{{seller.phoneNumber}}</td>
-          <td>{{seller.address}}</td>
-          <td *ngIf="seller?.isActive === true"><span class="status text-success"  >&bull;</span> Active</td>
-          <td *ngIf="seller?.isActive == false"><span class="status text-warning"  >&bull;</span> Inactive</td>
-          <button type="button" class="btn btn-primary" *ngIf="seller?.isActive == true" (click)="controlSeller(seller.id)">BAN</button>
-          <button type="button" class="btn btn-warning"  *ngIf="seller?.isActive === false" (click)="controlSeller(seller.id)">UNBAN</button>
+          <td>{{sale.name}}</td>
+          <td>{{sale.priceDiscount}}</td>
+          <td>{{sale.startAt}}</td>
+          <td>{{sale.endAt}}</td>
+          <td *ngIf="sale?.status === true"><span class="status text-success"  >&bull;</span> Active</td>
+          <td *ngIf="sale?.status == false"><span class="status text-warning"  >&bull;</span> Expired</td>
+
+          <a href="#editEmployeeModal" data-toggle="modal"
+             data-target="#add-address-modal"
+             class="btn btn-sm btn-primary mr-2 edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+          <a href="#deleteEmployeeModal"  class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
 
 
         </tr>
@@ -236,10 +245,6 @@
         </tbody>
       </table>
 
-      <div class="clearfix">
-        <pagination-controls class="btn btn-sm btn-outline-primary" class="myPagination" (pageChange)="p = $event">
-        </pagination-controls>
-      </div>
 
     </div>
   </div>

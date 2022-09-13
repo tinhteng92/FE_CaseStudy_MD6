@@ -40,6 +40,12 @@
 <!--            <a class="dropdown-item" href="#">Rating</a>-->
           </div>
         </div>
+
+        <div class="search-box">
+          <i class="icofont-search"></i>
+          <input type="text"  #find (input)="search(find.value)" placeholder="Search&hellip;">
+        </div>
+
         <h4 class="font-weight-bold mt-0 mb-3">OFFERS <small class="h6 mb-0 ml-2">200 shops
         </small>
         </h4>
@@ -185,9 +191,9 @@
                 <div class="list-card-body">
                   <h6 class="mb-1"><a  [routerLink]="['/detail-product', product.id]" class="text-black">{{product.name}}</a></h6>
 <!--                  <p class="text-gray mb-3">Price: {{product.price}}</p>-->
-                  <p class="text-gray mb-3 time"><span
+                  <a [routerLink]="['/seller-detail', product.seller.id]"  class="text-gray mb-3 time"><span
                     class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2"><i
-                    class="icofont-home"></i>{{product.seller.name}}</span> </p>
+                    class="icofont-home"></i>{{product.seller.name}}</span> </a>
 <!--                  <span class="float-right text-black-50"> {{}}</span>-->
                   <p class="text-gray mb-3">Add: {{product.seller.address}}</p>
 

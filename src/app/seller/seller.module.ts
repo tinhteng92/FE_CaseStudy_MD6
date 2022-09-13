@@ -17,6 +17,12 @@ import { OrderSellerWaitConfirmComponent } from './order-seller-wait-confirm/ord
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {NavbarComponent} from "../share/navbar/navbar.component";
 import {FooterComponent} from "../share/footer/footer.component";
+import {NgxPaginationModule} from "ngx-pagination";
+import {CarouselModule} from "ngx-owl-carousel-o";
+import { SaleManagementComponent } from './sale-management/sale-management.component';
+import { CreateSaleComponent } from './create-sale/create-sale.component';
+import { EditSaleComponent } from './edit-sale/edit-sale.component';
+import { DeleteSaleComponent } from './delete-sale/delete-sale.component';
 
 
 @NgModule({
@@ -32,16 +38,20 @@ import {FooterComponent} from "../share/footer/footer.component";
     OrderSellerCancelComponent,
     OrderSellerCompleteComponent,
     OrderSellerDetailComponent,
-    OrderSellerWaitConfirmComponent
+    OrderSellerWaitConfirmComponent,
+    SaleManagementComponent,
+    CreateSaleComponent,
+    EditSaleComponent,
+    DeleteSaleComponent
   ],
 
   imports: [
     FormsModule,
     CommonModule,
-   SellerRoutingModule,
+    SellerRoutingModule,
     ReactiveFormsModule,
-    // NgxPaginationModule,
-    // CarouselModule,
+    NgxPaginationModule,
+    CarouselModule,
   ]
 })
 export class SellerModule { }

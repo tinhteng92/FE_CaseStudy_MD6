@@ -5,6 +5,7 @@ import {Product} from "../../model/Product";
 import {ActivatedRoute, Router} from "@angular/router";
 import {ScriptService} from "../../script.service";
 import {ProductCategory} from "../../model/ProductCategory";
+import {Seller} from "../../model/Seller";
 
 @Component({
   selector: 'app-home',
@@ -22,12 +23,11 @@ export class HomeComponent implements OnInit {
   categoryList: ProductCategory[] = [];
 
   ngOnInit(): void {
-    this.script.load('bundle', 'owl-carousel', 'min', 'select2','custom', 'loader').then(data => {
-    }).catch(error => console.log(error));
+
     // Show tất cả các sp
-    this.productService.showListProduct(0).subscribe((data) => {
-      this.page = data
-      this.products = this.page.content;
+    this.productService.showListProduct().subscribe(data => {
+      this.products = data
+
     })
 
     this.productService.showCategories().subscribe(data => {
@@ -59,6 +59,21 @@ export class HomeComponent implements OnInit {
       this.products = data;
       console.log("category" + data);
       this.router.navigate(['/home'])
+    })
+  }
+
+  search(search: string) {
+    this.productService.showListProduct().subscribe(products => {
+
+      let searchProduct: Product[] = [];
+      for (const p of products) {
+        if (p.name?.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+          .replace(/đ/g, 'd').replace(/Đ/g, 'D').includes(search.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+            .replace(/đ/g, 'd').replace(/Đ/g, 'D'))) {
+          searchProduct.push(p)
+        }
+      }
+      this.products = searchProduct;
     })
   }
 
