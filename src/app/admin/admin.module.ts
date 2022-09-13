@@ -10,6 +10,8 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { WaitingAcceptSellerComponent } from './waiting-accept-seller/waiting-accept-seller.component';
 import {NgxPaginationModule} from "ngx-pagination";
 import { SellerDetailComponent } from './seller-detail/seller-detail.component';
+import { CustomerManagementComponent } from './customer-management/customer-management.component';
+import { CustomerDetailComponent } from './customer-detail/customer-detail.component';
 
 
 
@@ -21,6 +23,8 @@ import { SellerDetailComponent } from './seller-detail/seller-detail.component';
     NotAllowSellerListComponent,
     WaitingAcceptSellerComponent,
     SellerDetailComponent,
+    CustomerManagementComponent,
+    CustomerDetailComponent,
 
   ],
 
