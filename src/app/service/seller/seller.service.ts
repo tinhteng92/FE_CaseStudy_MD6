@@ -2,6 +2,9 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Sale} from "../../model/Sale";
+import { Page } from 'src/app/model/Page';
+import {UserToken} from "../../model/UserToken";
+import {Product} from "../../model/Product";
 
 @Injectable({
   providedIn: 'root'
@@ -12,8 +15,26 @@ export class SellerService {
   info: any;
   constructor(private httpClient: HttpClient) { }
 
-  showListProducts(userName : any): Observable<any>{
-    return this.httpClient.get<any>(this.API, userName);
+  // showListProducts(page: number,userName : any): Observable<any>{
+  //   return this.httpClient.get<Page>(this.API+`/show/${page}`, userName);
+  // }
+
+  showListProducts(userName : string, page:number):Observable<any>{
+    console.log("lít product service: ",userName)
+    return this.httpClient.post<Page>(this.API+`/show/${page}`, userName)
+  }
+
+  createProduct(product: any, userId:any): Observable<any>{
+    console.log("product",product)
+    return this.httpClient.post<any>(this.API+`/save-product/`+userId,product);
+  }
+
+  getThisSeller(sellerId: number):Observable<any>{
+    return this.httpClient.get<any>(this.API+`/${sellerId}`);
+  }
+
+  getProduct(idProduct: number):Observable<any>{
+    return this.httpClient.get<any>(this.API+`/get-product/${idProduct}`);
   }
 
   showListSale(userName: string): Observable<any> {
@@ -22,5 +43,12 @@ export class SellerService {
 
   saveSale(sale: Sale): Observable<Sale> {
     return this.httpClient.post<Sale>(this.API + '/save-sale', sale);
+  }
+  deleteProduct(idProduct: number):Observable<any>{
+    return this.httpClient.get<any>(this.API+`/delete-product/${idProduct}`);
+  }
+
+  editProduct(product: Product,idProduct: number ):Observable<any>{
+    return  this.httpClient.post<any>(this.API+`/save-product/`+idProduct,product);
   }
 }

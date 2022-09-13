@@ -19,7 +19,7 @@
                   <label for="phoneNumber">Enter a number phone</label>
                   <p style="color: red" *ngIf="!registerCustomerForm.get('phoneNumber')?.valid && registerCustomerForm.get('phoneNumber')?.touched">Blank is not allowed, start with 0, includes 10 numbers</p>
                 </div>
-                <div class="form-label-group mb-4" hidden>
+                <div class="form-label-group mb-4" >
 <!--                  <input type="text" id="avatar" formControlName="avatar" class="form-control" placeholder="Enter avatar">-->
                   <input type="file"
                          id="avatar"

@@ -23,10 +23,12 @@ import { SaleManagementComponent } from './sale-management/sale-management.compo
 import { CreateSaleComponent } from './create-sale/create-sale.component';
 import { EditSaleComponent } from './edit-sale/edit-sale.component';
 import { DeleteSaleComponent } from './delete-sale/delete-sale.component';
+import {DeleteProductComponent} from "./delete-product/delete-product.component";
 
 
 @NgModule({
   declarations: [
+    DeleteProductComponent,
     CreateProductComponent,
     SellerProfileComponent,
     EditProductComponent,
@@ -48,7 +50,7 @@ import { DeleteSaleComponent } from './delete-sale/delete-sale.component';
   imports: [
     FormsModule,
     CommonModule,
-    SellerRoutingModule,
+   SellerRoutingModule,
     ReactiveFormsModule,
     NgxPaginationModule,
     CarouselModule,

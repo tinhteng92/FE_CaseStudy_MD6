@@ -12,7 +12,7 @@ import {AngularFireStorage} from "@angular/fire/compat/storage";
 })
 export class CustomerRegisterComponent implements OnInit {
   title = "cloudsSorage";
-  fb: string = "https://icon-library.com/images/user-icon-jpg/user-icon-jpg-24.jpg";
+  fb: string = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8czzbrLzXJ9R_uhKyMiwj1iGxKhJtH7pwlQ&usqp=CAU";
   downloadURL: Observable<string> | undefined;
   // constructor( ) {}
 

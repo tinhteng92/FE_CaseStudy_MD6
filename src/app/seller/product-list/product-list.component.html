@@ -1,42 +1,65 @@
 <div class="tab-pane fade show active" id="orders" role="tabpanel"
      aria-labelledby="orders-tab"></div>
-  <h4 class="font-weight-bold mt-0 mb-4">Product List</h4>
-  <div class="bg-white card mb-4 order-list shadow-sm">
-    <div class="gold-members p-4">
+  <h4 class="font-weight-bold mt-0 mb-4">Shop's List Product</h4>
+  <div class="bg-white card mb-4 order-list shadow-sm"*ngFor="let product of products |paginate: {itemsPerPage :4, currentPage :p}" >
+    <div class="gold-members p-4" >
       <a href="#">
         <div class="media">
-          <img class="mr-4" src="assets/img/3.jpg" alt="Generic placeholder image">
+          <img class="mr-4" src="{{product.image}}" alt="Generic placeholder image">
           <div class="media-body">
                                                     <span class="float-right text-info">Delivered on Mon, Nov 12, 7:18
                                                         PM <i class="icofont-check-circled text-success"></i></span>
             <h6 class="mb-2">
-              <a href="detail.html" class="text-black">Gus's World Famous
-                Fried Chicken
+              <a href="detail.html" class="text-black">{{product.name}}
               </a>
             </h6>
-            <p class="text-gray mb-1"><i class="icofont-location-arrow"></i> 730
-              S Mendenhall Rd, Memphis, TN 38117, USA
+            <p class="text-gray mb-1"><i class="icofont-location-arrow"></i> {{product.seller.address}}
             </p>
             <p class="text-gray mb-3"><i class="icofont-list"></i> ORDER
               #25102589748 <i class="icofont-clock-time ml-2"></i> Mon, Nov
               12, 6:26 PM</p>
-            <p class="text-dark">Veg Masala Roll x 1, Veg Burger x 1, Veg Penne
-              Pasta in Red Sauce x 1
+            <p class="text-dark">Product Description: {{product.description}}
             </p>
             <hr>
             <div class="float-right">
-              <a class="btn btn-sm btn-outline-primary" href="#"><i
-                class="icofont-headphone-alt"></i> HELP</a>
-              <a class="btn btn-sm btn-primary" href="detail.html"><i
-                class="icofont-refresh"></i> REORDER</a>
+              <a data-toggle="modal" data-target="#edit-product-modal" [routerLink]="'edit-product/'+product.id" class="btn btn-sm btn-outline-primary" href="#"><a><i
+                class="icofont-edit-alt"></i> EDIT</a></a>
+              <a data-toggle="modal" data-target="#delete-product-modal" [routerLink]="'delete-product/'+product.id" class="btn btn-sm btn-primary mr-2" href="#"><a><i
+                class="icofont-delete-alt"></i> REMOVE</a></a>
             </div>
             <p class="mb-0 text-black text-primary pt-2"><span
-              class="text-black font-weight-bold"> Total Paid:</span> $300
+              class="text-black font-weight-bold">Price: </span>${{product.price}}
             </p>
           </div>
         </div>
       </a>
     </div>
   </div>
-
+<div style="display: flex;justify-content: center;">
+  <pagination-controls class="btn btn-sm btn-outline-primary" class="myPagination" (pageChange)="p = $event">
+  </pagination-controls>
+</div>
+<!--<div class="modal fade" id="delete-product-modal" tabindex="-1" role="dialog" aria-labelledby="add-address"-->
+<!--     aria-hidden="true">-->
+<!--  <div class="modal-dialog modal-dialog-centered" role="document">-->
+<!--    <div class="modal-content">-->
+<!--      <div class="modal-header">-->
+<!--        <h4 class="modal-title" id="add-address" style="color: #dc3545">Delete Product</h4>-->
+<!--        <button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
+<!--          <span aria-hidden="true">&times;</span>-->
+<!--        </button>-->
+<!--      </div>-->
+<!--      <div class="modal-body">-->
+<!--        <h5 style="text-align: center">DO YOU REALLY WISH TO DELETE THIS PRODUCT</h5><br>-->
+<!--        <h6 style="color: #d39e00;text-align: center">-&#45;&#45;  This product will be removed from your shop  -&#45;&#45;</h6>-->
+<!--      </div>-->
+<!--      <div class="modal-footer">-->
+<!--        <button type="button" class="btn d-flex w-50 text-center justify-content-center btn-outline-primary"-->
+<!--                data-dismiss="modal">CANCEL-->
+<!--        </button><button type="button"-->
+<!--                         class="btn d-flex w-50 text-center justify-content-center btn-primary">SUBMIT</button>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
 
