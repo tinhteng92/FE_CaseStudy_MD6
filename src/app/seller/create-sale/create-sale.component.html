@@ -2,13 +2,13 @@
   <h2>Add new Sale</h2>
   <form [formGroup]="creatForm" (ngSubmit)="submit()">
     <div class="form-group">
-      <label >Title:</label>
+      <label >Name:</label>
       <input type="text" formControlName="name" class="form-control"  placeholder="Enter name" >
     </div>
     <p *ngIf="!creatForm.get('name')?.valid && creatForm.get('name')?.touched" style="color: red">Blank is not allow.</p>
 
     <div class="form-group">
-      <label>Price:</label>
+      <label>Price Down:</label>
       <input type="text" formControlName="priceDown"  class="form-control" placeholder="Enter price" >
     </div>
     <p *ngIf="!creatForm.get('priceDown')?.valid && creatForm.get('priceDown')?.touched" style="color: red">Blank is not allow.</p>

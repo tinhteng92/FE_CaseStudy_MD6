@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import { Router } from '@angular/router';
 import {SellerService} from "../../service/seller/seller.service";
+import {LoginService} from "../../service/login/login.service";
 
 @Component({
   selector: 'app-create-sale',
@@ -9,6 +10,7 @@ import {SellerService} from "../../service/seller/seller.service";
   styleUrls: ['./create-sale.component.css']
 })
 export class CreateSaleComponent implements OnInit {
+  sale: any;
   creatForm: FormGroup = new FormGroup({
     // id: new FormControl(),
     name: new FormControl("", Validators.required),
@@ -18,19 +20,32 @@ export class CreateSaleComponent implements OnInit {
     endAt: new FormControl()
   })
 
-  constructor(private sellerService: SellerService, private router: Router) { }
+  constructor(private sellerService: SellerService, private router: Router, public loginService : LoginService) { }
 
   ngOnInit(): void {
   }
 
   submit(){
-    const sale = this.creatForm.value;
-    this.sellerService.saveSale(sale).subscribe(() =>{
+    this.sale = {
+      name: this.creatForm.value.name,
+      description: this.creatForm.value.description,
+      priceDown: this.creatForm.value.priceDown,
+      startAt: this.creatForm.value.startAt,
+      endAt: this.creatForm.value.endAt,
+      seller: {
+        id: this.loginService.getUserToken().id
+      }
+    }
+    this.sellerService.saveSale(this.sale).subscribe((data) =>{
+      console.log(data)
       alert("Add new successful!");
       this.router.navigate(['/seller/sale-management']);
       this.creatForm.reset();
 
-    }, e => console.log(e));
+    }, e => {
+      alert("thêm ko thành công")
+      console.log(e)
+    });
   }
 
 
