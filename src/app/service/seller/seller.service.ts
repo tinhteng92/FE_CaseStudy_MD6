@@ -5,6 +5,7 @@ import {Sale} from "../../model/Sale";
 import { Page } from 'src/app/model/Page';
 import {UserToken} from "../../model/UserToken";
 import {Product} from "../../model/Product";
+import {Seller} from "../../model/Seller";
 
 @Injectable({
   providedIn: 'root'

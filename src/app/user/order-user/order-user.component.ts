@@ -8,6 +8,8 @@ import {Customer} from "../../model/Customer";
 import {Cart} from "../../model/Cart";
 import {CartDetail} from "../../model/CartDetail";
 import {OrderStatus} from "../../model/OrderStatus";
+import {Sale} from "../../model/Sale";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-order-user',
@@ -19,10 +21,10 @@ export class OrderUserComponent implements OnInit {
   totalPayment: number = 0;
   addressCustomer: string = "";
   customer!: Customer;
-  cartDetail!: CartDetail;
+  // cartDetail!: CartDetail;
 
   constructor(public cartService: CartService, public orderService: OrderService, private customerService: CustomerService,
-  private loginService: LoginService) { }
+  private loginService: LoginService, private router: Router) { }
 
   ngOnInit(): void {
     this.customerService.findCustomerByUserName(this.loginService.getUserToken().username).subscribe((data)=>{
@@ -37,8 +39,6 @@ export class OrderUserComponent implements OnInit {
   }
 
   payment() {
-    // Nếu các class không khớp với BE thì tạo class trong dto phía BE để hứng, sau đó
-    // thêm các thuộc tính còn thiếu để lưu
     // gọi API lưu cart
        this.orderService.saveCart(this.customer).subscribe((data) =>{
         this.cartService.cart = data;
@@ -93,8 +93,6 @@ export class OrderUserComponent implements OnInit {
         })
       }
     })
-
-    //reset lại tất cả các biến, mảng của các service đã dùng để tạo cart, order
-
+    this.router.navigate(["/user/thanks"]);
   }
 }

@@ -2,12 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import {ProductCategoryService} from "../../service/product-category/product-category.service";
 import {Product} from "../../model/Product";
 import {ActivatedRoute, ParamMap, Router} from "@angular/router";
-import {Parameter} from "@angular/fire/compat/remote-config";
 import {ProductImage} from "../../model/ProductImage";
 import {Sale} from "../../model/Sale";
 import {ScriptService} from "../../script.service";
 import {CartService} from "../../service/cart/cart.service";
 import {OrderService} from "../../service/order/order.service";
+import {SellerService} from "../../service/seller/seller.service";
+import {Seller} from "../../model/Seller";
+import {CustomerService} from "../../service/customer/customer.service";
 
 @Component({
   selector: 'app-detail-product',
@@ -20,9 +22,11 @@ export class DetailProductComponent implements OnInit {
   productImageList: ProductImage [] = [];
   saleList: Sale [] = [];
   topSoldProduct: Product [] =[];
+  seller!: Seller;
 
   constructor(private script: ScriptService, private productService: ProductCategoryService, private activatedRoute: ActivatedRoute,
-              private router: Router, private cartService: CartService, private orderService: OrderService ) {
+              private router: Router, private cartService: CartService, private orderService: OrderService,
+              private customerService: CustomerService) {
 
     this.activatedRoute.paramMap.subscribe((paramMap: ParamMap) => {
       this.id = paramMap.get('id');
@@ -58,14 +62,21 @@ export class DetailProductComponent implements OnInit {
   addToCart(id: number) {
     if (localStorage.getItem("userToken") != null) {
       if (this.cartService.productListToCart.length > 0) {
+        let check = false;
         for (let i = 0; i < this.cartService.productListToCart.length; i++) {
           if (this.cartService.productListToCart[i].id == id) {
             this.cartService.indexOfDuplicateProduct = i;
             alert("Products already in the cart.\n" +
               "Please increase the quantity of the product in the cart.");
             this.router.navigate(["/"]);
-          }else {
+            check = true;
+            break;
+          }
+        }
 
+        this.customerService.findSellerByProductId(id).subscribe(seller =>{
+          console.log("sellllllllllleeeeeerrrrrr" + seller.id)
+          if (!check && this.cartService.productListToCart[0].seller.id == seller.id){
             this.productService.showDetailProduct(id).subscribe(data => {
               this.product = data;
 
@@ -89,8 +100,16 @@ export class DetailProductComponent implements OnInit {
               this.productImageList =images;
               console.log(images)
             })
+          } else if (!check && this.cartService.productListToCart[0].seller.id != seller.id) {
+            alert("Please only select products from the shop " + this.cartService.productListToCart[0].seller.name +
+            "\nin the same cart");
+            this.router.navigate(["/"]);
           }
-        }
+        })
+
+
+
+
       } else {
         this.productService.showDetailProduct(id).subscribe(data => {
           this.product = data;
