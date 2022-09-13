@@ -32,7 +32,7 @@ export class AdminService {
   }
 
   showDetailSeller(id: number): Observable<any> {
-    return this.httpClient.get(this.API + `/seller/${id}`)
+    return this.httpClient.get<any>(this.API + `/seller/${id}`)
   }
 
   controlSeller(id: number) {
