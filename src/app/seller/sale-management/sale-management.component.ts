@@ -15,8 +15,8 @@ export class SaleManagementComponent implements OnInit {
   constructor(private script: ScriptService, private sellerService: SellerService, public loginService : LoginService) {
     this.script.load('bundle', 'owl-carousel', 'min', 'select2','custom', 'loader').then(data => {
     }).catch(error => console.log(error));
-    this.sellerService.showListSale(this.loginService.getUserToken().userName).subscribe(data => {
-      console.log(this.loginService.getUserToken().userName);
+    this.sellerService.showListSale(this.loginService.getUserToken().username).subscribe(data => {
+      console.log(this.loginService.getUserToken().username);
       this.saleList = data;
       console.log(data);
     })

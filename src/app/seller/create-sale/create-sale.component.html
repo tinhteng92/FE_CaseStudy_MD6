@@ -1,0 +1,33 @@
+<div class="container">
+  <h2>Add new Sale</h2>
+  <form [formGroup]="creatForm" (ngSubmit)="submit()">
+    <div class="form-group">
+      <label >Title:</label>
+      <input type="text" formControlName="name" class="form-control"  placeholder="Enter name" >
+    </div>
+    <p *ngIf="!creatForm.get('name')?.valid && creatForm.get('name')?.touched" style="color: red">Blank is not allow.</p>
+
+    <div class="form-group">
+      <label>Price:</label>
+      <input type="text" formControlName="priceDown"  class="form-control" placeholder="Enter price" >
+    </div>
+    <p *ngIf="!creatForm.get('priceDown')?.valid && creatForm.get('priceDown')?.touched" style="color: red">Blank is not allow.</p>
+
+    <div class="form-group">
+      <label >Description:</label>
+      <input type="text" formControlName="description"  class="form-control"  placeholder="Enter Description" >
+    </div>
+    <p *ngIf="!creatForm.get('description')?.valid && creatForm.get('description')?.touched" style="color: red">Blank is not allow.</p>
+
+    <div class="form-group">
+      <label >Start At:</label>
+      <input type="date" formControlName="startAt"  class="form-control"  placeholder="Enter time start at" >
+    </div>
+    <div class="form-group">
+      <label >End At:</label>
+      <input type="date" formControlName="endAt"  class="form-control"  placeholder="Enter time end at" >
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <a routerLink="" type="button" class="btn btn-secondary">Cancel</a>
+  </form>
+</div>

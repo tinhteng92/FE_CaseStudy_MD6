@@ -20,6 +20,9 @@ import {FooterComponent} from "../share/footer/footer.component";
 import {NgxPaginationModule} from "ngx-pagination";
 import {CarouselModule} from "ngx-owl-carousel-o";
 import { SaleManagementComponent } from './sale-management/sale-management.component';
+import { CreateSaleComponent } from './create-sale/create-sale.component';
+import { EditSaleComponent } from './edit-sale/edit-sale.component';
+import { DeleteSaleComponent } from './delete-sale/delete-sale.component';
 
 
 @NgModule({
@@ -36,7 +39,10 @@ import { SaleManagementComponent } from './sale-management/sale-management.compo
     OrderSellerCompleteComponent,
     OrderSellerDetailComponent,
     OrderSellerWaitConfirmComponent,
-    SaleManagementComponent
+    SaleManagementComponent,
+    CreateSaleComponent,
+    EditSaleComponent,
+    DeleteSaleComponent
   ],
 
   imports: [
