@@ -18,7 +18,7 @@
           <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
              aria-haspopup="true" aria-expanded="false">
             <i class="fas fa-shopping-basket"></i> Cart
-            <span class="badge badge-success">5</span>
+            <span class="badge badge-success">{{cartService.productListToCart.length}}</span>
           </a>
           <div class="dropdown-menu dropdown-cart-top p-0 dropdown-menu-right shadow-sm border-0">
             <div class="dropdown-cart-top-body border-top p-4">
@@ -27,55 +27,37 @@
 <!--                12" (30 cm) x 1 <span class="float-right text-secondary">314.000</span></p>-->
 <!--              <p class="mb-2"><i class="icofont-ui-press text-success food-item"></i> Corn & Peas-->
 <!--                Salad x 1 <span class="float-right text-secondary">209.000</span></p>-->
-              <div class="gold-members p-2 border-bottom">
+              <div class="gold-members p-2 border-bottom" *ngFor="let p of productListToCart ;index as i" >
 
-                <p class="text-gray mb-0 float-right ml-2 classTotalOneProduct">{{priceProduct[0]}}</p>
+                <p class="text-gray mb-0 float-right ml-2 classTotalOneProduct">{{p.price}}</p>
                 <span class="count-number float-right">
-                  <button class="btn btn-outline-secondary btn-minus btn-sm left dec" (click)="decrease(0)"> <i
+                  <button class="btn btn-outline-secondary btn-minus btn-sm left dec" (click)="decrease(i)"> <i
                                       class="icofont-minus"></i> </button>
                   <span class="count-number-input" type="text" style="margin: 1px">1</span>
-                  <button class="btn btn-outline-secondary btn-plus btn-sm right inc" (click)="increase(0)"> <i
+                  <button class="btn btn-outline-secondary btn-plus btn-sm right inc" (click)="increase(i)"> <i
                                       class="icofont-plus"></i>
                   </button>
                 </span>
                 <div class="media">
                   <div class="mr-2">
-                    <button type="button" class="close" aria-label="Close" (click)="deleteOneProduct(0)">
+                    <button type="button" class="close" aria-label="Close" (click)="deleteOneProduct(i)">
                       <span aria-hidden="true">&times;</span>
                     </button>
                   </div>
                   <div class="media-body">
-                    <p class="mt-1 mb-0 text-black">Coca chai 330ml</p>
-                  </div>
-                </div>
-              </div>
-
-
-              <div class="gold-members p-2 border-bottom">
-                <p class="text-gray mb-0 float-right ml-2 classTotalOneProduct">{{priceProduct[1]}}</p>
-                <span class="count-number float-right">
-                  <button class="btn btn-outline-secondary btn-minus btn-sm left dec" (click)="decrease(1)"> <i
-                    class="icofont-minus"></i> </button>
-                  <span class="count-number-input" type="text" style="margin: 1px">1</span>
-                  <button class="btn btn-outline-secondary btn-plus btn-sm right inc" (click)="increase(1)"> <i
-                    class="icofont-plus"></i> </button>
-                </span>
-                <div class="media">
-                  <div class="mr-2"><i class="icofont-ui-press text-success food-item"></i></div>
-                  <div class="media-body">
-                    <p class="mt-1 mb-0 text-black">Latte chai 330ml</p>
+                    <p class="mt-1 mb-0 text-black">{{p.name}}</p>
                   </div>
                 </div>
               </div>
 
             </div>
             <div class="dropdown-cart-top-footer border-top p-4">
-              <p class="mb-0 font-weight-bold text-secondary">Tổng tiền <span
-                class="float-right text-dark">{{totalCart}}</span></p>
+              <p class="mb-0 font-weight-bold text-secondary">Total <span
+                class="float-right text-dark">$ <span>{{cartService.totalCart}}</span></span></p>
                <small class="text-info">Not included VAT and other charges</small>
             </div>
             <div class="dropdown-cart-top-footer border-top p-2">
-              <a class="btn btn-success btn-block btn-lg" routerLink="/user/order-user"> Thanh toán</a>
+              <a class="btn btn-success btn-block btn-lg" routerLink="/user/order-user" (click)="orderClosing()"> Order</a>
             </div>
           </div>
         </li>

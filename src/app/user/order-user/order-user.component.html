@@ -68,11 +68,11 @@
       <div class="col-md-8">
         <div class="offer-dedicated-body-left">
           <div class="bg-white rounded shadow-sm p-4">
-            <h4 class="mb-1">Thanh toán đơn hàng</h4>
+            <h4 class="mb-1">Payment orders</h4>
           </div>
           <div class="pt-2"></div>
           <div class="bg-white rounded shadow-sm p-4 mb-4">
-            <h4 class="mb-1">Chọn địa chỉ giao hàng</h4>
+            <h4 class="mb-1">Choose the delivery addresses</h4>
             <!-- <h6 class="mb-3 text-black-50">Multiple addresses in this location</h6> -->
             <div class="row">
               <div class="col-md-6">
@@ -81,13 +81,10 @@
                     <div class="media">
                       <div class="mr-3"><i class="icofont-ui-home icofont-3x"></i></div>
                       <div class="media-body">
-                        <h6 class="mb-1 text-black">Nhà</h6>
-                        <p class="text-black">Tòa Nhà Botanica, 104 Phổ Quang, P. 2, Tân
-                          Bình, TP. HCM
-                        </p>
+                        <h6 class="mb-1 text-black">Home</h6>
+                        <p class="text-black">{{addressCustomer}}</p>
                         <p class="mb-0 text-black font-weight-bold"><a
-                          class="btn btn-sm btn-success mr-2" href="#"> Giao tới địa
-                          chỉ này</a>
+                          class="btn btn-sm btn-success mr-2" href="#"> Deliver to this address</a>
                           <span>30MIN</span>
                         </p>
                       </div>
@@ -95,46 +92,25 @@
                   </div>
                 </div>
               </div>
-              <div class="col-md-6">
-                <div class="bg-white card addresses-item mb-4">
-                  <div class="gold-members p-4">
-                    <div class="media">
-                      <div class="mr-3"><i class="icofont-briefcase icofont-3x"></i></div>
-                      <div class="media-body">
-                        <h6 class="mb-1 text-secondary">Work</h6>
-                        <p>107/50A Đường Số 11, P. 11, Gò Vấp, TP. HCM
-                        </p>
-                        <p class="mb-0 text-black font-weight-bold"><a
-                          class="btn btn-sm btn-secondary mr-2" href="#"> Giao
-                          ngay</a>
-                          <span>40MIN</span>
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-6">
-                <div class="bg-white card addresses-item">
-                  <div class="gold-members p-4">
-                    <div class="media">
-                      <div class="mr-3"><i class="icofont-location-pin icofont-3x"></i></div>
-                      <div class="media-body">
-                        <h6 class="mb-1 text-secondary">Other</h6>
-                        <p>100 Thạch Thị Thanh, P. Tân Định, Quận 1, TP. HCM
-                        </p>
-                        <p class="mb-0 text-black font-weight-bold"><a
-                          class="btn btn-sm btn-secondary mr-2" href="#"> Giao
-                          ngay</a>
-                          <span>45MIN</span>
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+<!--              <div class="col-md-6">-->
+<!--                <div class="bg-white card addresses-item mb-4">-->
+<!--                  <div class="gold-members p-4">-->
+<!--                    <div class="media">-->
+<!--                      <div class="mr-3"><i class="icofont-briefcase icofont-3x"></i></div>-->
+<!--                      <div class="media-body">-->
+<!--                        <h6 class="mb-1 text-secondary">Work</h6>-->
+<!--                        <p>107/50A Đường Số 11, P. 11, Gò Vấp, TP. HCM-->
+<!--                        </p>-->
+<!--                        <p class="mb-0 text-black font-weight-bold"><a-->
+<!--                          class="btn btn-sm btn-secondary mr-2" href="#"> Giao-->
+<!--                          ngay</a>-->
+<!--                          <span>40MIN</span>-->
+<!--                        </p>-->
+<!--                      </div>-->
+<!--                    </div>-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--              </div>-->
               <div class="col-md-6">
                 <div class="bg-white card addresses-item">
                   <div class="gold-members p-4">
@@ -145,8 +121,7 @@
                         <p>Địa chỉ giao hàng mới</p>
                         <p class="mb-0 text-black font-weight-bold"><a data-toggle="modal"
                                                                        data-target="#add-address-modal"
-                                                                       class="btn btn-sm btn-primary mr-2" href="#"> Thêm địa chỉ
-                          giao hàng mới</a>
+                                                                       class="btn btn-sm btn-primary mr-2" href="#">Add new shipping address</a>
                         </p>
                       </div>
                     </div>
@@ -154,6 +129,45 @@
                 </div>
               </div>
             </div>
+<!--            <div class="row">-->
+<!--&lt;!&ndash;              <div class="col-md-6">&ndash;&gt;-->
+<!--&lt;!&ndash;                <div class="bg-white card addresses-item">&ndash;&gt;-->
+<!--&lt;!&ndash;                  <div class="gold-members p-4">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <div class="media">&ndash;&gt;-->
+<!--&lt;!&ndash;                      <div class="mr-3"><i class="icofont-location-pin icofont-3x"></i></div>&ndash;&gt;-->
+<!--&lt;!&ndash;                      <div class="media-body">&ndash;&gt;-->
+<!--&lt;!&ndash;                        <h6 class="mb-1 text-secondary">Other</h6>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <p>100 Thạch Thị Thanh, P. Tân Định, Quận 1, TP. HCM&ndash;&gt;-->
+<!--&lt;!&ndash;                        </p>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <p class="mb-0 text-black font-weight-bold"><a&ndash;&gt;-->
+<!--&lt;!&ndash;                          class="btn btn-sm btn-secondary mr-2" href="#"> Giao&ndash;&gt;-->
+<!--&lt;!&ndash;                          ngay</a>&ndash;&gt;-->
+<!--&lt;!&ndash;                          <span>45MIN</span>&ndash;&gt;-->
+<!--&lt;!&ndash;                        </p>&ndash;&gt;-->
+<!--&lt;!&ndash;                      </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                  </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->
+<!--&lt;!&ndash;              </div>&ndash;&gt;-->
+<!--              <div class="col-md-6">-->
+<!--                <div class="bg-white card addresses-item">-->
+<!--                  <div class="gold-members p-4">-->
+<!--                    <div class="media">-->
+<!--                      <div class="mr-3"><i class="icofont-location-pin icofont-3x"></i></div>-->
+<!--                      <div class="media-body">-->
+<!--                        <h6 class="mb-1 text-secondary">Other</h6>-->
+<!--                        <p>Địa chỉ giao hàng mới</p>-->
+<!--                        <p class="mb-0 text-black font-weight-bold"><a data-toggle="modal"-->
+<!--                                                                       data-target="#add-address-modal"-->
+<!--                                                                       class="btn btn-sm btn-primary mr-2" href="#"> Thêm địa chỉ-->
+<!--                          giao hàng mới</a>-->
+<!--                        </p>-->
+<!--                      </div>-->
+<!--                    </div>-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--            </div>-->
           </div>
           <div class="pt-2"></div>
           <div class="bg-white rounded shadow-sm p-4 osahan-payment">
@@ -213,137 +227,73 @@
       <div class="col-md-4">
         <div class="generator-bg rounded shadow-sm mb-4 p-4 osahan-cart-item">
           <div class="d-flex mb-4 osahan-cart-item-profile">
-            <img class="img-fluid mr-3 rounded-pill" alt="osahan" src="assets/img/2.jpg">
+            <img class="img-fluid mr-3 rounded-pill" alt="osahan" src="{{cartService.productListToCart[0].seller.imageBanner}}">
             <div class="d-flex flex-column">
-              <h6 class="mb-1 text-white">Bánh Tráng Cuốn Thịt Heo Hoàng Bèo
+              <h6 class="mb-1 text-white">{{cartService.productListToCart[0].seller.name}}
               </h6>
-              <p class="mb-0 text-white"><i class="icofont-location-pin"></i>  40 Duy Tân, Quận Cầu Giấy, Hà Nội</p>
+              <p class="mb-0 text-white"><i class="icofont-location-pin"></i>{{cartService.productListToCart[0].seller.address}}</p>
             </div>
           </div>
           <div class="bg-white rounded shadow-sm mb-2">
-            <div class="gold-members p-2 border-bottom">
-              <p class="text-gray mb-0 float-right ml-2">60.000</p>
-              <span class="count-number float-right">
-                                    <button class="btn btn-outline-secondary  btn-sm left dec"> <i
-                                      class="icofont-minus"></i> </button>
-                                    <input class="count-number-input" type="text" value="1" readonly="">
-                                    <button class="btn btn-outline-secondary btn-sm right inc"> <i
-                                      class="icofont-plus"></i> </button>
-                                </span>
-              <div class="media">
-                <div class="mr-2"><i class="icofont-ui-press text-danger food-item"></i></div>
-                <div class="media-body">
-                  <p class="mt-1 mb-0 text-black">Thịt nướng</p>
-                </div>
-              </div>
-            </div>
-            <div class="gold-members p-2 border-bottom">
-              <p class="text-gray mb-0 float-right ml-2">15.000</p>
-              <span class="count-number float-right">
-                                    <button class="btn btn-outline-secondary  btn-sm left dec"> <i
-                                      class="icofont-minus"></i> </button>
-                                    <input class="count-number-input" type="text" value="1" readonly="">
-                                    <button class="btn btn-outline-secondary btn-sm right inc"> <i
-                                      class="icofont-plus"></i> </button>
-                                </span>
+            <div class="gold-members p-2 border-bottom" *ngFor="let p of cartService.productListToCart; index as i">
+              <p class="text-gray mb-0 float-right ml-2">{{cartService.totalPriceAProductAfterOrder[i]}}</p>
               <div class="media">
                 <div class="mr-2"><i class="icofont-ui-press text-success food-item"></i></div>
                 <div class="media-body">
-                  <p class="mt-1 mb-0 text-black">Thêm thịt</p>
+                  <p class="mt-1 mb-0 text-black">
+                    <span>{{p.name}}</span>
+                    X<span>{{cartService.quantityAProductAfterOrder[i]}}</span>
+                  </p>
                 </div>
               </div>
             </div>
-            <div class="gold-members p-2 border-bottom">
-              <p class="text-gray mb-0 float-right ml-2">60.000</p>
-              <span class="count-number float-right">
-                                    <button class="btn btn-outline-secondary  btn-sm left dec"> <i
-                                      class="icofont-minus"></i> </button>
-                                    <input class="count-number-input" type="text" value="1" readonly="">
-                                    <button class="btn btn-outline-secondary btn-sm right inc"> <i
-                                      class="icofont-plus"></i> </button>
-                                </span>
-              <div class="media">
-                <div class="mr-2"><i class="icofont-ui-press text-success food-item"></i></div>
-                <div class="media-body">
-                  <p class="mt-1 mb-0 text-black">Thịt luộc</p>
-                </div>
-              </div>
-            </div>
-            <div class="gold-members p-2 border-bottom">
-              <p class="text-gray mb-0 float-right ml-2">20.000</p>
-              <span class="count-number float-right">
-                                    <button class="btn btn-outline-secondary  btn-sm left dec"> <i
-                                      class="icofont-minus"></i> </button>
-                                    <input class="count-number-input" type="text" value="1" readonly="">
-                                    <button class="btn btn-outline-secondary btn-sm right inc"> <i
-                                      class="icofont-plus"></i> </button>
-                                </span>
-              <div class="media">
-                <div class="mr-2"><i class="icofont-ui-press text-success food-item"></i></div>
-                <div class="media-body">
-                  <p class="mt-1 mb-0 text-black">Bánh đa</p>
-                </div>
-              </div>
-            </div>
-            <div class="gold-members p-2 border-bottom">
-              <p class="text-gray mb-0 float-right ml-2">15.000</p>
-              <span class="count-number float-right">
-                                    <button class="btn btn-outline-secondary  btn-sm left dec"> <i
-                                      class="icofont-minus"></i> </button>
-                                    <input class="count-number-input" type="text" value="1" readonly="">
-                                    <button class="btn btn-outline-secondary btn-sm right inc"> <i
-                                      class="icofont-plus"></i> </button>
-                                </span>
-              <div class="media">
-                <div class="mr-2"><i class="icofont-ui-press text-danger food-item"></i></div>
-                <div class="media-body">
-                  <p class="mt-1 mb-0 text-black">Coca chai 330ml</p>
-                </div>
-              </div>
-            </div>
+
           </div>
           <div class="mb-2 bg-white rounded p-2 clearfix">
-            <div class="input-group input-group-sm mb-2">
-              <input type="text" class="form-control" placeholder="Mã giảm giá">
-              <div class="input-group-append">
-                <button class="btn btn-primary" type="button" id="button-addon2"><i
-                  class="icofont-sale-discount"></i> APPLY</button>
+              <div class="input-group input-group-sm mb-2">
+                <select style="padding-right: 100px" #valueCoupon>
+                  <option value="0" style="color: #7a7e8a" selected>Coupon</option>
+                  <option value="{{s.priceDiscount}}" *ngFor="let s of orderService.saleListToSeller">{{s.name}}</option>
+                </select>
+
+                <div class="input-group-append">
+                  <a class="btn btn-primary" type="button" id="button-addon" style="color: white" (click)="applyCoupon(valueCoupon.value)"><i
+                    class="icofont-sale-discount" ></i> APPLY</a>
+                </div>
               </div>
-            </div>
-            <div class="input-group mb-0">
-              <div class="input-group-prepend">
-                <span class="input-group-text"><i class="icofont-comment"></i></span>
-              </div>
-              <textarea class="form-control" placeholder="Cửa hàng cần chú ý..."
-                        aria-label="With textarea"></textarea>
-            </div>
+
+<!--            <div class="input-group mb-0">-->
+<!--              <div class="input-group-prepend">-->
+<!--                <span class="input-group-text"><i class="icofont-comment"></i></span>-->
+<!--              </div>-->
+<!--              <textarea class="form-control" placeholder="Cửa hàng cần chú ý..."-->
+<!--                        aria-label="With textarea"></textarea>-->
+<!--            </div>-->
           </div>
           <div class="mb-2 bg-white rounded p-2 clearfix">
-            <p class="mb-1">Tổng tiền hàng <span class="float-right text-dark">330.000</span></p>
-            <p class="mb-1">Mã giảm giá <span class="float-right text-dark">25.000</span></p>
-            <p class="mb-1">Phí dịch vụ <span class="text-info" data-toggle="tooltip"
+            <p class="mb-1">Total amount <span class="float-right text-dark">{{cartService.totalCart}}</span></p>
+
+            <p class="mb-1">Service cost <span class="text-info" data-toggle="tooltip"
                                               data-placement="top" title="Total discount breakup">
                                     <i class="icofont-info-circle"></i>
-                                </span> <span class="float-right text-dark">15.000</span>
+                                </span> <span class="float-right text-dark">0</span>
             </p>
-            <p class="mb-1">Phí vận chuyển <span class="text-info" data-toggle="tooltip"
+            <p class="mb-1">Transportation cost <span class="text-info" data-toggle="tooltip"
                                                  data-placement="top" title="Total discount breakup">
                                 <i class="icofont-info-circle"></i>
-                            </span> <span class="float-right text-dark">20.000</span>
+                            </span> <span class="float-right text-dark">0</span>
             </p>
-            <p class="mb-1 text-success">Tổng giảm giá
-              <span class="float-right text-success">34.000</span>
+            <p class="mb-1 text-success">Total discount
+              <span class="float-right text-success">{{totalDiscount}}</span>
             </p>
             <hr />
-            <h6 class="font-weight-bold mb-0">Tổng thanh toán <span class="float-right">325.000</span></h6>
+            <h6 class="font-weight-bold mb-0">Total payment <span class="float-right">{{totalPayment}}</span></h6>
           </div>
-          <a routerLink="/user/thanks" class="btn btn-success btn-block btn-lg">Thanh toán 325.000
+          <a class="btn btn-success btn-block btn-lg" (click)="payment()">Payment
             <i class="icofont-long-arrow-right"></i></a>
         </div>
         <div class="pt-2"></div>
-        <!-- <div class="alert alert-success" role="alert">
-            You have saved <strong>$1,884</strong> on the bill
-        </div> -->
+
         <div class="pt-2"></div>
 
       </div>

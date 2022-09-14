@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
+import {Sale} from "../../model/Sale";
 import { Page } from 'src/app/model/Page';
 import {UserToken} from "../../model/UserToken";
 import {Product} from "../../model/Product";
+import {Seller} from "../../model/Seller";
 
 @Injectable({
   providedIn: 'root'
@@ -36,6 +38,13 @@ export class SellerService {
     return this.httpClient.get<any>(this.API+`/get-product/${idProduct}`);
   }
 
+  showListSale(userName: string): Observable<any> {
+    return this.httpClient.post(this.API + `/sale/${userName}`, this.info);
+  }
+
+  saveSale(sale: Sale): Observable<Sale> {
+    return this.httpClient.post<Sale>(this.API + '/save-sale', sale);
+  }
   deleteProduct(idProduct: number):Observable<any>{
     return this.httpClient.get<any>(this.API+`/delete-product/${idProduct}`);
   }

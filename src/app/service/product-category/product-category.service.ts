@@ -12,8 +12,8 @@ export class ProductCategoryService {
 
   constructor(private httpClient: HttpClient) { }
 
-  showListProduct(page:number): Observable<any>{
-    return this.httpClient.get<Page>(this.API +`/${page}`);
+  showListProduct(): Observable<any>{
+    return this.httpClient.get<any>(this.API);
   }
 
   showDetailProduct(id: number): Observable<any>{
@@ -47,6 +47,16 @@ export class ProductCategoryService {
   showCategories(): Observable<any> {
     return this.httpClient.get(this.API + `/category`)
   }
+
+  showDetailSeller(id: number): Observable<any> {
+    return this.httpClient.get(this.API + `/seller/${id}`)
+  }
+
+  showProductsBySeller(id: number): Observable<any> {
+    return this.httpClient.get(this.API + `/products/${id}`)
+  }
+
+
 
   APIS = 'http://localhost:8080/sellers';
   getCategory():Observable<any>{

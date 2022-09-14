@@ -13,24 +13,14 @@ import {Page} from "../../model/Page";
 })
 export class ProductListComponent implements OnInit {
 
-  // products: Product[] = [];
-  //
-  // constructor (private sellerService: SellerService, public loginService : LoginService) { }
-  //
-  // ngOnInit(): void {
-  //   this.getRequest();
-  // }
-  //
-  // getRequest(){
-  //   this.sellerService.showListProducts(this.loginService.getUserToken().name).subscribe(products => {
-  //     this.products = products;
-  //   })
-  // }
-  constructor(private script: ScriptService, private sellerService: SellerService,public loginService : LoginService,private activatedRoute: ActivatedRoute,
-              private router: Router) { }
+  products: Product[] = [];
   p: any;
-  products: Product[] = []
+  constructor (private sellerService: SellerService, public loginService : LoginService,
+    private activatedRoute: ActivatedRoute,private script: ScriptService,private router: Router) { }
+
   ngOnInit(): void {
+    this.getRequest();
+
     console.log("username: ", this.loginService.getUserToken().username)
     this.sellerService.showListProducts(this.loginService.getUserToken().username, 0 ).subscribe((data) => {
       this.products = data.content;
@@ -38,5 +28,11 @@ export class ProductListComponent implements OnInit {
     })
   }
 
+  getRequest(){
+    // alert(this.loginService.getUserToken().username);
+    this.sellerService.showListProducts(this.loginService.getUserToken().username,5).subscribe(products => {
+      this.products = products;
+    })
+  }
 
 }

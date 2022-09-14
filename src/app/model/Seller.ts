@@ -1,4 +1,5 @@
 import {UserToken} from "./UserToken";
+import {AppUser} from "./AppUser";
 
 export class Seller {
   id : number;
@@ -9,10 +10,10 @@ export class Seller {
   address: string;
   isAccept: boolean;
   isActive: boolean;
-  userToken: UserToken;
+  appUser: AppUser;
 
 
-  constructor(id: number, name: string, phoneNumber: string, avatar: string, imageBanner: string, address: string, isAccept: boolean, isActive: boolean, userToken: UserToken) {
+  constructor(id: number, name: string, phoneNumber: string, avatar: string, imageBanner: string, address: string, isAccept: boolean, isActive: boolean, appUser: AppUser) {
     this.id = id;
     this.name = name;
     this.phoneNumber = phoneNumber;
@@ -21,6 +22,6 @@ export class Seller {
     this.address = address;
     this.isAccept = isAccept;
     this.isActive = isActive;
-    this.userToken = userToken;
+    this.appUser = appUser;
   }
 }
