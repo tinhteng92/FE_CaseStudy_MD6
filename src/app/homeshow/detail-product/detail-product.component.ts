@@ -62,9 +62,9 @@ export class DetailProductComponent implements OnInit {
 
   addToCart(id: number) {
     if (localStorage.getItem("userToken") != null) {
-      // this.productService.showDetailProduct(id).subscribe(product =>{
-      //   this.productForQuantityStorage = product;
-      //   if (this.productForQuantityStorage.quantityStorage >= 1) {
+      this.productService.showDetailProduct(id).subscribe(product =>{
+        this.productForQuantityStorage = product;
+        if (this.productForQuantityStorage.quantityStorage >= 1) {
           if (this.cartService.productListToCart.length > 0) {
             let check = false;
             for (let i = 0; i < this.cartService.productListToCart.length; i++) {
@@ -142,11 +142,11 @@ export class DetailProductComponent implements OnInit {
               console.log(images)
             })
           }
-        // }else {
-        //   alert("This product is currently out of stock!");
-        //   this.router.navigate(["/"]);
-        // }
-      // })
+        }else {
+          alert("This product is currently out of stock!");
+          this.router.navigate(["/"]);
+        }
+      })
 
     }else {
       alert("Please login before buying");
