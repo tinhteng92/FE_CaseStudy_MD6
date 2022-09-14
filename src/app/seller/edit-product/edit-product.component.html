@@ -49,7 +49,7 @@
                      autocomplete="off"
                      class="form-control"
               />
-              <img class="mr-4" src="{{product.image}}" alt="Generic placeholder image">
+              <img class="mr-4" src="{{product.image}}" alt="Generic placeholder image" style="width: 247px; height: 160px;border-radius: 10px">
               <label for="image">Upload New Product's Image</label>
               <p style="color: red"
                  *ngIf="!editProductForm.get('image')?.valid && editProductForm.get('image')?.touched">Required

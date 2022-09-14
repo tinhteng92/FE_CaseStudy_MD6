@@ -63,7 +63,7 @@ export class CreateProductComponent implements OnInit {
   }
 
   createProductForm = new FormGroup({
-    sole: new  FormControl(0),
+    sold: new  FormControl(0),
     isDelete: new FormControl(false),
     name: new FormControl("", Validators.required),
     productCategory: new FormControl(true),
