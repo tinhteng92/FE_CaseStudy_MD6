@@ -3,6 +3,7 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 import { Router } from '@angular/router';
 import {SellerService} from "../../service/seller/seller.service";
 import {LoginService} from "../../service/login/login.service";
+import {Seller} from "../../model/Seller";
 
 @Component({
   selector: 'app-create-sale',
@@ -11,10 +12,11 @@ import {LoginService} from "../../service/login/login.service";
 })
 export class CreateSaleComponent implements OnInit {
   sale: any;
+  seller!: Seller;
   creatForm: FormGroup = new FormGroup({
     // id: new FormControl(),
     name: new FormControl("", Validators.required),
-    priceDown: new FormControl("", Validators.required),
+    priceDiscount: new FormControl("", Validators.required),
     description: new FormControl("", Validators.required),
     startAt: new FormControl(),
     endAt: new FormControl()
@@ -23,17 +25,21 @@ export class CreateSaleComponent implements OnInit {
   constructor(private sellerService: SellerService, private router: Router, public loginService : LoginService) { }
 
   ngOnInit(): void {
+
   }
 
   submit(){
+    this.sellerService.getSellerByUserToken(this.loginService.getUserToken().username).subscribe(data => {
+      this.seller = data;
+    });
     this.sale = {
       name: this.creatForm.value.name,
       description: this.creatForm.value.description,
-      priceDown: this.creatForm.value.priceDown,
+      priceDiscount: this.creatForm.value.priceDiscount,
       startAt: this.creatForm.value.startAt,
       endAt: this.creatForm.value.endAt,
       seller: {
-        id: this.loginService.getUserToken().id
+        id: this.seller.id
       }
     }
     this.sellerService.saveSale(this.sale).subscribe((data) =>{

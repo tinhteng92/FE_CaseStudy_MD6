@@ -1,8 +1,8 @@
 <title>Bootstrap User Management Data Table</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
-<!--<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">-->
-<!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">-->
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
 <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>-->
 <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
@@ -117,15 +117,15 @@
     vertical-align: middle;
     line-height: 10px;
   }
-  /*.text-success {*/
-  /*  color: #10c469;*/
-  /*}*/
+  .text-success {
+    color: #10c469;
+  }
   .text-info {
     color: #62c9e8;
   }
-  /*.text-warning {*/
-  /*  color: #FFC107;*/
-  /*}*/
+  .text-warning {
+    color: #FFC107;
+  }
   .text-danger {
     color: #ff5b5b;
   }
@@ -227,17 +227,15 @@
         <tbody>
         <tr *ngFor="let sale of saleList |paginate: {itemsPerPage :5, currentPage :p}, index as i" id="myTab">
           <td>{{i + 1}}</td>
-          <td>{{sale.name}}</td>
+          <td><b>{{sale.name}}</b></td>
           <td>{{sale.priceDiscount}}</td>
           <td>{{sale.startAt}}</td>
           <td>{{sale.endAt}}</td>
           <td *ngIf="sale?.status === true"><span class="status text-success"  >&bull;</span> Active</td>
           <td *ngIf="sale?.status == false"><span class="status text-warning"  >&bull;</span> Expired</td>
 
-          <a href="#editEmployeeModal" data-toggle="modal"
-             data-target="#add-address-modal"
-             class="btn btn-sm btn-primary mr-2 edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-          <a href="#deleteEmployeeModal"  class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+          <a [routerLink]="['/seller/edit-sale',sale.id]" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+          <a [routerLink]="['/seller/delete-sale',sale.id]"class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
 
 
         </tr>

@@ -37,6 +37,20 @@ export class SellerService {
     return this.httpClient.get<any>(this.API+`/get-product/${idProduct}`);
   }
 
+
+  deleteProduct(idProduct: number):Observable<any>{
+    return this.httpClient.get<any>(this.API+`/delete-product/${idProduct}`);
+  }
+
+  editProduct(product: Product,idProduct: number ):Observable<any>{
+    return  this.httpClient.post<any>(this.API+`/save-product/`+idProduct,product);
+  }
+
+  getSellerByUserToken(userName: string): Observable<any> {
+    return this.httpClient.post(this.API + `/getSeller`, userName)
+  }
+
+  // Quản lý sale
   showListSale(userName: string): Observable<any> {
     return this.httpClient.post(this.API + `/sale/${userName}`, this.info);
   }
@@ -44,11 +58,11 @@ export class SellerService {
   saveSale(sale: Sale): Observable<Sale> {
     return this.httpClient.post<Sale>(this.API + '/save-sale', sale);
   }
-  deleteProduct(idProduct: number):Observable<any>{
-    return this.httpClient.get<any>(this.API+`/delete-product/${idProduct}`);
-  }
 
-  editProduct(product: Product,idProduct: number ):Observable<any>{
-    return  this.httpClient.post<any>(this.API+`/save-product/`+idProduct,product);
+  findSaleById(id: number): Observable<any>{
+    return this.httpClient.get(this.API + `/sale/${id}`)
+  }
+  deleteSale(id: number):Observable<any> {
+    return this.httpClient.get(this.API + `/delete-sale/${id}`)
   }
 }

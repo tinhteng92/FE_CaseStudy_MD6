@@ -8,10 +8,10 @@
     <p *ngIf="!creatForm.get('name')?.valid && creatForm.get('name')?.touched" style="color: red">Blank is not allow.</p>
 
     <div class="form-group">
-      <label>Price Down:</label>
-      <input type="text" formControlName="priceDown"  class="form-control" placeholder="Enter price" >
+      <label>Price Discount:</label>
+      <input type="number" formControlName="priceDiscount"  class="form-control" placeholder="Enter price" >
     </div>
-    <p *ngIf="!creatForm.get('priceDown')?.valid && creatForm.get('priceDown')?.touched" style="color: red">Blank is not allow.</p>
+    <p *ngIf="!creatForm.get('priceDiscount')?.valid && creatForm.get('priceDiscount')?.touched" style="color: red">Blank is not allow.</p>
 
     <div class="form-group">
       <label >Description:</label>
