@@ -18,6 +18,7 @@ import {CustomerService} from "../../service/customer/customer.service";
 })
 export class DetailProductComponent implements OnInit {
   product!: Product;
+  productForQuantityStorage!: Product;
   id!: any;
   productImageList: ProductImage [] = [];
   saleList: Sale [] = [];
@@ -61,22 +62,56 @@ export class DetailProductComponent implements OnInit {
 
   addToCart(id: number) {
     if (localStorage.getItem("userToken") != null) {
-      if (this.cartService.productListToCart.length > 0) {
-        let check = false;
-        for (let i = 0; i < this.cartService.productListToCart.length; i++) {
-          if (this.cartService.productListToCart[i].id == id) {
-            this.cartService.indexOfDuplicateProduct = i;
-            alert("Products already in the cart.\n" +
-              "Please increase the quantity of the product in the cart.");
-            this.router.navigate(["/"]);
-            check = true;
-            break;
-          }
-        }
+      this.productService.showDetailProduct(id).subscribe(product =>{
+        this.productForQuantityStorage = product;
+        if (this.productForQuantityStorage.quantityStorage >= 1) {
+          if (this.cartService.productListToCart.length > 0) {
+            let check = false;
+            for (let i = 0; i < this.cartService.productListToCart.length; i++) {
+              if (this.cartService.productListToCart[i].id == id) {
+                this.cartService.indexOfDuplicateProduct = i;
+                alert("Products already in the cart.\n" +
+                  "Please increase the quantity of the product in the cart.");
+                this.router.navigate(["/"]);
+                check = true;
+                break;
+              }
+            }
 
-        this.customerService.findSellerByProductId(id).subscribe(seller =>{
-          console.log("sellllllllllleeeeeerrrrrr" + seller.id)
-          if (!check && this.cartService.productListToCart[0].seller.id == seller.id){
+            this.customerService.findSellerByProductId(id).subscribe(seller =>{
+              console.log("sellllllllllleeeeeerrrrrr" + seller.id)
+              if (!check && this.cartService.productListToCart[0].seller.id == seller.id){
+                this.productService.showDetailProduct(id).subscribe(data => {
+                  this.product = data;
+
+                  this.cartService.productListToCart.push(this.product);
+                  // localStorage.setItem("productListToCart",JSON.stringify(this.cartService.productListToCart));
+                  //tính tổng tiền trong giỏ hàng
+                  if (this.cartService.totalCart == 0) {
+                    this.cartService.totalCart = this.product.price;
+                  } else {
+                    this.cartService.totalCart += this.product.price;
+                  }
+
+                  alert("Add to cart success!");
+                  this.router.navigate(["/"]);
+                  this.productService.showSaleList(this.product.seller.id).subscribe(sales => {
+                    this.saleList = sales;
+                    this.orderService.saleListToSeller = sales;
+                  })
+                })
+                this.productService.showProductImageList(id).subscribe(images =>{
+                  this.productImageList =images;
+                  console.log(images)
+                })
+              } else if (!check && this.cartService.productListToCart[0].seller.id != seller.id) {
+                alert("Please only select products from the shop " + this.cartService.productListToCart[0].seller.name +
+                  "\nin the same cart");
+                this.router.navigate(["/"]);
+              }
+            })
+
+          } else {
             this.productService.showDetailProduct(id).subscribe(data => {
               this.product = data;
 
@@ -94,49 +129,20 @@ export class DetailProductComponent implements OnInit {
               this.productService.showSaleList(this.product.seller.id).subscribe(sales => {
                 this.saleList = sales;
                 this.orderService.saleListToSeller = sales;
+                // console.log(this.product.seller.id)
+                // console.log(sales)
               })
             })
             this.productService.showProductImageList(id).subscribe(images =>{
               this.productImageList =images;
               console.log(images)
             })
-          } else if (!check && this.cartService.productListToCart[0].seller.id != seller.id) {
-            alert("Please only select products from the shop " + this.cartService.productListToCart[0].seller.name +
-            "\nin the same cart");
-            this.router.navigate(["/"]);
           }
-        })
-
-
-
-
-      } else {
-        this.productService.showDetailProduct(id).subscribe(data => {
-          this.product = data;
-
-          this.cartService.productListToCart.push(this.product);
-          // localStorage.setItem("productListToCart",JSON.stringify(this.cartService.productListToCart));
-          //tính tổng tiền trong giỏ hàng
-          if (this.cartService.totalCart == 0) {
-            this.cartService.totalCart = this.product.price;
-          } else {
-            this.cartService.totalCart += this.product.price;
-          }
-
-          alert("Add to cart success!");
+        }else {
+          alert("This product is currently out of stock!");
           this.router.navigate(["/"]);
-          this.productService.showSaleList(this.product.seller.id).subscribe(sales => {
-            this.saleList = sales;
-            this.orderService.saleListToSeller = sales;
-            // console.log(this.product.seller.id)
-            // console.log(sales)
-          })
-        })
-        this.productService.showProductImageList(id).subscribe(images =>{
-          this.productImageList =images;
-          console.log(images)
-        })
-      }
+        }
+      })
 
     }else {
       alert("Please login before buying");
