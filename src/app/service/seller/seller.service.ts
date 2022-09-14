@@ -52,4 +52,8 @@ export class SellerService {
   editProduct(product: any,idProduct: number,idSeller:number ):Observable<any>{
     return  this.httpClient.post<any>(this.API+`/edit-product/`+idProduct+'/'+idSeller,product);
   }
+
+  editSeller(seller: any, idSeller: number):Observable<any>{
+    return this.httpClient.post<any>(this.API+'/edit-seller'+idSeller, seller);
+  }
 }

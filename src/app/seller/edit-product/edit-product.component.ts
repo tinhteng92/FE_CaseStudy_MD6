@@ -85,16 +85,6 @@ export class EditProductComponent implements OnInit {
       });
   }
 
-  // editProductForm = new FormGroup({
-  //   name: new FormControl("", Validators.required),
-  //   productCategory: new FormControl(),
-  //   price: new FormControl(this.product?.price, Validators.required),
-  //   quantityStorage: new FormControl("", [Validators.required, Validators.pattern("([1-9]|[1-9][0-9]|[1-9][0-9][0-9])")]),
-  //   image: new FormControl(""),
-  //   description: new FormControl("", Validators.required),
-  // })
-
-
   editProduct() {
     let userID = this.loginService.getUserToken().id;
     console.log(userID)
@@ -109,7 +99,7 @@ export class EditProductComponent implements OnInit {
       })
     } else {
       alert("Please checkout form!");
-      this.router.navigate(["/seller/create-product"]);
+      this.router.navigate(["/seller"]);
     }
   }
 }
