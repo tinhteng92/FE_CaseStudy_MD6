@@ -65,4 +65,18 @@ export class SellerService {
   deleteSale(id: number):Observable<any> {
     return this.httpClient.get(this.API + `/delete-sale/${id}`)
   }
+
+  // Quản lý Order
+
+  showOrderList(idSeller: number): Observable<any>{
+    return this.httpClient.get(this.API + `orders/${idSeller}`)
+  }
+
+  showOrderDetail(idOrder: number): Observable<any> {
+    return this.httpClient.get(this.API + `order-detail/${idOrder}`)
+  }
+
+  confirmOrder(idOrder: number): Observable<any> {
+    return this.httpClient.get(this.API + `confirm-order/${idOrder}`)
+  }
 }
