@@ -32,6 +32,8 @@ export class EditProductComponent implements OnInit {
         this.fb=data.img;
         this.editProductForm= new FormGroup({
           name: new FormControl(data.name, Validators.required),
+          sole: new  FormControl(data.sole),
+          isDelete: new FormControl(data.isDelete),
           productCategory: new FormControl(data.productCategory),
           price: new FormControl(data.price, Validators.required),
           quantityStorage: new FormControl(data.quantityStorage, [Validators.required, Validators.pattern("([1-9]|[1-9][0-9]|[1-9][0-9][0-9])")]),
@@ -42,14 +44,6 @@ export class EditProductComponent implements OnInit {
       })
     })
     this.getCategory()
-
-    // this.editProductForm.setValue({
-    //   description: this.product.description,
-    //   image: this.product.image,
-    //   price: this.product.price,
-    //   productCategory: this.product.productCategory,
-    //   quantityStorage: this.product.quantityStorage,
-    //   name: this.product.name});
   }
   getCategory() {
     this.productCategoryService.getCategory().subscribe(data => {
@@ -61,7 +55,7 @@ export class EditProductComponent implements OnInit {
     this.router.navigate(["/seller"]);
   }
   title = "cloudsSorage";
-  fb: string = "https://icon-library.com/images/user-icon-jpg/user-icon-jpg-24.jpg";
+  fb!: string ;
   downloadURL: Observable<string> | undefined;
   onFileSelected(event: Event) {
     var n = Date.now();
@@ -104,7 +98,7 @@ export class EditProductComponent implements OnInit {
   editProduct() {
     let userID = this.loginService.getUserToken().id;
     console.log(userID)
-    this.editProductForm.get("image")?.setValue(this.fb);
+    this.editProductForm.get("image")?.setValue(this.product.image);
     let productToEdit = this.editProductForm.value;
     console.log("product to edit: ", productToEdit)
     if (this.editProductForm.valid) {
