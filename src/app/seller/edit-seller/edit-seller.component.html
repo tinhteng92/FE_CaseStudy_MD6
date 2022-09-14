@@ -55,7 +55,7 @@
             </div>
             <div class="form-label-group mb-4">
               <input type="text" id="address" formControlName="address" class="form-control" >
-              <label for="address">Enter New Product's Address (Current Phone : {{seller.phoneNumber}} *)</label>
+              <label for="address">Enter New Product's Address (Current Phone : {{seller.address}} *)</label>
               <p style="color: red"
                  *ngIf="!editSellerForm.get('address')?.valid && editSellerForm.get('address')?.touched">
                 Wrong typing address, again please!</p>
