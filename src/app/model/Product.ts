@@ -10,11 +10,11 @@ export class Product {
   quantityStorage: number;
   sold: number;
   isDelete: boolean;
-  productCategory: ProductCategory[];
+  productCategory: ProductCategory;
   seller: Seller;
 
 
-  constructor(id: number, name: string, image: string, description: string, price: number, quantityStorage: number, sold: number, isDelete: boolean, productCategory: ProductCategory[], seller: Seller) {
+  constructor(id: number, name: string, image: string, description: string, price: number, quantityStorage: number, sold: number, isDelete: boolean, productCategory: ProductCategory, seller: Seller) {
     this.id = id;
     this.name = name;
     this.image = image;
