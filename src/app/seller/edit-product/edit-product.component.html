@@ -6,35 +6,36 @@
       <div class="modal-header">
         <h4 class="modal-title" id="add-address" style="color: #dc3545">Update Product</h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true" (click)="cancel()">&times;</span>
+          <span aria-hidden="true" (click)="cancel()" style="font-size: 35px">&times;</span>
         </button>
       </div>
       <div class="modal-body">
         <div style="padding: 20px; background-color: #ffe8b6; border-radius: 20px;">
           <form [formGroup]="editProductForm" (ngSubmit)="editProduct()">
             <div class="form-label-group mb-4">
-              <input type="text" id="name" formControlName="name" class="form-control">
+              <input type="text" id="name" formControlName="name" class="form-control" >
               <label for="name">Enter New Product's name (Current Name : {{product.name}} *)</label>
               <p style="color: red" *ngIf="!editProductForm.get('name')?.valid && editProductForm.get('name')?.touched">
                 Required Information.</p>
             </div>
             <div class="form-label-group mb-4">
-              <select id="productCategory" formControlName="productCategory" class="form-control">
-                <option [ngValue]="true">** Select New Product's Category **</option>
+              <select id="productCategory" formControlName="productCategory" class="form-control" >
+                <option [selected]="true" [ngValue]="product.productCategory.nameCategory">*Select new Category **</option>
                 <option *ngFor="let productCategory of productCategories"
-                        [ngValue]="productCategory">{{productCategory.nameCategory}}
+                        [ngValue]="productCategory" >
+                  {{productCategory.nameCategory}}
                 </option>
               </select>
             </div>
             <div class="form-label-group mb-4">
-              <input type="text" id="price" formControlName="price" class="form-control">
+              <input type="text" id="price" formControlName="price" class="form-control" >
               <label for="price">Enter New Price (Current Price : {{product.price}} *)</label>
               <p style="color: red"
                  *ngIf="!editProductForm.get('price')?.valid && editProductForm.get('price')?.touched">Required
                 Information.</p>
             </div>
             <div class="form-label-group mb-4">
-              <input type="number" id="quantityStorage" formControlName="quantityStorage" class="form-control">
+              <input type="text" id="quantityStorage" formControlName="quantityStorage" class="form-control" >
               <label for="quantityStorage">Enter Inventory number (Current Name : {{product.quantityStorage}} *)</label>
               <p style="color: red"
                  *ngIf="!editProductForm.get('quantityStorage')?.valid && editProductForm.get('quantityStorage')?.touched">
@@ -55,7 +56,7 @@
                 Information.</p>
             </div>
             <div class="form-label-group mb-4">
-              <input type="text" id="description" formControlName="description" class="form-control">
+              <input type="text" id="description" formControlName="description" class="form-control" >
               <label for="description">Enter New Product's Description </label>
               <p style="color: red"
                  *ngIf="!editProductForm.get('description')?.valid && editProductForm.get('description')?.touched">
@@ -63,7 +64,7 @@
             </div>
             <button type="submit"
                     class="btn btn-lg btn-outline-primary btn-block btn-login text-uppercase font-weight-bold mb-2"
-                    style="margin-right: 10px">Create your Product
+                    data-dismiss="modal" (click)="editProduct()">Update your Product
             </button>
           </form>
         </div>

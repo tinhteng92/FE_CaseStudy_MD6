@@ -18,7 +18,8 @@ export class EditProductComponent implements OnInit {
 
   id: any;
   product!: Product;
-
+  productCategories! : ProductCategory[];
+  editProductForm: any;
   constructor(private route: ActivatedRoute, private sellerService: SellerService
               , private router: Router, private loginService: LoginService, private storage: AngularFireStorage
               , private productCategoryService: ProductCategoryService) { }
@@ -29,12 +30,27 @@ export class EditProductComponent implements OnInit {
       this.sellerService.getProduct(this.id).subscribe((data) => {
         this.product = data;
         this.fb=data.img;
+        this.editProductForm= new FormGroup({
+          name: new FormControl(data.name, Validators.required),
+          productCategory: new FormControl(data.productCategory),
+          price: new FormControl(data.price, Validators.required),
+          quantityStorage: new FormControl(data.quantityStorage, [Validators.required, Validators.pattern("([1-9]|[1-9][0-9]|[1-9][0-9][0-9])")]),
+          image: new FormControl(data.img),
+          description: new FormControl(data.description, Validators.required),
+        })
         console.log(data);
       })
     })
     this.getCategory()
+
+    // this.editProductForm.setValue({
+    //   description: this.product.description,
+    //   image: this.product.image,
+    //   price: this.product.price,
+    //   productCategory: this.product.productCategory,
+    //   quantityStorage: this.product.quantityStorage,
+    //   name: this.product.name});
   }
-  productCategories: ProductCategory[] = [];
   getCategory() {
     this.productCategoryService.getCategory().subscribe(data => {
       this.productCategories = data;
@@ -75,23 +91,24 @@ export class EditProductComponent implements OnInit {
       });
   }
 
-  editProductForm = new FormGroup({
-    name: new FormControl("", Validators.required),
-    productCategory: new FormControl(true),
-    price: new FormControl(this.product?.price, Validators.required),
-    quantityStorage: new FormControl("", [Validators.required, Validators.pattern("([1-9]|[1-9][0-9]|[1-9][0-9][0-9])")]),
-    image: new FormControl(""),
-    description: new FormControl("", Validators.required),
-  })
+  // editProductForm = new FormGroup({
+  //   name: new FormControl("", Validators.required),
+  //   productCategory: new FormControl(),
+  //   price: new FormControl(this.product?.price, Validators.required),
+  //   quantityStorage: new FormControl("", [Validators.required, Validators.pattern("([1-9]|[1-9][0-9]|[1-9][0-9][0-9])")]),
+  //   image: new FormControl(""),
+  //   description: new FormControl("", Validators.required),
+  // })
 
 
   editProduct() {
     let userID = this.loginService.getUserToken().id;
+    console.log(userID)
     this.editProductForm.get("image")?.setValue(this.fb);
-    let productToCreate = this.editProductForm.value;
-    console.log("product to create: ", productToCreate)
+    let productToEdit = this.editProductForm.value;
+    console.log("product to edit: ", productToEdit)
     if (this.editProductForm.valid) {
-      this.sellerService.createProduct(productToCreate, userID).subscribe((data) => {
+      this.sellerService.editProduct(productToEdit,this.id, userID).subscribe((data) => {
         console.log("data");
         console.log(data);
         this.router.navigate(["/seller"]);

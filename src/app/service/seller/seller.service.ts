@@ -49,7 +49,7 @@ export class SellerService {
     return this.httpClient.get<any>(this.API+`/delete-product/${idProduct}`);
   }
 
-  editProduct(product: Product,idProduct: number ):Observable<any>{
-    return  this.httpClient.post<any>(this.API+`/save-product/`+idProduct,product);
+  editProduct(product: any,idProduct: number,idSeller:number ):Observable<any>{
+    return  this.httpClient.post<any>(this.API+`/edit-product/`+idProduct+'/'+idSeller,product);
   }
 }
