@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {CartService} from "../../service/cart/cart.service";
 import {Product} from "../../model/Product";
 import {OrderService} from "../../service/order/order.service";
@@ -16,7 +16,7 @@ import {Router} from "@angular/router";
   templateUrl: './order-user.component.html',
   styleUrls: ['./order-user.component.css']
 })
-export class OrderUserComponent implements OnInit {
+export class OrderUserComponent implements OnInit{
   totalDiscount: number = 0;
   totalPayment: number = 0;
   addressCustomer: string = "";
@@ -88,7 +88,9 @@ export class OrderUserComponent implements OnInit {
         },
         priceTotal: this.totalPayment,
         customer: this.customer,
-        seller: this.cartService.productListToCart[0].seller
+        seller: this.cartService.productListToCart[0].seller,
+        totalCart: this.cartService.totalCart,
+        totalDiscount: this.totalDiscount
       }
 
       this.orderService.saveOrder(order).subscribe((data) =>{
@@ -132,4 +134,5 @@ export class OrderUserComponent implements OnInit {
     }
 
   }
+
 }

@@ -31,4 +31,16 @@ export class OrderService {
   saveOrderDetail(orderDetail: OrderDetail): Observable<OrderDetail>{
     return this.http.post<OrderDetail>("http://localhost:8080/customers/orders/save-orderDetail",orderDetail);
   }
+
+  findOrdersByCustomerId(idCustomer: number): Observable<Order[]>{
+    return this.http.post<Order[]>("http://localhost:8080/customers/orders/findOrdersByCustomerId",idCustomer);
+  }
+
+  findOrderById(idOrder: number): Observable<Order>{
+    return this.http.post<Order>("http://localhost:8080/customers/orders/findOrderById",idOrder);
+  }
+
+  findOrderDetailsByOrderId(idOrder: number): Observable<OrderDetail[]>{
+    return this.http.post<OrderDetail[]>("http://localhost:8080/customers/orders/findOrderDetailsByOrderId",idOrder);
+  }
 }

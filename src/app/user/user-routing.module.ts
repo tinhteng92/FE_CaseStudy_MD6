@@ -7,16 +7,21 @@ import {EditUserAvatarComponent} from "./edit-user-avatar/edit-user-avatar.compo
 import {OrderUserComponent} from "./order-user/order-user.component";
 import {OrderDetailUserComponent} from "./order-detail-user/order-detail-user.component";
 import {ThanksComponent} from "./thanks/thanks.component";
+import {DetailUserComponent} from "./detail-user/detail-user.component";
 
 const routes: Routes = [
   {path: '',
   component: HomeUserComponent, children: [
-      { path: '',
+      { path: 'listCartUser/:id',
         component: ListcartUserComponent
       },
       {
         path: 'edit-customer',
         component: EditUserComponent
+      },
+      {
+        path: 'detail-user/:id',
+        component: DetailUserComponent
       },
       {
         path: 'edit-customer-change-avatar',
@@ -33,6 +38,9 @@ const routes: Routes = [
   },
 
   { path: 'order-detail-user',
+    component: OrderDetailUserComponent
+  },
+  { path: 'order-detail-user/:id',
     component: OrderDetailUserComponent
   }
 

@@ -3,6 +3,8 @@ import {LoginService} from "../../service/login/login.service";
 import {Router} from "@angular/router";
 import {Product} from "../../model/Product";
 import {CartService} from "../../service/cart/cart.service";
+import {CustomerService} from "../../service/customer/customer.service";
+import {Customer} from "../../model/Customer";
 
 @Component({
   selector: 'app-navbar',
@@ -15,7 +17,9 @@ export class NavbarComponent implements OnInit{
   productListToCart: Product[] = [];
   newQuantity!: number;
   totalCart: number = 0;
-  constructor(public loginService: LoginService, private router: Router, public cartService: CartService) { }
+  customer!: Customer;
+  constructor(public loginService: LoginService, private router: Router, public cartService: CartService,
+              private customerService: CustomerService) { }
 
 
   ngOnInit(): void {
@@ -31,6 +35,7 @@ export class NavbarComponent implements OnInit{
     this.productListToCart = this.cartService.productListToCart;
     this.cartService.totalCart = 0;
     this.loginService.check = false;
+    this.loginService.checkUser = false;
     this.router.navigate(["/"]);
   }
 
@@ -76,5 +81,12 @@ export class NavbarComponent implements OnInit{
       this.cartService.quantityAProductAfterOrder[i] = +this.quantity[i].innerHTML;
       this.cartService.totalPriceAProductAfterOrder[i] = +this.totalOneProductArray[i].innerHTML;
     }
+  }
+
+  showHomeUser() {
+    this.customerService.findCustomerByUserName(this.loginService.getUserToken().username).subscribe(data =>{
+      this.customer = data;
+      this.router.navigate(["/user/listCartUser/" +  this.customer.id]);
+    })
   }
 }
