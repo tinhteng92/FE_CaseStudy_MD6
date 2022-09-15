@@ -70,7 +70,7 @@ export class SellerService {
   // Quản lý Order
 
   showOrderList(idSeller: number): Observable<any>{
-    return this.httpClient.get(this.API + `orders/${idSeller}`)
+    return this.httpClient.get(this.API + `/orders/${idSeller}`)
   }
 
   showOrderDetail(idOrder: number): Observable<any> {
@@ -79,5 +79,9 @@ export class SellerService {
 
   confirmOrder(idOrder: number): Observable<any> {
     return this.httpClient.get(this.API + `confirm-order/${idOrder}`)
+  }
+
+  editSeller(seller: any, idSeller: number):Observable<any>{
+    return this.httpClient.post<any>(this.API+'/edit-seller'+idSeller, seller);
   }
 }

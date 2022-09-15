@@ -10,10 +10,14 @@
         </button>
       </div>
       <div class="modal-body">
-        <h5 style="text-align: center;color: #d39e00">DO YOU REALLY WISH TO DELETE THIS PRODUCT</h5><br>
-        <h6 style="color: #dc3545">*Name Product: {{product.name}}</h6>
-        <h6 style="color: #dc3545">*Description Product: {{product.description}}</h6>
+        <h5 style="text-align: center;color: #d39e00">DO YOU REALLY WISH TO REMOVE THIS PRODUCT</h5><br>
+        <h6 style="color: #dc3545">-Name Product: *{{product.name}}*</h6>
+        <h6 style="color: #dc3545">-Description Product: *{{product.description}}*</h6>
+        <h6 style="color: #dc3545">-Quantity Storage Product: *{{product.quantityStorage}}*</h6>
+        <h6 style="color: #dc3545">-Price Product: *{{product.price}}*</h6>
         <img  src="{{product.image}}" style="border-radius: 10px;width: 250px; height: 150px">
+        <p></p>
+        <hr style="width: 50%; border: 1px solid red">
         <h6 style="color: #d39e00;text-align: center">---  This product will be removed from your shop  ---</h6>
       </div>
       <div class="modal-footer">

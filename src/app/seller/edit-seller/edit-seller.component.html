@@ -1,0 +1,81 @@
+<p>edit-seller works!</p>
+<div class="modal fade" id="edit-profile-modal" tabindex="-1" role="dialog" aria-labelledby="add-address"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="add-address" style="color: #dc3545">Update Profile</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true" (click)="cancel()" style="font-size: 35px">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+<!--        <h2>{{seller.phoneNumber}}</h2>-->
+<!--        <h2>{{seller.address}}</h2>-->
+<!--        <h2>{{seller.name}}</h2>-->
+<!--        <img src="{{seller.avatar}}">-->
+<!--        <img src="{{seller.imageBanner}}">-->
+
+        <div style="padding: 20px; background-color: #ffe8b6; border-radius: 20px;">
+          <form [formGroup]="editSellerForm" (ngSubmit)="editSeller()">
+            <div class="form-label-group mb-4">
+              <input type="text" id="name" formControlName="name" class="form-control" >
+              <label for="name">Enter New Shop's name (Current Name : {{seller.name}} *)</label>
+<!--              <p style="color: red" *ngIf="!editSellerForm.get('name')?.valid && editSellerForm.get('name')?.touched">-->
+<!--                Required Information.</p>-->
+            </div>
+            <div class="form-label-group mb-4">
+              <input type="text" id="phoneNumber" formControlName="phoneNumber" class="form-control" >
+              <label for="phoneNumber">Enter New Phone Number (Current Phone : {{seller.phoneNumber}} *)</label>
+<!--              <p style="color: red"-->
+<!--                 *ngIf="!editSellerForm.get('phoneNumber')?.valid && editSellerForm.get('phoneNumber')?.touched">Required-->
+<!--                Information.</p>-->
+            </div>
+            <div class="form-label-group mb-4">
+              <input type="file"
+                     id="avatar"
+                     #userPhoto
+                     (change)="onFileSelected($event)"
+                     autocomplete="off"
+                     class="form-control"
+              />
+              <img class="mr-4" src="{{seller.avatar}}" alt="Generic placeholder image" style="width: 100px; height: 100px;border-radius: 10px">
+              <label for="avatar">Upload New Product's Image</label>
+            </div>
+            <div class="form-label-group mb-4">
+              <input type="file"
+                     id="imageBanner"
+                     #userPhoto
+                     (change)="onFileSelected($event)"
+                     autocomplete="off"
+                     class="form-control"
+              />
+              <img class="mr-4" src="{{seller.imageBanner}}" alt="Generic placeholder image" style="width: 250px; height: 190px;border-radius: 10px">
+              <label for="imageBanner">Upload New Product's Image</label>
+            </div>
+            <div class="form-label-group mb-4">
+              <input type="text" id="address" formControlName="address" class="form-control" >
+              <label for="address">Enter New Product's Address (Current Phone : {{seller.address}} *)</label>
+<!--              <p style="color: red"-->
+<!--                 *ngIf="!editSellerForm.get('address')?.valid && editSellerForm.get('address')?.touched">-->
+<!--                Wrong typing address, again please!</p>-->
+            </div>
+            <button type="submit"
+                    class="btn btn-lg btn-outline-primary btn-block btn-login text-uppercase font-weight-bold mb-2"
+                    data-dismiss="modal" (click)="editSeller()">Update Your Profile
+            </button>
+          </form>
+        </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn d-flex w-50 text-center justify-content-center btn btn-sm btn-primary mr-2"
+                (click)="cancel()"
+                data-dismiss="modal">CANCEL
+        </button>
+        <!--        <button type="button" (click)="deleteProduct(product.id)"-->
+        <!--                         class="btn d-flex w-50 text-center justify-content-center btn-primary">SUBMIT</button>-->
+      </div>
+    </div>
+  </div>
+</div>
