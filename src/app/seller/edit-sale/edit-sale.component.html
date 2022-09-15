@@ -1,1 +1,40 @@
-<p>edit-sale works!</p>
+<div class="container">
+  <h2>Edit Sale</h2>
+  <form *ngIf="this.editForm" [formGroup]="editForm" (ngSubmit)="updateSale(id)">
+    <input type="text" formControlName="id" class="form-control" hidden >
+    <div class="form-group">
+      <label >Sale's title:</label>
+    </div>
+    <p *ngIf="!editForm.get('name')?.valid && editForm.get('name')?.touched" style="color: red">Blank is not allow.</p>
+
+    <div class="form-group">
+      <label>Price Discount:</label>
+      <input type="number" formControlName="priceDiscount"  class="form-control" placeholder="Enter price" >
+    </div>
+    <p *ngIf="!editForm.get('priceDiscount')?.valid && editForm.get('priceDiscount')?.touched" style="color: red">Blank is not allow.</p>
+
+    <div class="form-group">
+      <label >Description:</label>
+      <input type="text" formControlName="description" style="height: 100px" class="form-control"  placeholder="Enter Description" >
+    </div>
+    <p *ngIf="!editForm.get('description')?.valid && editForm.get('description')?.touched" style="color: red">Blank is not allow.</p>
+
+    <div class="form-group">
+      <label >Start At:</label>
+      <input type="text" formControlName="startAt"  class="form-control" placeholder="Enter price" >
+    </div>
+
+    <div class="form-group">
+      <label >End At:</label>
+      <input type="text" formControlName="endAt"  class="form-control" placeholder="Enter price" >
+    </div>
+
+<!--    <input type="text" formControlName="seller.id"  class="form-control" placeholder="Enter price" hidden>-->
+
+
+
+    <button type="submit" class="btn btn-primary">Edit</button>
+    <a routerLink="/seller/sale-management" type="button" class="btn btn-secondary">Cancel</a>
+  </form>
+</div>
+

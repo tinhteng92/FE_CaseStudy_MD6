@@ -13,11 +13,11 @@ export class AdminService {
 
   constructor(private httpClient: HttpClient) { }
 
+  //Quản lý seller
+
   showListRequestSeller(): Observable<any>{
     return this.httpClient.get(this.API+`/request`)
   }
-
-
 
   acceptSeller(id: number){
     return this.httpClient.post(this.API+`/accept/${id}`, this.info);
@@ -35,7 +35,21 @@ export class AdminService {
     return this.httpClient.get<any>(this.API + `/seller/${id}`)
   }
 
-  controlSeller(id: number) {
+  controlSeller(id: number):Observable<any> {
     return this.httpClient.post(this.API + `/controlSeller/${id}`, this.info)
   }
+
+// Quản lý Customer
+  showCustomerList(): Observable<any>{
+    return this.httpClient.get(this.API + '/customer');
+  }
+
+  showCustomerDetail(id: number): Observable<any>{
+    return this.httpClient.get<any>(this.API + `/customer/${id}`)
+  }
+
+  controlCustomer(id: number):Observable<any> {
+    return this.httpClient.post(this.API + `/controlCustomer/${id}`, this.info)
+  }
+
 }

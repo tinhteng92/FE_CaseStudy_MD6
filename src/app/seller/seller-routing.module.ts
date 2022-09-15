@@ -47,21 +47,19 @@ const routes: Routes = [
       },
       {
         path: 'sale-management',
-        component: SaleManagementComponent, children: [
-
-          {
-            path: 'edit-sale',
-            component: EditSaleComponent
-          },
-          {
-            path: 'delete-sale',
-            component: DeleteSaleComponent
-          },
-        ]
+        component: SaleManagementComponent
       },
       {
         path: 'create-sale',
         component: CreateSaleComponent
+      },
+      {
+        path: 'edit-sale/:id',
+        component: EditSaleComponent
+      },
+      {
+        path: 'delete-sale/:id',
+        component: DeleteSaleComponent
       },
       {
         path: 'order-seller',

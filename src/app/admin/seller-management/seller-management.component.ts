@@ -23,8 +23,8 @@ export class SellerManagementComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.script.load('bundle').then(data => {
-    }).catch(error => console.log(error));
+    // this.script.load('bundle').then(data => {
+    // }).catch(error => console.log(error));
     this.adminService.showActiveSeller().subscribe((data) => {
       this.sellers = data
     })
@@ -44,7 +44,7 @@ export class SellerManagementComponent implements OnInit {
   deleteSeller(id: any) {
     this.adminService.deleteSeller(id).subscribe(data => {
       this.showActiveSeller();
-      this.router.navigate(['/admin']);
+      // this.router.navigate(['/admin']);
     }, e => console.log(e));
   }
 
@@ -68,7 +68,8 @@ export class SellerManagementComponent implements OnInit {
   controlSeller(id: number) {
     this.adminService.controlSeller(id).subscribe(data => {
       this.showActiveSeller();
-      this.router.navigate(['/admin']);
+      // this.router.navigate(['/admin']);
+
     }, e => console.log(e));
   }
 
