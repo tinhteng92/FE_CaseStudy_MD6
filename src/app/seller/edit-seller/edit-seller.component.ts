@@ -75,6 +75,7 @@ export class EditSellerComponent implements OnInit {
    editSeller(){
     let userID = this.loginService.getUserToken().id;
     this.editSellerForm.get("avatar")?.setValue(this.seller.avatar);
+    this.editSellerForm.get("imageBanner")?.setValue(this.seller.imageBanner);
     let sellerToEdit = this.editSellerForm.value;
      console.log("seller to edit: ", sellerToEdit)
      if(this.editSellerForm.valid){

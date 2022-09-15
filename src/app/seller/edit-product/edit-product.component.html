@@ -57,7 +57,7 @@
             </div>
             <div class="form-label-group mb-4">
               <input type="text" id="description" formControlName="description" class="form-control" >
-              <label for="description">Enter New Product's Description </label>
+              <label for="description">Enter New Product's Description (Current Price : {{product.description}} *)</label>
               <p style="color: red"
                  *ngIf="!editProductForm.get('description')?.valid && editProductForm.get('description')?.touched">
                 Required Information, give some product's description!</p>

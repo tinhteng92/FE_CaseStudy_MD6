@@ -70,7 +70,7 @@ const routes: Routes = [
         path: 'order-seller',
         component: OrderSellerComponent, children: [
           {
-            path: '',
+            path: 'order-seller-wait-confirm',
             component: OrderSellerWaitConfirmComponent, children: [
               {
                 path: 'order-seller-detail',

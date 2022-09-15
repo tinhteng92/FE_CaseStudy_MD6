@@ -47,7 +47,7 @@ import { EditSellerComponent } from './edit-seller/edit-seller.component';
     CreateSaleComponent,
     EditSaleComponent,
     DeleteSaleComponent,
-    EditSellerComponent
+    EditSellerComponent,
   ],
 
   imports: [

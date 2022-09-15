@@ -67,8 +67,14 @@
 
             <li class="nav-item">
               <a class="nav-link" routerLink="/seller/sale-management" id="sale-tab" data-toggle="tab" href="#sale" role="tab"
-                 aria-controls="favourites" aria-selected="false"><i class="icofont-heart"></i>
+                 aria-controls="favourites" aria-selected="false"><i class="icofont-sale-discount"></i>
                 Sale Management</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/seller/order-seller" id="order-tab" data-toggle="tab" href="#order" role="tab"
+                 aria-controls="order" aria-selected="false"><i class="icofont-business-man-alt-3"></i>
+                Order Management</a>
             </li>
           </ul>
         </div>
@@ -76,7 +82,7 @@
 
 
       <div class="col-md-9">
-        <div class="osahan-account-page-right rounded shadow-sm bg-white p-4 h-100">
+        <div class="osahan-account-page-right rounded shadow-sm bg-white p-4 h-100" style="width: auto">
           <div class="tab-content" id="myTabContent">
 
             <router-outlet></router-outlet>
