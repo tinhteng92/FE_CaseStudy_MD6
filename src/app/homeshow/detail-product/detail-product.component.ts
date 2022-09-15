@@ -80,11 +80,13 @@ export class DetailProductComponent implements OnInit {
 
             this.customerService.findSellerByProductId(id).subscribe(seller =>{
               console.log("sellllllllllleeeeeerrrrrr" + seller.id)
+              console.log("1a")
               if (!check && this.cartService.productListToCart[0].seller.id == seller.id){
                 this.productService.showDetailProduct(id).subscribe(data => {
                   this.product = data;
-
                   this.cartService.productListToCart.push(this.product);
+                  console.log("2a");
+                  console.log(this.cartService.productListToCart.length)
                   // localStorage.setItem("productListToCart",JSON.stringify(this.cartService.productListToCart));
                   //tính tổng tiền trong giỏ hàng
                   if (this.cartService.totalCart == 0) {
@@ -116,6 +118,8 @@ export class DetailProductComponent implements OnInit {
               this.product = data;
 
               this.cartService.productListToCart.push(this.product);
+              console.log("1b")
+              console.log(this.cartService.productListToCart.length)
               // localStorage.setItem("productListToCart",JSON.stringify(this.cartService.productListToCart));
               //tính tổng tiền trong giỏ hàng
               if (this.cartService.totalCart == 0) {
@@ -148,7 +152,6 @@ export class DetailProductComponent implements OnInit {
       alert("Please login before buying");
       this.router.navigate(["/login"]);
     }
-
   }
 
 }

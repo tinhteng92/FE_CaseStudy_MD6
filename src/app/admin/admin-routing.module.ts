@@ -6,6 +6,8 @@ import {NotAllowSellerListComponent} from "./not-allow-seller-list/not-allow-sel
 import {DetailSellerManagementComponent} from "./detail-seller-management/detail-seller-management.component";
 import {WaitingAcceptSellerComponent} from "./waiting-accept-seller/waiting-accept-seller.component";
 import {SellerDetailComponent} from "./seller-detail/seller-detail.component";
+import {CustomerManagementComponent} from "./customer-management/customer-management.component";
+import {CustomerDetailComponent} from "./customer-detail/customer-detail.component";
 
 const routes: Routes = [
   {
@@ -27,13 +29,18 @@ const routes: Routes = [
         path: 'seller-detail/:id',
         component: SellerDetailComponent
       },
+      {
+        path: 'customer',
+        component: CustomerManagementComponent
+      },
+      {
+        path: 'customer-detail/:id',
+        component: CustomerDetailComponent
+      },
 
     ]
   },
-  {
-    path: 'detail-seller',
-    component: DetailSellerManagementComponent
-  }
+
 ];
 
 @NgModule({

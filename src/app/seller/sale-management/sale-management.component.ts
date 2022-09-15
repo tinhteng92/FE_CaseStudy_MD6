@@ -10,7 +10,7 @@ import {ScriptService} from "../../script.service";
   styleUrls: ['./sale-management.component.css']
 })
 export class SaleManagementComponent implements OnInit {
-
+  p: any;
   saleList: Sale[] = [];
   constructor(private script: ScriptService, private sellerService: SellerService, public loginService : LoginService) {
     this.script.load('bundle', 'owl-carousel', 'min', 'select2','custom', 'loader').then(data => {
