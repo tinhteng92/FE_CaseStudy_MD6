@@ -17,6 +17,10 @@ import {EditSaleComponent} from "./edit-sale/edit-sale.component";
 import {DeleteSaleComponent} from "./delete-sale/delete-sale.component";
 import {DeleteProductComponent} from "./delete-product/delete-product.component";
 import {EditSellerComponent} from "./edit-seller/edit-seller.component";
+import {OrderSellerConfirmedComponent} from "./order-seller-confirmed/order-seller-confirmed.component";
+import {
+  OrderSellerConfirmedDetailComponent
+} from "./order-seller-confirmed-detail/order-seller-confirmed-detail.component";
 
 const routes: Routes = [
   { path: '',
@@ -67,8 +71,21 @@ const routes: Routes = [
         component: DeleteSaleComponent
       },
       {
+        path: 'order-seller-confirmed',
+        component: OrderSellerConfirmedComponent, children: [
+          {
+            path: 'order-seller-confirmed-detail/:id',
+            component: OrderSellerConfirmedDetailComponent
+          }
+        ]
+      },
+      {
         path: 'order-seller',
         component: OrderSellerComponent, children: [
+          {
+            path: 'order-seller-detail/:id',
+            component: OrderSellerDetailComponent
+          },
           {
             path: 'order-seller-wait-confirm',
             component: OrderSellerWaitConfirmComponent, children: [

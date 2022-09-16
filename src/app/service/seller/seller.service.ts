@@ -73,12 +73,16 @@ export class SellerService {
     return this.httpClient.get(this.API + `/orders/${idSeller}`)
   }
 
+  showOrderConfirmedList(idSeller: number): Observable<any>{
+    return this.httpClient.get(this.API + `/orders-confirmed/${idSeller}`)
+  }
+
   showOrderDetail(idOrder: number): Observable<any> {
-    return this.httpClient.get(this.API + `order-detail/${idOrder}`)
+    return this.httpClient.get(this.API + `/order-detail/${idOrder}`)
   }
 
   confirmOrder(idOrder: number): Observable<any> {
-    return this.httpClient.get(this.API + `confirm-order/${idOrder}`)
+    return this.httpClient.get(this.API + `/confirm-order/${idOrder}`)
   }
 
   editSeller(seller: any, idSeller: number):Observable<any>{

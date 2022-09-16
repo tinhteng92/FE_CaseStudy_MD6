@@ -15,10 +15,18 @@ export class OrderSellerComponent implements OnInit {
   constructor(private sellerService: SellerService, public loginService : LoginService) { }
 
   ngOnInit(): void {
+    this.showOrderListNotConfirm()
+  }
+  showOrderListNotConfirm(){
     this.sellerService.showOrderList(this.loginService.getUserToken().id).subscribe((data) => {
       this.orderList = data;
       console.log(this.orderList)
     })
   }
-
+  confirmOrder(id: number){
+    this.sellerService.confirmOrder(id).subscribe(data =>{
+        alert("confirm thành công")
+      this.showOrderListNotConfirm()
+    })
+  }
 }
