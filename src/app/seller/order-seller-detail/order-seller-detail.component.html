@@ -2,7 +2,7 @@
 <div class="modal fade" id="order-seller-detail-modal" tabindex="-1" role="dialog" aria-labelledby="add-address"
      aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content" style="width: 1500px;position: relative;right: 100px">
+    <div class="modal-content" style="width: 2000px;position: relative;right: 50px">
       <div class="modal-header">
         <h4 class="modal-title" id="add-address" style="color: #dc3545">Order's Detail</h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -26,27 +26,32 @@
 <!--        </div>-->
         <div class="row">
           <div class="col-md-6">
-            <p class="mb-1 text-black">Mã đơn hàng: <strong>#25102589748</strong></p>
-            <p class="mb-1">Ngày đặt hàng: <strong>12/11/2018, 06:26 PM</strong></p>
-            <p class="mb-1">Thời điểm giao hàng dự kiến: <strong>12/11/2018, 07:18 PM</strong></p>
-            <p class="mb-1">Trạng thái đơn: <strong class="text-success">Chờ lấy hàng</strong></p>
+            <p class="mb-1 text-black">Code orders: <strong>#000000000{{orderDetail[0].id}}</strong></p>
+            <p class="mb-1">Invoice creation date : <strong>12/11/2018, 06:26 PM{{orderDetail[0].order.createAt}}</strong></p>
+            <p class="mb-1">Estimated delivery time: <strong>3 days from the date of invoice confirmation</strong></p>
+            <p class="mb-1">Order Status: <strong
+              class="text-warning">{{orderDetail[0].order.orderStatus.nameOrderStatus}}</strong></p>
           </div>
           <div class="col-md-6">
-            <p class="mb-1 text-black">Địa chỉ nhận hàng:</p>
-            <p class="mb-1 text-primary"><strong>Công ty</strong></p>
-            <p class="mb-1">100 Thạch Thị Thanh, P. Tân Định, Quận 1, TP. HCM
+            <p class="mb-1 text-black">Recipient's name : <strong class="mb-1 text-primary">{{orderDetail[0].order.customer.name}}</strong></p>
+            <p class="mb-1 text-black">Recipient's phone number : {{orderDetail[0].order.customer.phoneNumber}}</p>
+            <p class="mb-1 text-black">Delivery address :</p>
+            <p class="mb-1 text-primary"><strong>Private House</strong></p>
+            <p class="mb-1">{{orderDetail[0].order.customer.address}}
             </p>
           </div>
         </div>
         <div class="row mt-5">
           <div class="col-md-12">
-            <p class="mb-1">Cửa hàng:</p>
-            <h6 class="mb-1 text-black"><strong>Cơm mẹ nấu</strong></h6>
-            <p class="mb-1">8 Ngõ 164 Vương Thừa Vũ, Thanh Xuân, Hà Nội</p>
+            <p class="mb-1">Shop's Name:</p>
+            <h6 class="mb-1 text-black"><strong>{{orderDetail[0].order.seller.name}}</strong></h6>
+            <p class="mb-1">Send Form: {{orderDetail[0].order.seller.address}}</p>
+            <p class="mb-1">Phone: {{orderDetail[0].order.seller.phoneNumber}}</p>
             <table class="table mt-3 mb-0">
               <thead class="thead-light">
               <tr>
                 <th>#</th>
+                <th class="text-black font-weight-bold" scope="col">ID's Order</th>
                 <th class="text-black font-weight-bold" scope="col">Items</th>
                 <th class="text-black font-weight-bold" scope="col">Category</th>
                 <th class="text-right text-black font-weight-bold" scope="col">Description</th>
@@ -59,69 +64,83 @@
               <tbody>
               <tr *ngFor="let order of orderDetail, index as i">
                 <td>{{i + 1}}</td>
+                <td>{{order.id}}</td>
                 <td>{{order.product.name}}</td>
-                <td>{{order.product.productCategory.nameCategory}}</td>
+                <td class="text-right">{{order.product.productCategory.nameCategory}}</td>
                 <td class="text-right">{{order.product.description}}</td>
-                <td class="text-right"><img style="width: 50px;height: 40px;border-radius: 4px;" src="{{order.product.image}}"></td>
+                <td class="text-right"><img style="width: 50px;height: 40px;border-radius: 4px;"
+                                            src="{{order.product.image}}"></td>
                 <td class="text-right">{{order.quantity}}</td>
-                <td class="text-right">{{order.product.price}}</td>
-                <td class="text-right">{{order.price}}</td>
+                <td class="text-right">{{order.product.price}}$</td>
+                <td class="text-right">{{order.price}}$</td>
               </tr>
-<!--              <tr>-->
-<!--                <td>Bún bò Huế tô đặc biệt</td>-->
-<!--                <td class="text-right">03</td>-->
-<!--                <td class="text-right">125.000</td>-->
-<!--              </tr>-->
-<!--              <tr>-->
-<!--                <td>Trà sữa con hươu 2 sừng</td>-->
-<!--                <td class="text-right">05</td>-->
-<!--                <td class="text-right">400.000</td>-->
-<!--              </tr>-->
-<!--              <tr>-->
-<!--                <td></td>-->
-<!--                <td></td>-->
-<!--                <td></td>-->
-<!--                <td></td>-->
-<!--                <td></td>-->
-<!--                <td class="text-right" colspan="2">Total bill amount:</td>-->
-<!--                <td class="text-right">{{orderDetail[0].order.priceTotal}}</td>-->
-<!--              </tr>-->
-<!--              <tr>-->
-<!--                <td class="text-right" colspan="2">VAT:</td>-->
-<!--                <td class="text-right"> 42.000</td>-->
-<!--              </tr>-->
-<!--              <tr>-->
-<!--                <td class="text-right" colspan="2">Phí giao hàng:</td>-->
-<!--                <td class="text-right"> 25.000</td>-->
-<!--              </tr>-->
-<!--              <tr>-->
-<!--                <td></td>-->
-<!--                <td></td>-->
-<!--                <td></td>-->
-<!--                <td></td>-->
-<!--                <td></td>-->
-<!--                <td class="text-right" colspan="2">Giảm giá (GURDEEP50):</td>-->
-<!--                <td class="text-right"> 120.000</td>-->
-<!--              </tr>-->
-<!--              <tr>-->
-<!--                <td class="text-right" colspan="2">-->
-<!--                  <h6 class="text-success">Tổng thanh toán:</h6>-->
-<!--                </td>-->
-<!--                <td class="text-right">-->
-<!--                  <h6 class="text-success"> 230.000</h6>-->
-<!--                </td>-->
-<!--              </tr>-->
+              <!--              <tr>-->
+              <!--                <td>Bún bò Huế tô đặc biệt</td>-->
+              <!--                <td class="text-right">03</td>-->
+              <!--                <td class="text-right">125.000</td>-->
+              <!--              </tr>-->
+              <!--              <tr>-->
+              <!--                <td>Trà sữa con hươu 2 sừng</td>-->
+              <!--                <td class="text-right">05</td>-->
+              <!--                <td class="text-right">400.000</td>-->
+              <!--              </tr>-->
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td class="text-right" colspan="2">Apply discount:</td>
+                <td class="text-right">{{orderDetail[0].order.totalDiscount}}$</td>
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td class="text-right" colspan="2">Total amount in cart:</td>
+                <td class="text-right">{{orderDetail[0].order.totalCart}}$</td>
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td class="text-right" colspan="2"><h6 class="text-success">Total bill amount:</h6></td>
+                <td class="text-right"><h6 >{{orderDetail[0].order.priceTotal}}$</h6></td>
+              </tr>
+              <!--              <tr>-->
+              <!--                <td class="text-right" colspan="2">VAT:</td>-->
+              <!--                <td class="text-right"> 42.000</td>-->
+              <!--              </tr>-->
+              <!--              <tr>-->
+              <!--                <td class="text-right" colspan="2">Phí giao hàng:</td>-->
+              <!--                <td class="text-right"> 25.000</td>-->
+              <!--              </tr>-->
+              <!--              <tr>-->
+              <!--                <td></td>-->
+              <!--                <td></td>-->
+              <!--                <td></td>-->
+              <!--                <td></td>-->
+              <!--                <td></td>-->
+              <!--                <td class="text-right" colspan="2">Giảm giá (GURDEEP50):</td>-->
+              <!--                <td class="text-right"> 120.000</td>-->
+              <!--              </tr>-->
+              <!--              <tr>-->
+              <!--                <td class="text-right" colspan="2">-->
+              <!--                  <h6 class="text-success">Tổng thanh toán:</h6>-->
+              <!--                </td>-->
+              <!--                <td class="text-right">-->
+              <!--                  <h6 class="text-success"> 230.000</h6>-->
+              <!--                </td>-->
+              <!--              </tr>-->
               </tbody>
             </table>
-            <div class="text-right">
-              <a class="text-right" colspan="2">Apply discount:</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              <a class="text-left">{{orderDetail[0].order}}</a>
-            </div>
-            <div class="text-right">
-              <a class="text-right" colspan="2">Total bill amount:</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              <a class="text-left">{{orderDetail[0].order.priceTotal}}</a>
-            </div>
-
           </div>
         </div>
       </div>
