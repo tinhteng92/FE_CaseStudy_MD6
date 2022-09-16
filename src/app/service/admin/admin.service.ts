@@ -52,4 +52,8 @@ export class AdminService {
     return this.httpClient.post(this.API + `/controlCustomer/${id}`, this.info)
   }
 
+  searchCusByPhone(phone: string): Observable<any> {
+    return this.httpClient.post(this.API + '/customer-phone', phone)
+  }
+
 }

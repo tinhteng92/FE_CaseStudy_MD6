@@ -26,14 +26,27 @@ export class CustomerManagementComponent implements OnInit {
     })
   }
 
+  // search(search: string) {
+  //   this.adminService.showCustomerList().subscribe(customers => {
+  //
+  //     let searchCustomer: Customer[] = [];
+  //     for (const cus of customers) {
+  //       if (cus.name?.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+  //         .replace(/đ/g, 'd').replace(/Đ/g, 'D').includes(search.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+  //           .replace(/đ/g, 'd').replace(/Đ/g, 'D'))) {
+  //         searchCustomer.push(cus)
+  //       }
+  //     }
+  //     this.customerList = searchCustomer;
+  //   })
+  // }
+
   search(search: string) {
     this.adminService.showCustomerList().subscribe(customers => {
 
       let searchCustomer: Customer[] = [];
       for (const cus of customers) {
-        if (cus.name?.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')
-          .replace(/đ/g, 'd').replace(/Đ/g, 'D').includes(search.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')
-            .replace(/đ/g, 'd').replace(/Đ/g, 'D'))) {
+        if (cus.phoneNumber?.includes(search)) {
           searchCustomer.push(cus)
         }
       }
