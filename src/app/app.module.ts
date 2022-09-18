@@ -22,6 +22,7 @@ import {AngularFireModule} from "@angular/fire/compat";
 import {environment} from "../environments/environment";
 import {NgxPaginationModule} from "ngx-pagination";
 import {CarouselModule} from "ngx-owl-carousel-o";
+import {NgxPrintModule} from 'ngx-print'
 
 @NgModule({
     declarations: [
@@ -51,7 +52,8 @@ import {CarouselModule} from "ngx-owl-carousel-o";
         CarouselModule,
         AngularFireStorageModule,
         AngularFireModule.initializeApp(environment.firebaseConfig, "cloud"),
-        NgxPaginationModule
+        NgxPaginationModule,
+      NgxPrintModule,
     ],
 
     providers: [

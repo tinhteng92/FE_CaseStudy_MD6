@@ -59,27 +59,11 @@
           </div>
           <div class="filters-body">
             <div id="accordion">
-              <div class="filters-card border-bottom p-4">
-
-                <div class="custom-control custom-radio">
-                  <input type="radio" id="customRadio1" name="customRadio"
-                         class="custom-control-input" checked="">
-                  <label class="custom-control-label" for="customRadio1">Fruits</label>
-                </div>
-                <div class="custom-control custom-radio mt-1 mb-1">
-                  <input type="radio" id="customRadio2" name="customRadio"
-                         class="custom-control-input">
-                  <label class="custom-control-label" for="customRadio2">Vegetables</label>
-                </div>
-                <div class="custom-control custom-radio">
-                  <input type="radio" id="customRadio3" name="customRadio"
-                         class="custom-control-input" checked="">
-                  <label class="custom-control-label" for="customRadio3">Juices</label>
-                </div>
-                <div class="custom-control custom-radio">
-                  <input type="radio" id="customRadio4" name="customRadio"
-                         class="custom-control-input" checked="">
-                  <label class="custom-control-label" for="customRadio4">Dried</label>
+              <div class="filters-card border-bottom p-4" >
+                <div class="custom-control custom-radio" *ngFor="let category of categoryList">
+                  <input type="radio" id="{{category.nameCategory}}" name="customRadio" [value]="category.nameCategory"
+                       (change)="filterByCategory(category.id)"   checked="">
+                  <label  for="{{category.nameCategory}}">{{category.nameCategory}}</label>
                 </div>
               </div>
             </div>

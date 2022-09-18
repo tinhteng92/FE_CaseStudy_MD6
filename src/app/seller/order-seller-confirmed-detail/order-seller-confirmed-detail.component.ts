@@ -1,15 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute, Router} from "@angular/router";
-import {Order} from "../../model/Order";
-import {SellerService} from "../../service/seller/seller.service";
 import {OrderDetail} from "../../model/OrderDetail";
+import {ActivatedRoute, Router} from "@angular/router";
+import {SellerService} from "../../service/seller/seller.service";
 
 @Component({
-  selector: 'app-order-seller-detail',
-  templateUrl: './order-seller-detail.component.html',
-  styleUrls: ['./order-seller-detail.component.css']
+  selector: 'app-order-seller-confirmed-detail',
+  templateUrl: './order-seller-confirmed-detail.component.html',
+  styleUrls: ['./order-seller-confirmed-detail.component.css']
 })
-export class OrderSellerDetailComponent implements OnInit {
+export class OrderSellerConfirmedDetailComponent implements OnInit {
 
   id: any;
   orderDetail: OrderDetail[] = [];
@@ -31,4 +30,5 @@ export class OrderSellerDetailComponent implements OnInit {
   cancel(){
     this.router.navigate(["/seller/order-seller"]);
   }
+
 }

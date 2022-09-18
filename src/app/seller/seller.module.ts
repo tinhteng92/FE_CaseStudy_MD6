@@ -25,6 +25,11 @@ import { EditSaleComponent } from './edit-sale/edit-sale.component';
 import { DeleteSaleComponent } from './delete-sale/delete-sale.component';
 import {DeleteProductComponent} from "./delete-product/delete-product.component";
 import { EditSellerComponent } from './edit-seller/edit-seller.component';
+import { OrderSellerConfirmedComponent } from './order-seller-confirmed/order-seller-confirmed.component';
+import { OrderSellerConfirmedDetailComponent } from './order-seller-confirmed-detail/order-seller-confirmed-detail.component';
+import {NgxPrintModule} from 'ngx-print'
+import {HttpClientModule} from "@angular/common/http";
+
 
 
 @NgModule({
@@ -48,6 +53,8 @@ import { EditSellerComponent } from './edit-seller/edit-seller.component';
     EditSaleComponent,
     DeleteSaleComponent,
     EditSellerComponent,
+    OrderSellerConfirmedComponent,
+    OrderSellerConfirmedDetailComponent,
   ],
 
   imports: [
@@ -57,6 +64,8 @@ import { EditSellerComponent } from './edit-seller/edit-seller.component';
     ReactiveFormsModule,
     NgxPaginationModule,
     CarouselModule,
+    NgxPrintModule,
+    HttpClientModule
   ]
 })
 export class SellerModule { }

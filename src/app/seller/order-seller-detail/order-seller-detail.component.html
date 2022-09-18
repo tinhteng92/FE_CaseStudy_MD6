@@ -1,1 +1,146 @@
-<p>order-seller-detail works!</p>
+<p>delete-product works!</p>
+<div class="modal fade" id="order-seller-detail-modal" tabindex="-1" role="dialog" aria-labelledby="add-address"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content" style="width: 2000px;position: relative;right: 130px">
+      <div class="modal-header">
+        <h4 class="modal-title" id="add-address" style="color: #dc3545">Order's Detail</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true" (click)="cancel()" style="font-size: 35px">&times;</span>
+        </button>
+      </div>
+      <div class="p-5 osahan-invoice bg-white shadow-sm">
+<!--        <div class="row mb-5 pb-3 ">-->
+<!--&lt;!&ndash;          <div class="col-md-8 col-10">&ndash;&gt;-->
+<!--&lt;!&ndash;            <h3 class="mt-0">You are on the invoice details page <strong class="text-secondary">Osahan&ndash;&gt;-->
+<!--&lt;!&ndash;              Eat</strong>,&ndash;&gt;-->
+<!--&lt;!&ndash;              Here are your order details:</h3>&ndash;&gt;-->
+<!--&lt;!&ndash;          </div>&ndash;&gt;-->
+<!--&lt;!&ndash;          <div class="col-md-4 col-2 pl-0 text-right">&ndash;&gt;-->
+<!--&lt;!&ndash;            <p class="mb-4 mt-2">&ndash;&gt;-->
+<!--&lt;!&ndash;              <a class="text-primary font-weight-bold" href="#"><i class="icofont-print"></i>&ndash;&gt;-->
+<!--&lt;!&ndash;                PRINT</a>&ndash;&gt;-->
+<!--&lt;!&ndash;            </p>&ndash;&gt;-->
+<!--&lt;!&ndash;            <img alt="logo" src="assets/img/favicon.png">&ndash;&gt;-->
+<!--&lt;!&ndash;          </div>&ndash;&gt;-->
+<!--        </div>-->
+        <div class="row">
+          <div class="col-md-6">
+            <p class="mb-1 text-black">Code orders: <strong>#000000000{{orderDetail[0].id}}</strong></p>
+            <p class="mb-1">Invoice creation date : <strong>{{orderDetail[0].order.createAt | date :  "dd/MM/y, h:mm a" }}</strong></p>
+<!--            <p class="mb-1">Estimated delivery time: <strong>3 days from the date of invoice confirmation</strong></p>-->
+            <p class="mb-1">Order Status: <strong
+              class="text-warning">{{orderDetail[0].order.orderStatus.nameOrderStatus}}</strong></p>
+          </div>
+          <div class="col-md-6">
+            <p class="mb-1 text-black">Recipient's name : <strong class="mb-1 text-primary">{{orderDetail[0].order.customer.name}}</strong></p>
+            <p class="mb-1 text-black">Recipient's phone number : {{orderDetail[0].order.customer.phoneNumber}}</p>
+            <p class="mb-1 text-black">Delivery address :</p>
+            <p class="mb-1 text-primary"><strong>Private House</strong></p>
+            <p class="mb-1">{{orderDetail[0].order.customer.address}}
+            </p>
+          </div>
+        </div>
+        <div class="row mt-5">
+          <div class="col-md-12">
+            <p class="mb-1">Shop's Name:</p>
+<!--            <h6 class="mb-1 text-black"><strong>{{orderDetail[0].order.seller.name}}</strong></h6>-->
+<!--            <p class="mb-1">Send Form: {{orderDetail[0].order.seller.address}}</p>-->
+<!--            <p class="mb-1">Phone: {{orderDetail[0].order.seller.phoneNumber}}</p>-->
+            <table class="table mt-3 mb-0">
+              <thead class="thead-light">
+              <tr>
+                <th>#</th>
+                <th class="text-black font-weight-bold" scope="col">ID's Order</th>
+                <th class="text-black font-weight-bold" scope="col">Items</th>
+                <th class="text-black font-weight-bold" scope="col">Item's Id</th>
+                <th class="text-black font-weight-bold" scope="col">Category</th>
+                <th class="text-right text-black font-weight-bold" scope="col">Description</th>
+                <th class="text-black font-weight-bold" scope="col">Image</th>
+                <th class="text-right text-black font-weight-bold" scope="col">Amount</th>
+                <th class="text-right text-black font-weight-bold" scope="col">Price</th>
+                <th class="text-right text-black font-weight-bold" scope="col">Total</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let order of orderDetail, index as i">
+                <td>{{i + 1}}</td>
+                <td>000000000{{order.id}}</td>
+                <td>{{order.product.name}}</td>
+                <td>{{order.product.id}}</td>
+                <td class="text-right">{{order.product.productCategory.nameCategory}}</td>
+                <td class="text-right">{{order.product.description}}</td>
+                <td class="text-right"><img style="width: 50px;height: 40px;border-radius: 4px;"
+                                            src="{{order.product.image}}"></td>
+                <td class="text-right">{{order.quantity}}</td>
+                <td class="text-right">{{order.product.price}}$</td>
+                <td class="text-right">{{order.price}}$</td>
+              </tr>
+<!--              <tr>-->
+<!--                <td></td>-->
+<!--                <td></td>-->
+<!--                <td></td>-->
+<!--                <td></td>-->
+<!--                <td></td>-->
+<!--                <td></td>-->
+<!--                <td class="text-right" colspan="2">Apply discount:</td>-->
+<!--                <td class="text-right">{{orderDetail[0].order.totalDiscount}}$</td>-->
+<!--              </tr>-->
+<!--              <tr>-->
+<!--                <td></td>-->
+<!--                <td></td>-->
+<!--                <td></td>-->
+<!--                <td></td>-->
+<!--                <td></td>-->
+<!--                <td></td>-->
+<!--                <td class="text-right" colspan="2">Total amount in cart:</td>-->
+<!--                <td class="text-right">{{orderDetail[0].order.totalCart}}$</td>-->
+<!--              </tr>-->
+<!--              <tr>-->
+<!--                <td></td>-->
+<!--                <td></td>-->
+<!--                <td></td>-->
+<!--                <td></td>-->
+<!--                <td></td>-->
+<!--                <td></td>-->
+<!--                <td class="text-right" colspan="2"><h6 class="text-success">Total bill amount:</h6></td>-->
+<!--                <td class="text-right"><h6 >{{orderDetail[0].order.priceTotal}}$</h6></td>-->
+<!--              </tr>-->
+              <!--              <tr>-->
+              <!--                <td class="text-right" colspan="2">VAT:</td>-->
+              <!--                <td class="text-right"> 42.000</td>-->
+              <!--              </tr>-->
+              <!--              <tr>-->
+              <!--                <td class="text-right" colspan="2">Phí giao hàng:</td>-->
+              <!--                <td class="text-right"> 25.000</td>-->
+              <!--              </tr>-->
+              <!--              <tr>-->
+              <!--                <td></td>-->
+              <!--                <td></td>-->
+              <!--                <td></td>-->
+              <!--                <td></td>-->
+              <!--                <td></td>-->
+              <!--                <td class="text-right" colspan="2">Giảm giá (GURDEEP50):</td>-->
+              <!--                <td class="text-right"> 120.000</td>-->
+              <!--              </tr>-->
+              <!--              <tr>-->
+              <!--                <td class="text-right" colspan="2">-->
+              <!--                  <h6 class="text-success">Tổng thanh toán:</h6>-->
+              <!--                </td>-->
+              <!--                <td class="text-right">-->
+              <!--                  <h6 class="text-success"> 230.000</h6>-->
+              <!--                </td>-->
+              <!--              </tr>-->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn d-flex w-50 text-center justify-content-center btn-outline-primary" (click)="cancel()"
+                data-dismiss="modal">CANCEL</button>
+      </div>
+    </div>
+  </div>
+</div>
