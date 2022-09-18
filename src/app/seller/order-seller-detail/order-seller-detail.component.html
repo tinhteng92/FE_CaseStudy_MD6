@@ -28,7 +28,7 @@
           <div class="col-md-6">
             <p class="mb-1 text-black">Code orders: <strong>#000000000{{orderDetail[0].id}}</strong></p>
             <p class="mb-1">Invoice creation date : <strong>12/11/2018, 06:26 PM{{orderDetail[0].order.createAt}}</strong></p>
-            <p class="mb-1">Estimated delivery time: <strong>3 days from the date of invoice confirmation</strong></p>
+<!--            <p class="mb-1">Estimated delivery time: <strong>3 days from the date of invoice confirmation</strong></p>-->
             <p class="mb-1">Order Status: <strong
               class="text-warning">{{orderDetail[0].order.orderStatus.nameOrderStatus}}</strong></p>
           </div>
@@ -44,9 +44,9 @@
         <div class="row mt-5">
           <div class="col-md-12">
             <p class="mb-1">Shop's Name:</p>
-            <h6 class="mb-1 text-black"><strong>{{orderDetail[0].order.seller.name}}</strong></h6>
-            <p class="mb-1">Send Form: {{orderDetail[0].order.seller.address}}</p>
-            <p class="mb-1">Phone: {{orderDetail[0].order.seller.phoneNumber}}</p>
+<!--            <h6 class="mb-1 text-black"><strong>{{orderDetail[0].order.seller.name}}</strong></h6>-->
+<!--            <p class="mb-1">Send Form: {{orderDetail[0].order.seller.address}}</p>-->
+<!--            <p class="mb-1">Phone: {{orderDetail[0].order.seller.phoneNumber}}</p>-->
             <table class="table mt-3 mb-0">
               <thead class="thead-light">
               <tr>
@@ -74,46 +74,36 @@
                 <td class="text-right">{{order.product.price}}$</td>
                 <td class="text-right">{{order.price}}$</td>
               </tr>
-              <!--              <tr>-->
-              <!--                <td>Bún bò Huế tô đặc biệt</td>-->
-              <!--                <td class="text-right">03</td>-->
-              <!--                <td class="text-right">125.000</td>-->
-              <!--              </tr>-->
-              <!--              <tr>-->
-              <!--                <td>Trà sữa con hươu 2 sừng</td>-->
-              <!--                <td class="text-right">05</td>-->
-              <!--                <td class="text-right">400.000</td>-->
-              <!--              </tr>-->
-              <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td class="text-right" colspan="2">Apply discount:</td>
-                <td class="text-right">{{orderDetail[0].order.totalDiscount}}$</td>
-              </tr>
-              <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td class="text-right" colspan="2">Total amount in cart:</td>
-                <td class="text-right">{{orderDetail[0].order.totalCart}}$</td>
-              </tr>
-              <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td class="text-right" colspan="2"><h6 class="text-success">Total bill amount:</h6></td>
-                <td class="text-right"><h6 >{{orderDetail[0].order.priceTotal}}$</h6></td>
-              </tr>
+<!--              <tr>-->
+<!--                <td></td>-->
+<!--                <td></td>-->
+<!--                <td></td>-->
+<!--                <td></td>-->
+<!--                <td></td>-->
+<!--                <td></td>-->
+<!--                <td class="text-right" colspan="2">Apply discount:</td>-->
+<!--                <td class="text-right">{{orderDetail[0].order.totalDiscount}}$</td>-->
+<!--              </tr>-->
+<!--              <tr>-->
+<!--                <td></td>-->
+<!--                <td></td>-->
+<!--                <td></td>-->
+<!--                <td></td>-->
+<!--                <td></td>-->
+<!--                <td></td>-->
+<!--                <td class="text-right" colspan="2">Total amount in cart:</td>-->
+<!--                <td class="text-right">{{orderDetail[0].order.totalCart}}$</td>-->
+<!--              </tr>-->
+<!--              <tr>-->
+<!--                <td></td>-->
+<!--                <td></td>-->
+<!--                <td></td>-->
+<!--                <td></td>-->
+<!--                <td></td>-->
+<!--                <td></td>-->
+<!--                <td class="text-right" colspan="2"><h6 class="text-success">Total bill amount:</h6></td>-->
+<!--                <td class="text-right"><h6 >{{orderDetail[0].order.priceTotal}}$</h6></td>-->
+<!--              </tr>-->
               <!--              <tr>-->
               <!--                <td class="text-right" colspan="2">VAT:</td>-->
               <!--                <td class="text-right"> 42.000</td>-->
