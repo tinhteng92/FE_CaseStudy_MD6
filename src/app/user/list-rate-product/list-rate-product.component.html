@@ -199,43 +199,29 @@
     <div class="table-wrapper" style="width: 750px !important;">
       <div class="table-title">
         <div class="row">
-          <div class="col-xs-5">
-            <h2><b>Order list</b></h2>
-          </div>
-          <!--          <div class="search-box">-->
-          <!--            <i class="icofont-search"></i>-->
-          <!--            <input type="text" class="form-control"  #find (input)="search(find.value)" placeholder="Search&hellip;">-->
-          <!--          </div>-->
-<!--          <div class="col-xs-7">-->
-<!--            <a routerLink="/seller/create-sale" class="btn btn-primary"><i class="material-icons">&#xE147;</i> <span>Add New Sale</span></a>-->
-<!--            &lt;!&ndash;            <a href="#" class="btn btn-primary"><i class="material-icons">&#xE24D;</i> <span>Export to Excel</span></a>&ndash;&gt;-->
-<!--          </div>-->
+
         </div>
       </div>
       <table class="table table-striped table-hover">
         <thead>
         <tr>
           <th>#</th>
-          <th>Order Date</th>
-          <th>Status</th>
+          <th>Product</th>
+          <th>Quantity</th>
           <th>Total price</th>
-          <th>Detail</th>
           <th>Rate</th>
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let order of orderList |paginate: {itemsPerPage :5, currentPage :p}, index as i" id="myTab">
+        <tr *ngFor="let od of orderDetail |paginate: {itemsPerPage :5, currentPage :p}, index as i" id="myTab">
           <td>{{i + 1}}</td>
-          <td><b>{{order.createAt}}</b></td>
-          <td>{{order.orderStatus.nameOrderStatus}}</td>
-          <td>{{order.priceTotal}}</td>
-          <td><a class="text-success" [routerLink]="['/user/order-detail-user', order.id]">Detail</a></td>
-          <td><a class="text-warning" [routerLink]="['/user/list-rate-product', order.id]">Rate</a></td>
-          <!--          <td *ngIf="sale?.status == false"><span class="status text-warning"  >&bull;</span> Expired</td>-->
-
-<!--          <a [routerLink]="['/seller/edit-sale',sale.id]" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>-->
-<!--          <a [routerLink]="['/seller/delete-sale',sale.id]"class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>-->
-
+          <td>{{od.product.name}}</td>
+          <td>{{od.quantity}}</td>
+          <td>{{od.price}}</td>
+<!--          <td><a class="text-success" [routerLink]="['/user/rate-product', od.product.id]">Rate</a></td>-->
+          <td><a class="text-success" [routerLink]="['/detail-product', od.product.id]" (click)="allowComment(od.product.id)">Rate</a></td>
+<!--          <td *ngIf="sale?.status === true"><span class="status text-success"  >&bull;</span> Active</td>-->
+<!--          <td *ngIf="sale?.status == false"><span class="status text-warning"  >&bull;</span> Expired</td>-->
 
         </tr>
 
@@ -250,3 +236,4 @@
     </div>
   </div>
 </div>
+
