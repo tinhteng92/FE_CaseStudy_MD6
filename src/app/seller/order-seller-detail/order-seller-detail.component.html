@@ -2,7 +2,7 @@
 <div class="modal fade" id="order-seller-detail-modal" tabindex="-1" role="dialog" aria-labelledby="add-address"
      aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content" style="width: 2000px;position: relative;right: 50px">
+    <div class="modal-content" style="width: 2000px;position: relative;right: 130px">
       <div class="modal-header">
         <h4 class="modal-title" id="add-address" style="color: #dc3545">Order's Detail</h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -53,6 +53,7 @@
                 <th>#</th>
                 <th class="text-black font-weight-bold" scope="col">ID's Order</th>
                 <th class="text-black font-weight-bold" scope="col">Items</th>
+                <th class="text-black font-weight-bold" scope="col">Item's Id</th>
                 <th class="text-black font-weight-bold" scope="col">Category</th>
                 <th class="text-right text-black font-weight-bold" scope="col">Description</th>
                 <th class="text-black font-weight-bold" scope="col">Image</th>
@@ -64,8 +65,9 @@
               <tbody>
               <tr *ngFor="let order of orderDetail, index as i">
                 <td>{{i + 1}}</td>
-                <td>{{order.id}}</td>
+                <td>000000000{{order.id}}</td>
                 <td>{{order.product.name}}</td>
+                <td>{{order.product.id}}</td>
                 <td class="text-right">{{order.product.productCategory.nameCategory}}</td>
                 <td class="text-right">{{order.product.description}}</td>
                 <td class="text-right"><img style="width: 50px;height: 40px;border-radius: 4px;"

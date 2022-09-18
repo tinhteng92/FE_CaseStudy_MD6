@@ -28,20 +28,22 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        component: ProductListComponent
+        component: ProductListComponent, children: [
+          {
+            path: 'delete-product/:id',
+            component: DeleteProductComponent
+          },
+          {
+            path: 'edit-product/:id',
+            component: EditProductComponent
+          },
+        ]
       },
       {
         path: 'create-product',
         component: CreateProductComponent
       },
-      {
-        path: 'delete-product/:id',
-        component: DeleteProductComponent
-      },
-      {
-        path: 'edit-product/:id',
-        component: EditProductComponent
-      },
+
       {
         path: 'edit-seller/:id',
         component: EditSellerComponent

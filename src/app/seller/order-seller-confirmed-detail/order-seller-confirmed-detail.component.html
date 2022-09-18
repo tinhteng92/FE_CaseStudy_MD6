@@ -3,7 +3,7 @@
      aria-labelledby="add-address"
      aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content" style="width: 2000px;position: relative;right: 50px">
+    <div class="modal-content" style="width: 2000px;position: relative;right: 130px">
       <div class="modal-header">
         <h4 class="modal-title" id="add-address" style="color: #dc3545">Order's Detail</h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -38,8 +38,9 @@
                 class="text-success">{{orderDetail[0].order.orderStatus.nameOrderStatus}}</strong></p>
             </div>
             <div class="col-md-6">
-              <p class="mb-1 text-black">Recipient's name : <strong class="mb-1 text-primary">{{orderDetail[0].order.customer.name}}</strong></p>
-              <p class="mb-1 text-black">Recipient's phone number : {{orderDetail[0].order.customer.phoneNumber}}</p>
+              <p class="mb-1 text-black">Recipient's Name : <strong class="mb-1 text-primary">{{orderDetail[0].order.customer.name}}</strong></p>
+              <p class="mb-1 text-black">Recipient's Email : <strong class="mb-1 text-primary">{{orderDetail[0].order.customer.appUser.username}}</strong></p>
+              <p class="mb-1 text-black">Recipient's Phone number : {{orderDetail[0].order.customer.phoneNumber}}</p>
               <p class="mb-1 text-black">Delivery address :</p>
               <p class="mb-1 text-primary"><strong>Private House</strong></p>
               <p class="mb-1">{{orderDetail[0].order.customer.address}}
@@ -51,6 +52,7 @@
               <p class="mb-1">Shop's Name:</p>
               <h6 class="mb-1 text-black"><strong>{{orderDetail[0].order.seller.name}}</strong></h6>
               <p class="mb-1">Send Form: {{orderDetail[0].order.seller.address}}</p>
+              <p class="mb-1">Send Form: {{orderDetail[0].order.seller.appUser.username}}</p>
               <p class="mb-1">Phone: {{orderDetail[0].order.seller.phoneNumber}}</p>
               <table class="table mt-3 mb-0">
                 <thead class="thead-light">
@@ -58,6 +60,7 @@
                   <th>#</th>
                   <th class="text-black font-weight-bold" scope="col">ID's Order</th>
                   <th class="text-black font-weight-bold" scope="col">Items</th>
+                  <th class="text-black font-weight-bold" scope="col">Item's Id</th>
                   <th class="text-black font-weight-bold" scope="col">Category</th>
                   <th class="text-right text-black font-weight-bold" scope="col">Description</th>
                   <th class="text-black font-weight-bold" scope="col">Image</th>
@@ -69,8 +72,9 @@
                 <tbody>
                 <tr *ngFor="let order of orderDetail, index as i">
                   <td>{{i + 1}}</td>
-                  <td>{{order.id}}</td>
+                  <td>000000000{{order.id}}</td>
                   <td>{{order.product.name}}</td>
+                  <td>{{order.product.id}}</td>
                   <td class="text-right">{{order.product.productCategory.nameCategory}}</td>
                   <td class="text-right">{{order.product.description}}</td>
                   <td class="text-right"><img style="width: 50px;height: 40px;border-radius: 4px;"

@@ -95,6 +95,8 @@ export class EditProductComponent implements OnInit {
       this.sellerService.editProduct(productToEdit,this.id, userID).subscribe((data) => {
         console.log("data");
         console.log(data);
+        alert("Complete Update Product");
+        window.location.reload();
         this.router.navigate(["/seller"]);
       })
     } else {
