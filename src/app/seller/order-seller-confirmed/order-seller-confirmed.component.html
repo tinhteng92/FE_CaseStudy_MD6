@@ -16,7 +16,7 @@
           <p class="text-info mb-1"><i class="icofont-location-arrow"></i>Customer's Address:  {{order.customer.address}}
           </p>
           <p class="text-info mb-3"><i class="icofont-list"></i> ORDER
-            #25102589748 <i class="icofont-clock-time ml-2"></i>Create At:  {{order.createAt}}</p>
+            #00000000{{order.customer.id}} <i class="icofont-clock-time ml-2"></i>Create At:  {{order.createAt | date :  "EEEE, MMMM d, y, h:mm a" }}</p>
           <p>Order Status: <a class="mb-0 text-black text-primary pt-2" *ngIf="order.orderStatus?.id === 2"><span class="status text-success"  >&bull;</span>{{order.orderStatus.nameOrderStatus}}</a>
           </p>
           <hr>

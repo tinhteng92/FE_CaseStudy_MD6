@@ -32,7 +32,7 @@
           <div class="row">
             <div class="col-md-6">
               <p class="mb-1 text-black">Code orders: <strong>#000000000{{orderDetail[0].id}}</strong></p>
-              <p class="mb-1">Invoice creation date : <strong>12/11/2018, 06:26 PM{{orderDetail[0].order.createAt}}</strong></p>
+              <p class="mb-1">Invoice creation date : <strong>{{orderDetail[0].order.createAt | date :  "dd/MM/y, h:mm a" }}</strong></p>
               <p class="mb-1">Estimated delivery time: <strong>3 days from the date of invoice confirmation</strong></p>
               <p class="mb-1">Order Status: <strong
                 class="text-success">{{orderDetail[0].order.orderStatus.nameOrderStatus}}</strong></p>
