@@ -18,8 +18,8 @@ export class CreateSaleComponent implements OnInit {
     name: new FormControl("", Validators.required),
     priceDiscount: new FormControl("", Validators.required),
     description: new FormControl("", Validators.required),
-    startAt: new FormControl(),
-    endAt: new FormControl()
+    startAt: new FormControl("",Validators.required),
+    endAt: new FormControl("", Validators.required)
   })
 
   constructor(private sellerService: SellerService, private router: Router, public loginService : LoginService) { }
@@ -42,17 +42,56 @@ export class CreateSaleComponent implements OnInit {
         id: this.seller.id
       }
     }
-    this.sellerService.saveSale(this.sale).subscribe((data) =>{
-      console.log(data)
-      alert("Add new successful!");
-      this.router.navigate(['/seller/sale-management']);
-      this.creatForm.reset();
+    if(this.validateEndAt() && this.validateStartAt()){
+      this.sellerService.saveSale(this.sale).subscribe((data) =>{
+        console.log(data)
+        alert("Add new successful!");
+        this.router.navigate(['/seller/sale-management']);
+        this.creatForm.reset();
 
-    }, e => {
-      alert("thêm ko thành công")
-      console.log(e)
-    });
+      }, e => {
+        alert("thêm ko thành công")
+        console.log(e)
+      });
+    }else {
+      alert("Please check your form!")
+    }
+
   }
 
+  validateStartAt(){
+    let dateNow = new Date();
+    let date = "'" + this.creatForm.value.startAt + "'";
+    let startDate = new Date(date);
+    console.log(startDate)
+    console.log(dateNow)
 
+    if(startDate > dateNow) {
+      // @ts-ignore
+      document.getElementById("startAt").style.display = "none";
+      return true;
+    }else {
+      // @ts-ignore
+      document.getElementById("startAt").style.display = "block";
+      return false;
+    }
+  }
+
+  validateEndAt(){
+    let dateNow = new Date();
+    let date1 = "'" + this.creatForm.value.startAt + "'";
+    let date2 = "'" + this.creatForm.value.endAt + "'";
+
+    let startDate = new Date(date1);
+    let endDate = new Date(date2);
+    if(endDate > dateNow && endDate > startDate) {
+      // @ts-ignore
+      document.getElementById("endAt").style.display = "none";
+      return true;
+    }else {
+      // @ts-ignore
+      document.getElementById("endAt").style.display = "block";
+      return false;
+    }
+  }
 }

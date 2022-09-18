@@ -60,4 +60,16 @@ export class CustomerManagementComponent implements OnInit {
     }, e => console.log(e));
   }
 
+  inActiveCustomer(){
+    this.adminService.filterInActiveCustomer().subscribe(data =>{
+      this.customerList = data;
+    }, e => console.log(e));
+  }
+
+  activeCustomer(){
+    this.adminService.filterActiveCustomer().subscribe(data =>{
+      this.customerList = data;
+    }, e => console.log(e));
+  }
+
 }
