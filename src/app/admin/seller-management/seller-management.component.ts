@@ -73,4 +73,18 @@ export class SellerManagementComponent implements OnInit {
     }, e => console.log(e));
   }
 
+  nameUp(){
+    this.adminService.filterSellerByNameUp().subscribe(data =>{
+      this.sellers = data;
+      console.log(data)
+    }, e => console.log(e));
+  }
+
+  nameDown(){
+    this.adminService.filterSellerByNameDown().subscribe(data =>{
+      this.sellers = data;
+      console.log(data)
+    }, e => console.log(e));
+  }
+
 }
