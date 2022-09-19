@@ -3,20 +3,16 @@
   <h4 class="font-weight-bold mt-0 mb-4 mb-0 text-black text-primary pt-2">Shop's List Product</h4>
   <div class="bg-white card mb-4 order-list shadow-sm"*ngFor="let product of products |paginate: {itemsPerPage :4, currentPage :p}" >
     <div class="gold-members p-4" >
-      <a href="#">
+<!--      <a href="#">-->
         <div class="media">
-          <img class="mr-4" src="{{product.image}}" alt="Generic placeholder image">
+          <img class="mr-4" style="width: 100px;height: 100px;border-radius: 5px" src="{{product.image}}" alt="Generic placeholder image">
           <div class="media-body">
             <span class="float-right text-info">Quantity available in Shop: {{product.quantityStorage}}<i class="icofont-check-circled text-success"></i></span>
             <h6 class="mb-2">
-              <a href="detail.html" class="text-black text-info">{{product.name}}
-              </a>
+              <h6  class="text-black text-info">{{product.name}}
+              </h6>
             </h6>
-            <p class="text-gray mb-1"><i class="icofont-location-arrow"></i> {{product.seller.address}}
-            </p>
-            <p class="text-gray mb-3"><i class="icofont-list"></i> ORDER
-              #25102589748 <i class="icofont-clock-time ml-2"></i> Mon, Nov
-              12, 6:26 PM</p>
+            <p class="text-info"><i class="icofont-list"></i>Product Category: <i class="mb-0 text-black text-primary pt-2">{{product.productCategory.nameCategory}}</i></p>
             <p class="mb-0 text-black text-primary pt-2">Product Description: {{product.description}}
             <p class="mb-0 text-black text-primary pt-2">Sold: {{product.sold}}
             </p>
@@ -32,7 +28,7 @@
             </p>
           </div>
         </div>
-      </a>
+<!--      </a>-->
     </div>
   </div>
 <div style="display: flex;justify-content: center;">

@@ -10,15 +10,16 @@
         </button>
       </div>
       <div class="modal-body">
-        <h5 style="text-align: center;color: #d39e00">DO YOU REALLY WISH TO REMOVE THIS PRODUCT</h5><br>
-        <h6 style="color: #dc3545">-Name Product: *{{product.name}}*</h6>
-        <h6 style="color: #dc3545">-Description Product: *{{product.description}}*</h6>
-        <h6 style="color: #dc3545">-Quantity Storage Product: *{{product.quantityStorage}}*</h6>
-        <h6 style="color: #dc3545">-Price Product: *{{product.price}}*</h6>
+        <h5 style="text-align: center;color: #dc3545">DO YOU REALLY WISH TO REMOVE THIS PRODUCT</h5><br>
+        <h6 >Name Product: <i style="color: #dc3545">*{{product.name}}*</i></h6>
+        <h6 >Description Product: <i style="color: #dc3545">*{{product.description}}*</i></h6>
+        <h6>Quantity Storage Product: <i style="color: #dc3545">*{{product.quantityStorage}}*</i></h6>
+        <h6 >Price Product: <i style="color: #dc3545">*{{product.price}}*</i></h6>
         <img  src="{{product.image}}" style="border-radius: 10px;width: 250px; height: 150px">
         <p></p>
+        <br>
         <hr style="width: 50%; border: 1px solid red">
-        <h6 style="color: #d39e00;text-align: center">---  This product will be removed from your shop  ---</h6>
+        <h6 style="color: #d39e00;text-align: center">  This product will be removed from your shop  </h6>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn d-flex w-50 text-center justify-content-center btn-outline-primary" (click)="cancel()"

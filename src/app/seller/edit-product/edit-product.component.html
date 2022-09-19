@@ -4,17 +4,17 @@
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title" id="add-address" style="color: #dc3545">Update Product</h4>
+        <h4 class="modal-title" id="add-address">Update Product</h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true" (click)="cancel()" style="font-size: 35px">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        <div style="padding: 20px; background-color: #ffe8b6; border-radius: 20px;">
+        <div style="padding: 20px; border-radius: 20px;">
           <form [formGroup]="editProductForm" (ngSubmit)="editProduct()">
             <div class="form-label-group mb-4">
               <input type="text" id="name" formControlName="name" class="form-control" >
-              <label for="name">Enter New Product's name (Current Name : {{product.name}} *)</label>
+              <label for="name" style="color:black;">New Product's name:</label>
               <p style="color: red" *ngIf="!editProductForm.get('name')?.valid && editProductForm.get('name')?.touched">
                 Required Information.</p>
             </div>
@@ -29,14 +29,14 @@
             </div>
             <div class="form-label-group mb-4">
               <input type="text" id="price" formControlName="price" class="form-control" >
-              <label for="price">Enter New Price (Current Price : {{product.price}} *)</label>
+              <label for="price" style="color:black;">New Price: </label>
               <p style="color: red"
                  *ngIf="!editProductForm.get('price')?.valid && editProductForm.get('price')?.touched">Required
                 Information.</p>
             </div>
             <div class="form-label-group mb-4">
               <input type="text" id="quantityStorage" formControlName="quantityStorage" class="form-control" >
-              <label for="quantityStorage">Enter Inventory number (Current Name : {{product.quantityStorage}} *)</label>
+              <label for="quantityStorage" style="color:black;">Inventory number:</label>
               <p style="color: red"
                  *ngIf="!editProductForm.get('quantityStorage')?.valid && editProductForm.get('quantityStorage')?.touched">
                 Required Information, at least 1 && maximum 999 Products</p>
@@ -50,14 +50,14 @@
                      class="form-control"
               />
               <img class="mr-4" src="{{product.image}}" alt="Generic placeholder image" style="width: 247px; height: 160px;border-radius: 10px">
-              <label for="image">Upload New Product's Image</label>
+              <label for="image" style="color:black;">New Product's Image: </label>
               <p style="color: red"
                  *ngIf="!editProductForm.get('image')?.valid && editProductForm.get('image')?.touched">Required
                 Information.</p>
             </div>
             <div class="form-label-group mb-4">
               <input type="text" id="description" formControlName="description" class="form-control" >
-              <label for="description">Enter New Product's Description (Current Price : {{product.description}} *)</label>
+              <label for="description" style="color:black;">New Product's Description:</label>
               <p style="color: red"
                  *ngIf="!editProductForm.get('description')?.valid && editProductForm.get('description')?.touched">
                 Required Information, give some product's description!</p>
