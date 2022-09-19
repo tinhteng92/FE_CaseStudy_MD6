@@ -7,6 +7,7 @@ import {UserToken} from "../../model/UserToken";
   providedIn: 'root'
 })
 export class LoginService {
+  API = 'http://localhost:8080';
   public check = false;
   public checkUser = false;
   constructor(private http:HttpClient) { }
@@ -51,5 +52,13 @@ export class LoginService {
     console.log("userName",userName);
 
     return this.http.post<any>("http://localhost:8080/checkUserName",userName);
+  }
+
+  getSellerByUserToken(userName: string): Observable<any> {
+    return this.http.post(this.API + `/getSeller`, userName)
+  }
+
+  getCustomerByUserToken(userName: string): Observable<any> {
+    return this.http.post(this.API + `/getCustomer`, userName)
   }
 }

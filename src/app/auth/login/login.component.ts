@@ -3,6 +3,8 @@ import {LoginService} from "../../service/login/login.service";
 import {Router} from "@angular/router";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {catchError} from "rxjs";
+import {Seller} from "../../model/Seller";
+import {Customer} from "../../model/Customer";
 
 @Component({
   selector: 'app-login',
@@ -11,10 +13,15 @@ import {catchError} from "rxjs";
 })
 export class LoginComponent implements OnInit {
 
+  seller!: Seller;
+  customer!: Customer;
+
   constructor(private loginService: LoginService, private router: Router) {
   }
 
   ngOnInit(): void {
+
+
   }
 
   loginForm = new FormGroup({
@@ -31,12 +38,36 @@ export class LoginComponent implements OnInit {
           this.loginService.check = true;
 
           if (data.roles[0].name == "ROLE_SELLER") {
-            this.router.navigate(["/seller"]);
+            this.loginService.getSellerByUserToken(this.loginService.getUserToken().username).subscribe(data => {
+              this.seller = data;
+              console.log("seller" + data)
+              if(this.seller.isActive == true){
+                this.router.navigate(["/seller"]);
+              }else {
+                alert("Your account has been locked due to a violation of the rules, please contact the administrator!")
+                this.router.navigate(["/login"]);
+
+              }
+            })
+
+
           } else if (data.roles[0].name == "ROLE_ADMIN") {
             this.router.navigate(["/admin"]);
           } else {
-            this.loginService.checkUser = true;
-            this.router.navigate(["/"]);
+            this.loginService.getCustomerByUserToken(this.loginService.getUserToken().username).subscribe(data => {
+              this.customer = data;
+              console.log("customer" + data)
+              if(this.customer.isActive == true){
+                this.loginService.checkUser = true;
+                this.router.navigate(["/"]);
+              }else {
+                alert("Your account has been locked due to a violation of the rules, please contact the administrator!")
+                this.router.navigate(["/login"]);
+
+              }
+            })
+
+
           }
 
         } else {
