@@ -32,7 +32,7 @@ export class EditProductComponent implements OnInit {
         this.fb=data.img;
         this.editProductForm= new FormGroup({
           name: new FormControl(data.name, Validators.required),
-          sole: new  FormControl(data.sole),
+          sold: new  FormControl(data.sold),
           isDelete: new FormControl(data.isDelete),
           productCategory: new FormControl(data.productCategory),
           price: new FormControl(data.price, Validators.required),
