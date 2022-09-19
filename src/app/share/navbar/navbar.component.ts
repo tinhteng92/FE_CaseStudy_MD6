@@ -34,7 +34,6 @@ export class NavbarComponent implements OnInit{
     this.cartService.productListToCart = [];
     this.productListToCart = this.cartService.productListToCart;
     this.cartService.totalCart = 0;
-    this.loginService.check = false;
     this.loginService.checkUser = false;
     this.router.navigate(["/"]);
   }
@@ -88,5 +87,11 @@ export class NavbarComponent implements OnInit{
       this.customer = data;
       this.router.navigate(["/user/listCartUser/" +  this.customer.id]);
     })
+  }
+
+  checkLogin(){
+    if(this.loginService.getUserToken() == null )
+      return false
+    else return true
   }
 }

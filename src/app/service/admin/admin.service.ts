@@ -39,6 +39,15 @@ export class AdminService {
     return this.httpClient.post(this.API + `/controlSeller/${id}`, this.info)
   }
 
+  filterSellerByNameUp():Observable<any> {
+    return this.httpClient.get(this.API + '/seller-name-up')
+  }
+
+
+  filterSellerByNameDown():Observable<any> {
+    return this.httpClient.get(this.API + '/seller-name-down')
+  }
+
 // Quản lý Customer
   showCustomerList(): Observable<any>{
     return this.httpClient.get(this.API + '/customer');
@@ -52,4 +61,15 @@ export class AdminService {
     return this.httpClient.post(this.API + `/controlCustomer/${id}`, this.info)
   }
 
+  searchCusByPhone(phone: string): Observable<any> {
+    return this.httpClient.post(this.API + '/customer-phone', phone)
+  }
+
+  filterInActiveCustomer(): Observable<any>{
+    return this.httpClient.get(this.API + `/customer-inactive`)
+  }
+
+  filterActiveCustomer(): Observable<any>{
+    return this.httpClient.get(this.API + `/customer-active`)
+  }
 }

@@ -1,22 +1,24 @@
 import { Component, OnInit } from '@angular/core';
+import {Sale} from "../../model/Sale";
 import {ScriptService} from "../../script.service";
 import {SellerService} from "../../service/seller/seller.service";
 import {LoginService} from "../../service/login/login.service";
 import {Order} from "../../model/Order";
-import {OrderService} from "../../service/order/order.service";
 import {ActivatedRoute, ParamMap} from "@angular/router";
-import {DatePipe} from "@angular/common";
+import {OrderService} from "../../service/order/order.service";
+import {OrderDetail} from "../../model/OrderDetail";
 
 @Component({
-  selector: 'app-listcart-user',
-  templateUrl: './listcart-user.component.html',
-  styleUrls: ['./listcart-user.component.css']
+  selector: 'app-list-rate-product',
+  templateUrl: './list-rate-product.component.html',
+  styleUrls: ['./list-rate-product.component.css']
 })
-export class ListcartUserComponent implements OnInit {
-  pipe = new DatePipe('en-US');
+export class ListRateProductComponent implements OnInit {
+
   p: any;
-  orderList: Order[] = [];
-  idCustomer!: number;
+  orderDetail: OrderDetail[] = [];
+  idOrder!: number;
+  checkRate: boolean = false;
 
   constructor(private script: ScriptService, private sellerService: SellerService, public loginService : LoginService,
               private activatedRoute: ActivatedRoute,private orderService: OrderService) {
@@ -27,17 +29,17 @@ export class ListcartUserComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe( (paramMap: ParamMap) => {
-      this.idCustomer = Number(paramMap.get('id'));
+      this.idOrder = Number(paramMap.get('id'));
 
-      this.orderService.findOrdersByCustomerId(this.idCustomer).subscribe(data => {
-        this.orderList = data;
-
-        for (const b of data) {
-          b.createAt = this.pipe.transform(b.createAt,'yyyy-MM-dd , HH:mm ')
-        }
-      })
-
+        this.orderService.findOrderDetailsByOrderId(this.idOrder).subscribe(data =>{
+          this.orderDetail = data;
+        })
     });
-
   }
+
+  allowComment(idProduct: number) {
+    localStorage.setItem("allowComment" + idProduct, "true");
+  }
+
 }
+

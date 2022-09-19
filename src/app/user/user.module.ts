@@ -16,6 +16,8 @@ import { WishlistComponent } from './wishlist/wishlist.component';
 import { ThanksComponent } from './thanks/thanks.component';
 import {NgxPaginationModule} from "ngx-pagination";
 import {CarouselModule} from "ngx-owl-carousel-o";
+import { RateProductComponent } from './rate-product/rate-product.component';
+import { ListRateProductComponent } from './list-rate-product/list-rate-product.component';
 
 
 @NgModule({
@@ -29,7 +31,9 @@ import {CarouselModule} from "ngx-owl-carousel-o";
     OrderUserComponent,
     EditUserAvatarComponent,
     WishlistComponent,
-    ThanksComponent
+    ThanksComponent,
+    RateProductComponent,
+    ListRateProductComponent
   ],
   imports: [
     CommonModule,

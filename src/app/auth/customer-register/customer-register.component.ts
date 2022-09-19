@@ -56,6 +56,7 @@ export class CustomerRegisterComponent implements OnInit {
     phoneNumber: new FormControl("", [Validators.required, Validators.pattern("^0[0-9]{9}$")]),
     avatar: new FormControl(""),
     address: new FormControl("", Validators.required),
+    isActive: new FormControl(true),
     appUser: new FormGroup({
       username: new FormControl("", [Validators.required, Validators.email, Validators.maxLength(50)]),
       password: new FormControl("", [Validators.required, Validators.minLength(4), Validators.maxLength(20)]),

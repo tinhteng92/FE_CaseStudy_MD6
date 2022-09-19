@@ -8,6 +8,8 @@ import {OrderUserComponent} from "./order-user/order-user.component";
 import {OrderDetailUserComponent} from "./order-detail-user/order-detail-user.component";
 import {ThanksComponent} from "./thanks/thanks.component";
 import {DetailUserComponent} from "./detail-user/detail-user.component";
+import {RateProductComponent} from "./rate-product/rate-product.component";
+import {ListRateProductComponent} from "./list-rate-product/list-rate-product.component";
 
 const routes: Routes = [
   {path: '',
@@ -42,6 +44,14 @@ const routes: Routes = [
   },
   { path: 'order-detail-user/:id',
     component: OrderDetailUserComponent
+  },
+  {
+    path: 'rate-product/:id',
+    component: RateProductComponent
+  },
+  {
+    path: 'list-rate-product/:id',
+    component: ListRateProductComponent
   }
 
 ];

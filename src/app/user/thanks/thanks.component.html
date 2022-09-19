@@ -3,11 +3,10 @@
     <div class="row">
       <div class="col-md-12 text-center pt-5 pb-5">
         <img class="img-fluid mb-5" src="assets/img/thanks.png" alt="404">
-        <h1 class="mt-2 mb-2 text-success">Thành công!</h1>
-        <p class="mb-5">Bạn đã thực hiện đặt hàng thành công</p>
-<!--        <a class="btn btn-primary btn-lg" routerLink="">Xem chi tiết đơn hàng :)</a>-->
+        <h1 class="mt-2 mb-2 text-success">Success!</h1>
+        <p class="mb-5">You have successfully placed your order</p>
+        <a class="btn btn-primary btn-lg" [routerLink]="['/user/listCartUser',customer.id]"><--Rate product--></a>
       </div>
     </div>
   </div>
 </section>
-

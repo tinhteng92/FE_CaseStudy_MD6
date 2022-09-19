@@ -37,6 +37,10 @@ const routes: Routes = [
         path: 'customer-detail/:id',
         component: CustomerDetailComponent
       },
+      {
+        path: 'rating',
+        component: DetailSellerManagementComponent
+      },
 
     ]
   },
