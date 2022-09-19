@@ -290,7 +290,7 @@
                         href="#"><i class="icofont-heart"></i></a></div>
                       <div class="member-plan position-absolute"><span
                         class="badge badge-dark">Promoted</span></div>
-                      <a href="#">
+                      <a [routerLink]="['/detail-product', p.id]">
                         <img src="{{p.image}}" class="img-fluid item-img">
                       </a>
                     </div>
@@ -302,10 +302,7 @@
                         <p class="text-gray mb-2">{{p.seller.name}}</p>
                         <p class="text-gray time mb-0"><a
                           class="btn btn-link btn-sm text-black" ><span
-                          class="badge badge-primary">Price</span>{{p.price}} </a> <span
-                          class="float-right">
-                                                            <a class="btn btn-outline-secondary btn-sm" href="#">Add to cart</a>
-                                                        </span>
+                          class="badge badge-primary">Price</span>{{p.price}} </a>
                         </p>
                       </div>
                     </div>
