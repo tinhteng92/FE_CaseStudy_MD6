@@ -35,7 +35,6 @@ export class LoginComponent implements OnInit {
         if (data != null) {
           this.loginService.setUserToken(data);
           this.loginService.setToken(data.token);
-          this.loginService.check = true;
 
           if (data.roles[0].name == "ROLE_SELLER") {
             this.loginService.getSellerByUserToken(this.loginService.getUserToken().username).subscribe(data => {

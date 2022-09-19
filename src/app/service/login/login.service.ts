@@ -8,7 +8,6 @@ import {UserToken} from "../../model/UserToken";
 })
 export class LoginService {
   API = 'http://localhost:8080';
-  public check = false;
   public checkUser = false;
   constructor(private http:HttpClient) { }
 

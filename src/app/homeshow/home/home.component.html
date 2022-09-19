@@ -60,9 +60,14 @@
           <div class="filters-body">
             <div id="accordion">
               <div class="filters-card border-bottom p-4" >
+                <div class="custom-control custom-radio">
+                  <input type="radio" id="all" (click)="reload()">
+                  <label for="all">All</label>
+                </div>
+
                 <div class="custom-control custom-radio" *ngFor="let category of categoryList">
                   <input type="radio" id="{{category.nameCategory}}" name="customRadio" [value]="category.nameCategory"
-                       (change)="filterByCategory(category.id)"   checked="">
+                       (change)="filterByCategory(category.id)">
                   <label  for="{{category.nameCategory}}">{{category.nameCategory}}</label>
                 </div>
               </div>

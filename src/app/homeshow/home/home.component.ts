@@ -77,7 +77,9 @@ export class HomeComponent implements OnInit {
     })
   }
 
-
+  reload() {
+    window.location.reload();
+  }
 }
 
 

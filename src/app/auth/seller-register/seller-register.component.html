@@ -59,9 +59,9 @@
                   <div class="form-label-group">
                     <input type="email" id="username" formControlName="username" class="form-control"
                            placeholder="Enter username">
-                    <label for="username">Enter username</label>
+                    <label for="username">Enter email</label>
                     <p style="color: red" *ngIf="!registerSellerForm.get('appUser')?.get('username')?.valid && registerSellerForm.get('appUser')?.get('username')?.touched">Blank is not allowed, format: example@gmail.com, maxlength: 50</p>
-                    <p style="color: red" *ngIf="check">Duplicate user name, please enter another user name</p>
+                    <p style="color: red" *ngIf="check">Duplicate email, please enter another email</p>
                   </div>
                   <div class="form-label-group">
                     <input type="password" id="password" formControlName="password" class="form-control"
