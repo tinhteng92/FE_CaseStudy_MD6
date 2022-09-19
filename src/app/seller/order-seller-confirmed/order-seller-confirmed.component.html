@@ -1,12 +1,12 @@
 <div class="tab-pane fade show active" id="orders" role="tabpanel"
      aria-labelledby="orders-tab"></div>
-<h4 class="font-weight-bold mt-0 mb-4 mb-0 text-black text-primary pt-2">Your Shop's List Order</h4>
+<h4 class="font-weight-bold mt-0 mb-4 mb-0 text-black text-primary pt-2">List Order Confirmed</h4>
 <div style="" class="bg-white card mb-4 order-list shadow-sm"*ngFor="let order of orderList |paginate: {itemsPerPage :4, currentPage :p}" >
-  <div class="gold-members p-4" style="background-color: #dbeeff">
-      <div class="media">
-        <img class="mr-4" style="border-radius: 50%" src="{{order.customer.avatar}}" alt="Generic placeholder image">
-        <div class="media-body">
-          <a data-toggle="modal" data-target="#order-seller-detail-modal" [routerLink]="'order-seller-detail/'+order.id" href="#">
+  <div class="gold-members p-4" style="background-color: #fff6f6">
+    <div class="media">
+      <img class="mr-4" style="border-radius: 50%" src="{{order.customer.avatar}}" alt="Generic placeholder image">
+      <div class="media-body">
+        <a data-toggle="modal" data-target="#order-seller-confirmed-detail-modal" [routerLink]="'order-seller-confirmed-detail/'+order.id" href="#">
 
           <span class="float-right text-info">-- ID ORDER #: 000000000{{order.id}} --<i class="icofont-check-circled text-success"></i></span>
           <h6 class="mb-2 mb-0 text-black text-primary pt-2">Name (Mrs. / Mr.) : {{order.customer.name}}
@@ -17,19 +17,19 @@
           </p>
           <p class="text-info mb-3"><i class="icofont-list"></i> ORDER
             #00000000{{order.customer.id}} <i class="icofont-clock-time ml-2"></i>Create At:  {{order.createAt | date :  "EEEE, MMMM d, y, h:mm a" }}</p>
-          <p>Order Status: <a class="mb-0 text-black text-primary pt-2" *ngIf="order.orderStatus?.id === 1"><span class="status text-warning"  >&bull;</span>{{order.orderStatus.nameOrderStatus}}</a>
+          <p>Order Status: <a class="mb-0 text-black text-primary pt-2" *ngIf="order.orderStatus?.id === 2"><span class="status text-success"  >&bull;</span>{{order.orderStatus.nameOrderStatus}}</a>
           </p>
           <hr>
-          </a>
-          <div class="float-right">
-            <p class="btn btn-sm btn-outline-primary"(click)="confirmOrder(order.id)"><i
-              class="icofont-edit-alt" ></i> CONFIRM</p>
-          </div>
-          <p class="mb-0 text-black text-primary pt-2"><span
-            class="text-black font-weight-bold">Price Total: </span>${{order.priceTotal}}
-          </p>
-        </div>
+        </a>
+<!--        <div class="float-right">-->
+<!--          <p class="btn btn-sm btn-outline-primary"(click)="confirmOrder(order.id)"><i-->
+<!--            class="icofont-edit-alt" ></i> CONFIRM</p>-->
+<!--        </div>-->
+        <p class="mb-0 text-black text-primary pt-2"><span
+          class="text-black font-weight-bold">Price Total: </span>${{order.priceTotal}}
+        </p>
       </div>
+    </div>
   </div>
 </div>
 <div style="display: flex;justify-content: center;">

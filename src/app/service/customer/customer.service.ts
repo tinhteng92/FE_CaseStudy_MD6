@@ -3,6 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Customer} from "../../model/Customer";
 import {Seller} from "../../model/Seller";
+import {ProductComment} from "../../model/ProductComment";
 
 @Injectable({
   providedIn: 'root'
@@ -17,5 +18,13 @@ export class CustomerService {
 
   findSellerByProductId(id: number):Observable<Seller>{
     return this.http.post<Seller>("http://localhost:8080/customers/findSellerByProductId",id);
+  }
+
+  saveProductComment(productComment: ProductComment):Observable<ProductComment>{
+    return this.http.post<ProductComment>("http://localhost:8080/customers/save-productComment",productComment);
+  }
+
+  findProductCommentListByProductId(idProduct: number):Observable<ProductComment[]>{
+    return this.http.post<ProductComment[]>("http://localhost:8080/customers/findProductCommentListByProductId",idProduct);
   }
 }

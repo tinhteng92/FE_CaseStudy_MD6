@@ -29,7 +29,7 @@
                          autocomplete="off"
                          class="form-control"
                   />
-                  <label for="avatar">Enter avatar</label>
+                  <label for="avatar" class="text-right">Account's avatar</label>
                   <p style="color: red" *ngIf="!registerSellerForm.get('avatar')?.valid && registerSellerForm.get('avatar')?.touched">Blank is not allowed.</p>
                 </div>
                 <div class="form-label-group mb-4" >
@@ -42,7 +42,7 @@
                          autocomplete="off"
                          class="form-control"
                   />
-                  <label for="imageBanner">Enter banner</label>
+                  <label for="imageBanner" class="text-right">Account's banner</label>
                   <p style="color: red" *ngIf="!registerSellerForm.get('imageBanner')?.valid && registerSellerForm.get('imageBanner')?.touched">Blank is not allowed.</p>
                 </div>
 <!--                <div class="form-label-group mb-4">-->
