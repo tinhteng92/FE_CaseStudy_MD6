@@ -36,8 +36,8 @@ export class EditSaleComponent implements OnInit {
         name: new FormControl(sale.name, Validators.required),
         priceDiscount: new FormControl(sale.priceDiscount, Validators.required),
         description: new FormControl(sale.description, Validators.required),
-        startAt: new FormControl(sale.startAt),
-        endAt: new FormControl(sale.endAt),
+        startAt: new FormControl(sale.startAt, Validators.required),
+        endAt: new FormControl(sale.endAt, Validators.required),
 
       })
     })
@@ -60,5 +60,41 @@ export class EditSaleComponent implements OnInit {
       alert("Update successful!")
       this.router.navigate(["/seller/sale-management"]);
     });
+  }
+
+  validateStartAt(){
+    let dateNow = new Date();
+    let date = "'" + this.editForm.value.startAt + "'";
+    let startDate = new Date(date);
+    console.log(startDate)
+    console.log(dateNow)
+
+    if(startDate > dateNow) {
+      // @ts-ignore
+      document.getElementById("startAt").style.display = "none";
+      return true;
+    }else {
+      // @ts-ignore
+      document.getElementById("startAt").style.display = "block";
+      return false;
+    }
+  }
+
+  validateEndAt(){
+    let dateNow = new Date();
+    let date1 = "'" + this.editForm.value.startAt + "'";
+    let date2 = "'" + this.editForm.value.endAt + "'";
+
+    let startDate = new Date(date1);
+    let endDate = new Date(date2);
+    if(endDate > dateNow && endDate > startDate) {
+      // @ts-ignore
+      document.getElementById("endAt").style.display = "none";
+      return true;
+    }else {
+      // @ts-ignore
+      document.getElementById("endAt").style.display = "block";
+      return false;
+    }
   }
 }

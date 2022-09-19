@@ -21,12 +21,17 @@
 
     <div class="form-group">
       <label >Start At:</label>
-      <input type="text" formControlName="startAt"  class="form-control" placeholder="Enter price" >
+      <input type="text" formControlName="startAt"  (ngModelChange)="validateStartAt()" class="form-control" placeholder="Enter price" >
+      <p *ngIf="!editForm.get('startAt')?.valid && editForm.get('startAt')?.touched" style="color: red">Blank is not allow.</p>
+      <p id="startAt" style="display: block;color: red">Ngay khong hop le</p>
     </div>
 
     <div class="form-group">
       <label >End At:</label>
-      <input type="text" formControlName="endAt"  class="form-control" placeholder="Enter price" >
+      <input type="text" formControlName="endAt"  (ngModelChange)="validateEndAt()" class="form-control" placeholder="Enter price" >
+      <p *ngIf="!editForm.get('endAt')?.valid && editForm.get('endAt')?.touched" style="color: red">Blank is not allow.</p>
+      <p id="endAt" style="display: block;color: red">Ngay khong hop le</p>
+
     </div>
 
 <!--    <input type="text" formControlName="seller.id"  class="form-control" placeholder="Enter price" hidden>-->
