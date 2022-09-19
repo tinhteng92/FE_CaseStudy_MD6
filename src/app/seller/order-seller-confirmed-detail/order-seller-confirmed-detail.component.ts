@@ -28,7 +28,7 @@ export class OrderSellerConfirmedDetailComponent implements OnInit {
     })
   }
   cancel(){
-    this.router.navigate(["/seller/order-seller"]);
+    this.router.navigate(["/seller/order-seller-confirmed"]);
   }
 
 }

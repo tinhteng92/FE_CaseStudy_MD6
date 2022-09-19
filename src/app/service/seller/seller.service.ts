@@ -88,4 +88,21 @@ export class SellerService {
   editSeller(seller: any, idSeller: number):Observable<any>{
     return this.httpClient.post<any>(this.API+'/edit-seller'+idSeller, seller);
   }
+
+  // sắp sếp orderConfirmed theo giá
+  showOrderByPriceTotalUp(): Observable<any>{
+    return this.httpClient.get(this.API + `/price-up`)
+  }
+
+  showOrderByPriceTotalDown(): Observable<any>{
+    return this.httpClient.get(this.API + `/price-down`)
+  }
+
+  showOrderByDateUp(): Observable<any>{
+    return this.httpClient.get(this.API + `/date-up`)
+  }
+
+  showOrderByDateDown(): Observable<any>{
+    return this.httpClient.get(this.API + `/date-down`)
+  }
 }

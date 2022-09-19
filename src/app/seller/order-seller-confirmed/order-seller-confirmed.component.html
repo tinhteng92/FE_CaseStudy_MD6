@@ -1,63 +1,100 @@
 <div class="tab-pane fade show active" id="orders" role="tabpanel"
      aria-labelledby="orders-tab"></div>
-<h4 class="font-weight-bold mt-0 mb-4 mb-0 text-black text-primary pt-2">List Order Confirmed</h4>
-<div style="" class="bg-white card mb-4 order-list shadow-sm"*ngFor="let order of orderList |paginate: {itemsPerPage :4, currentPage :p}" >
-  <div class="gold-members p-4" style="background-color: #fff6f6">
-    <div class="media">
-      <img class="mr-4" style="border-radius: 50%" src="{{order.customer.avatar}}" alt="Generic placeholder image">
-      <div class="media-body">
-        <a data-toggle="modal" data-target="#order-seller-confirmed-detail-modal" [routerLink]="'order-seller-confirmed-detail/'+order.id" href="#">
-
-          <span class="float-right text-info">-- ID ORDER #: 000000000{{order.id}} --<i class="icofont-check-circled text-success"></i></span>
-          <h6 class="mb-2 mb-0 text-black text-primary pt-2">Name (Mrs. / Mr.) : {{order.customer.name}}
-          </h6>
-          <h6 class="mb-2 mb-0 text-black text-primary pt-2">Phone Number: {{order.customer.phoneNumber}}
-          </h6>
-          <p class="text-info mb-1"><i class="icofont-location-arrow"></i>Customer's Address:  {{order.customer.address}}
-          </p>
-          <p class="text-info mb-3"><i class="icofont-list"></i> ID's Client
-            #00000000{{order.customer.id}} <i class="icofont-clock-time ml-2"></i>Create At:  {{order.createAt | date :  "EEEE, MMMM d, y, h:mm a" }}</p>
-          <p>Order Status: <a class="mb-0 text-black text-primary pt-2" *ngIf="order.orderStatus?.id === 2"><span class="status text-success"  >&bull;</span>{{order.orderStatus.nameOrderStatus}}</a>
-          </p>
-          <hr>
-        </a>
-<!--        <div class="float-right">-->
-<!--          <p class="btn btn-sm btn-outline-primary"(click)="confirmOrder(order.id)"><i-->
-<!--            class="icofont-edit-alt" ></i> CONFIRM</p>-->
-<!--        </div>-->
-        <p class="mb-0 text-black text-primary pt-2"><span
-          class="text-black font-weight-bold">Price Total: </span>${{order.priceTotal}}
-        </p>
+<div>
+  <br>
+  <div class="col-md-12">
+    <div class="dropdown float-right">
+      <a class="btn btn-outline-info dropdown-toggle btn-sm border-white-btn" href="#" role="button"
+         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Sort by: <span class="text-theme">Price Total</span> &nbsp;&nbsp;
+      </a>
+      <div class="dropdown-menu dropdown-menu-right shadow-sm border-0 ">
+        <a class="dropdown-item" (click)="priceTotalUp()">Price Up</a>
+        <a class="dropdown-item" (click)="priceTotalDown()">Price Down</a>
+        <!--            <a class="dropdown-item" href="#">Rating</a>-->
       </div>
     </div>
   </div>
-</div>
-<div style="display: flex;justify-content: center;">
-  <pagination-controls class="btn btn-sm btn-outline-primary" class="myPagination" (pageChange)="p = $event">
-  </pagination-controls>
-</div>
-<!--<div class="modal fade" id="delete-product-modal" tabindex="-1" role="dialog" aria-labelledby="add-address"-->
-<!--     aria-hidden="true">-->
-<!--  <div class="modal-dialog modal-dialog-centered" role="document">-->
-<!--    <div class="modal-content">-->
-<!--      <div class="modal-header">-->
-<!--        <h4 class="modal-title" id="add-address" style="color: #dc3545">Delete Product</h4>-->
-<!--        <button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
-<!--          <span aria-hidden="true">&times;</span>-->
-<!--        </button>-->
-<!--      </div>-->
-<!--      <div class="modal-body">-->
-<!--        <h5 style="text-align: center">DO YOU REALLY WISH TO DELETE THIS PRODUCT</h5><br>-->
-<!--        <h6 style="color: #d39e00;text-align: center">-&#45;&#45;  This product will be removed from your shop  -&#45;&#45;</h6>-->
-<!--      </div>-->
-<!--      <div class="modal-footer">-->
-<!--        <button type="button" class="btn d-flex w-50 text-center justify-content-center btn-outline-primary"-->
-<!--                data-dismiss="modal">CANCEL-->
-<!--        </button><button type="button"-->
-<!--                         class="btn d-flex w-50 text-center justify-content-center btn-primary">SUBMIT</button>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--  </div>-->
-<!--</div>-->
+  <div class="col-md-12">
+    <div class="dropdown float-right">
+      <a class="btn btn-outline-info dropdown-toggle btn-sm border-white-btn" href="#" role="button"
+         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Sort by: <span class="text-theme">Date Created</span> &nbsp;&nbsp;
+      </a>
+      <div class="dropdown-menu dropdown-menu-right shadow-sm border-0 ">
+        <a class="dropdown-item" (click)="dateCreatedUp()">Latest creation date</a>
+        <a class="dropdown-item" (click)="dateCreatedDown()">Oldest creation date</a>
+        <!--            <a class="dropdown-item" href="#">Rating</a>-->
+      </div>
+    </div>
+  </div>
+  <h4 class="font-weight-bold mt-0 mb-4 mb-0 text-black text-primary pt-2">List Order Confirmed</h4>
 
-<router-outlet></router-outlet>
+  <div style="" class="bg-white card mb-4 order-list shadow-sm"
+       *ngFor="let order of orderList |paginate: {itemsPerPage :4, currentPage :p}">
+    <div class="gold-members p-4" style="background-color: #fff6f6">
+      <div class="media">
+        <img class="mr-4" style="border-radius: 50%" src="{{order.customer.avatar}}" alt="Generic placeholder image">
+        <div class="media-body">
+          <a data-toggle="modal" data-target="#order-seller-confirmed-detail-modal"
+             [routerLink]="'order-seller-confirmed-detail/'+order.id" href="#">
+
+          <span class="float-right text-info">-- ID ORDER #: 000000000{{order.id}} --<i
+            class="icofont-check-circled text-success"></i></span>
+            <h6 class="mb-2 mb-0 text-black text-primary pt-2">Name (Mrs. / Mr.) : {{order.customer.name}}
+            </h6>
+            <h6 class="mb-2 mb-0 text-black text-primary pt-2">Phone Number: {{order.customer.phoneNumber}}
+            </h6>
+            <p class="text-info mb-1"><i class="icofont-location-arrow"></i>Customer's
+              Address:  {{order.customer.address}}
+            </p>
+            <p class="text-info mb-3"><i class="icofont-list"></i> ID's Client
+              #00000000{{order.customer.id}} <i></i></p>
+            <p class="text-info mb-1"><i class="icofont-clock-time ml-2"></i>Create
+              At:  {{order.createAt | date :  "EEEE, MMMM d, y, h:mm a" }}
+            </p>
+            <p>Order Status: <a class="mb-0 text-black text-primary pt-2" *ngIf="order.orderStatus?.id === 2"><span
+              class="status text-success">&bull;</span>{{order.orderStatus.nameOrderStatus}}</a>
+            </p>
+            <hr>
+          </a>
+          <!--        <div class="float-right">-->
+          <!--          <p class="btn btn-sm btn-outline-primary"(click)="confirmOrder(order.id)"><i-->
+          <!--            class="icofont-edit-alt" ></i> CONFIRM</p>-->
+          <!--        </div>-->
+          <p class="mb-0 text-black text-primary pt-2"><span
+            class="text-black font-weight-bold">Price Total: </span>${{order.priceTotal}}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="display: flex;justify-content: center;">
+    <pagination-controls class="btn btn-sm btn-outline-primary" class="myPagination" (pageChange)="p = $event">
+    </pagination-controls>
+  </div>
+  <!--<div class="modal fade" id="delete-product-modal" tabindex="-1" role="dialog" aria-labelledby="add-address"-->
+  <!--     aria-hidden="true">-->
+  <!--  <div class="modal-dialog modal-dialog-centered" role="document">-->
+  <!--    <div class="modal-content">-->
+  <!--      <div class="modal-header">-->
+  <!--        <h4 class="modal-title" id="add-address" style="color: #dc3545">Delete Product</h4>-->
+  <!--        <button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
+  <!--          <span aria-hidden="true">&times;</span>-->
+  <!--        </button>-->
+  <!--      </div>-->
+  <!--      <div class="modal-body">-->
+  <!--        <h5 style="text-align: center">DO YOU REALLY WISH TO DELETE THIS PRODUCT</h5><br>-->
+  <!--        <h6 style="color: #d39e00;text-align: center">-&#45;&#45;  This product will be removed from your shop  -&#45;&#45;</h6>-->
+  <!--      </div>-->
+  <!--      <div class="modal-footer">-->
+  <!--        <button type="button" class="btn d-flex w-50 text-center justify-content-center btn-outline-primary"-->
+  <!--                data-dismiss="modal">CANCEL-->
+  <!--        </button><button type="button"-->
+  <!--                         class="btn d-flex w-50 text-center justify-content-center btn-primary">SUBMIT</button>-->
+  <!--      </div>-->
+  <!--    </div>-->
+  <!--  </div>-->
+  <!--</div>-->
+
+  <router-outlet></router-outlet>
