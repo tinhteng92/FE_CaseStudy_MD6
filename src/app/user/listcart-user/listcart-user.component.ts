@@ -5,6 +5,7 @@ import {LoginService} from "../../service/login/login.service";
 import {Order} from "../../model/Order";
 import {OrderService} from "../../service/order/order.service";
 import {ActivatedRoute, ParamMap} from "@angular/router";
+import {DatePipe} from "@angular/common";
 
 @Component({
   selector: 'app-listcart-user',
@@ -12,7 +13,7 @@ import {ActivatedRoute, ParamMap} from "@angular/router";
   styleUrls: ['./listcart-user.component.css']
 })
 export class ListcartUserComponent implements OnInit {
-
+  pipe = new DatePipe('en-US');
   p: any;
   orderList: Order[] = [];
   idCustomer!: number;
@@ -30,6 +31,10 @@ export class ListcartUserComponent implements OnInit {
 
       this.orderService.findOrdersByCustomerId(this.idCustomer).subscribe(data => {
         this.orderList = data;
+
+        for (const b of data) {
+          b.createAt = this.pipe.transform(b.createAt,'yyyy-MM-dd , HH:mm ')
+        }
       })
 
     });

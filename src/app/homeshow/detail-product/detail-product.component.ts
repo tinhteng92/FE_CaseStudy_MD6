@@ -39,15 +39,8 @@ export class DetailProductComponent implements OnInit{
 
     this.activatedRoute.paramMap.subscribe((paramMap: ParamMap) => {
       this.id = paramMap.get('id');
-      this.productService.showDetailProduct(this.id).subscribe(data => {
-        this.product = data;
-        console.log(data)
-        this.productService.showSaleList(this.product.seller.id).subscribe(sales => {
-          this.saleList = sales;
-          console.log(this.product.seller.id)
-          console.log(sales)
-        })
-      });
+      this.getProduct();
+
 
       this.productService.showProductImageList(this.id).subscribe(images =>{
         this.productImageList =images;
@@ -63,6 +56,19 @@ export class DetailProductComponent implements OnInit{
     this.allowComment = Boolean(localStorage.getItem("allowComment" + this.id));
   }
 
+  getProduct(){
+    this.productService.showDetailProduct(this.id).subscribe(data => {
+      this.product = data;
+      console.log(data)
+      this.productService.showSaleList(this.product.seller.id).subscribe(sales => {
+        this.saleList = sales;
+        console.log(this.product.seller.id)
+        console.log(sales)
+      })
+    });
+
+  }
+
   ngOnInit(): void {
     this.productService.showProductBySold().subscribe(data =>{
       this.topSoldProduct =data;
@@ -70,7 +76,9 @@ export class DetailProductComponent implements OnInit{
     });
   }
 
-
+  counter(s: number) {
+    return new Array(s);
+  }
   sentComment(contentComment: string) {
     this.customerService.findCustomerByUserName(this.loginService.getUserToken().username).subscribe(customer =>{
       let productComment={
@@ -84,7 +92,10 @@ export class DetailProductComponent implements OnInit{
 
       this.customerService.saveProductComment(productComment).subscribe(data =>{
         alert("Comment success!")
-        this.router.navigate(["/"]);
+        this.customerService.findProductCommentListByProductId(Number(this.id)).subscribe(data =>{
+          this.commentList = data;
+        })
+
       })
     })
 

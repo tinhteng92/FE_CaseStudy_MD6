@@ -89,4 +89,9 @@ export class NavbarComponent implements OnInit{
       this.router.navigate(["/user/listCartUser/" +  this.customer.id]);
     })
   }
+  checkLogin(){
+    if(this.loginService.getUserToken() == null ) return false
+
+    else return true
+  }
 }
