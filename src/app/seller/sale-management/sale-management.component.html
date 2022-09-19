@@ -230,7 +230,7 @@
           <td><b>{{sale.name}}</b></td>
           <td>{{sale.priceDiscount}}</td>
           <td>{{sale.startAt}}</td>
-          <td>{{sale.endAt}}</td>
+          <td>{{sale.endAt}} : (00--00--00)</td>
           <td *ngIf="sale?.status === true"><span class="status text-success"  >&bull;</span> Active</td>
           <td *ngIf="sale?.status == false"><span class="status text-warning"  >&bull;</span> Expired</td>
 

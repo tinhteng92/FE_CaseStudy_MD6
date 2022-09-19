@@ -50,7 +50,7 @@ export class CreateSaleComponent implements OnInit {
         this.creatForm.reset();
 
       }, e => {
-        alert("thêm ko thành công")
+        alert("Add failed")
         console.log(e)
       });
     }else {
