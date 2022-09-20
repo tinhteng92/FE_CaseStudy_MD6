@@ -219,7 +219,10 @@
           <td>{{od.quantity}}</td>
           <td>{{od.price}}</td>
 <!--          <td><a class="text-success" [routerLink]="['/user/rate-product', od.product.id]">Rate</a></td>-->
-          <td><a class="text-success" [routerLink]="['/detail-product', od.product.id]" (click)="allowComment(od.product.id)">Rate</a></td>
+          <td><a class="text-success" [routerLink]="['/detail-product', od.product.id]" (click)="allowComment(od.product.id,od.id)"
+                 *ngIf="!od.isRated">Rate</a>
+            <a class="text-warning" *ngIf="od.isRated">Rated</a>
+          </td>
 <!--          <td *ngIf="sale?.status === true"><span class="status text-success"  >&bull;</span> Active</td>-->
 <!--          <td *ngIf="sale?.status == false"><span class="status text-warning"  >&bull;</span> Expired</td>-->
 

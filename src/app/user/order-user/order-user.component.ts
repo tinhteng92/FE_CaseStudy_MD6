@@ -104,7 +104,8 @@ export class OrderUserComponent implements OnInit{
             product: this.productList[i],
             order: data,
             quantity: this.quantityAProduct[i],
-            price: this.totalPriceAProduct[i]
+            price: this.totalPriceAProduct[i],
+            isRated: false
           }
 
           this.orderService.saveOrderDetail(orderDetail).subscribe((newData) =>{

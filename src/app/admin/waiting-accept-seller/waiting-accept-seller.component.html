@@ -196,21 +196,23 @@
       <table class="table table-striped table-hover">
         <thead>
         <tr>
-          <th>#</th>
-          <th>Name</th>
-          <th>Phone Number</th>
-          <th>Address</th>
+          <th style="text-align: center">#</th>
+          <th style="text-align: center">Name</th>
+          <th style="text-align: center">Phone Number</th>
+          <th style="text-align: center">Address</th>
           <!--          <th>Status</th>-->
-          <th>Action</th>
+          <th style="text-align: center">Action</th>
         </tr>
         </thead>
         <tbody>
         <tr *ngFor="let seller of sellers, index as i">
-          <td>{{i + 1}}</td>
-          <td>{{seller.name}}</td>
-          <td>{{seller.phoneNumber}}</td>
-          <td>{{seller.address}}</td>
+          <td style="text-align: center">{{i + 1}}</td>
+          <td style="text-align: center">{{seller.name}}</td>
+          <td style="text-align: center">{{seller.phoneNumber}}</td>
+          <td style="text-align: center">{{seller.address}}</td>
+          <div style="display: flex;justify-content: center;align-items: center;height: 64.5px">
           <button type="button" class="btn btn-success" (click)="changeIsActive(seller.id)">Confirm</button>
+          </div>
           <!--          <td><span class="status text-warning">&bull;</span> Inactive</td>-->
           <!--          <td>-->
           <!--            <a href="#" class="settings" title="Settings" data-toggle="tooltip"><i class="material-icons">&#xE8B8;</i></a>-->

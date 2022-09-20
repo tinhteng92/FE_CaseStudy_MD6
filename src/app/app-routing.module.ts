@@ -7,6 +7,10 @@ import {CustomerRegisterComponent} from "./auth/customer-register/customer-regis
 import {SellerRegisterComponent} from "./auth/seller-register/seller-register.component";
 import {ShowlistSellerComponent} from "./homeshow/showlist-seller/showlist-seller.component";
 import {LoginComponent} from "./auth/login/login.component";
+import {SellerGuard} from "./seller/seller.guard";
+import {UserGuard} from "./user/user.guard";
+import {AdminGuard} from "./admin/admin.guard";
+import {UserModule} from "./user/user.module";
 
 
 
@@ -20,7 +24,8 @@ const routes: Routes = [{
   },
   {
     path: 'detail-product/:id',
-    component: DetailProductComponent
+    component: DetailProductComponent,
+    canActivate: [UserGuard]
   },
   {
     path: 'seller-detail/:id',
@@ -40,15 +45,18 @@ const routes: Routes = [{
   },
   {
     path: 'seller',
-    loadChildren: () => import('./seller/seller.module').then(module => module.SellerModule)
+    loadChildren: () => import('./seller/seller.module').then(module => module.SellerModule),
+    canActivate: [SellerGuard]
   },
   {
     path: 'user',
-    loadChildren: () => import('./user/user.module').then(module => module.UserModule)
+    loadChildren: () => import('./user/user.module').then(module => module.UserModule),
+    canActivate: [UserGuard]
   },
   {
     path:'admin',
-    loadChildren: () => import('./admin/admin.module').then(module => module.AdminModule)
+    loadChildren: () => import('./admin/admin.module').then(module => module.AdminModule),
+    canActivate: [AdminGuard]
   }
 
 ];
