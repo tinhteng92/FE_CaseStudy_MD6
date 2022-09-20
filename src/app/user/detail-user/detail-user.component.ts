@@ -37,6 +37,7 @@ export class DetailUserComponent implements OnInit {
         name: new FormControl(customer.name, Validators.required),
         phoneNumber: new FormControl(customer.phoneNumber, Validators.required),
         address: new FormControl(customer.address, Validators.required),
+        avatar: new FormControl(customer.avatar),
         isActive: new FormControl(customer.isActive),
         appUser: new FormGroup({
           id:  new FormControl(customer.appUser.id),
@@ -56,6 +57,7 @@ export class DetailUserComponent implements OnInit {
     this.customerService.saveCustomer(this.editForm.value).subscribe(() =>{
       alert("Update successful!")
       this.router.navigate(["/user/detail-user',customer.id"]);
+      window.location.reload();
     });
   }
 

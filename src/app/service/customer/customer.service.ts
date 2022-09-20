@@ -28,7 +28,7 @@ export class CustomerService {
   }
 
   findProductCommentListByProductId(idProduct: number):Observable<ProductComment[]>{
-    return this.http.post<ProductComment[]>("http://localhost:8080/customers/findProductCommentListByProductId",idProduct);
+    return this.http.post<ProductComment[]>("http://localhost:8080/home/findProductCommentListByProductId",idProduct);
   }
 
   changeIsRatedInOrderDetail(idOrderDetail: number):Observable<OrderDetail>{

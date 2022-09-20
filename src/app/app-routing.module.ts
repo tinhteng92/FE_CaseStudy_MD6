@@ -24,8 +24,7 @@ const routes: Routes = [{
   },
   {
     path: 'detail-product/:id',
-    component: DetailProductComponent,
-    canActivate: [UserGuard]
+    component: DetailProductComponent
   },
   {
     path: 'seller-detail/:id',
