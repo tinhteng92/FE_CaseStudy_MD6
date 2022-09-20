@@ -1,1 +1,82 @@
-<p>detail-user works!</p>
+<div class="col-md-12">
+  <div class="card">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md-12">
+          <h4>Your Profile</h4>
+          <hr>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <form *ngIf="this.editForm" [formGroup]="editForm" (ngSubmit)="updateCustomer()">
+            <div class="form-group row">
+              <label for="email" class="col-4 col-form-label">Email</label>
+              <div class="col-8">
+                <input id="email" value="{{customer.appUser.username}}" name="email" placeholder="Email" class="form-control here" required="required" readonly type="text">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="name" class="col-4 col-form-label">Display Name</label>
+              <div class="col-8">
+                <input id="name" formControlName="name" name="name" placeholder="Display Name" class="form-control here" type="text">
+                <p *ngIf="!editForm.get('name')?.valid && editForm.get('name')?.touched" style="color: red">Blank is not allow.</p>
+
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="phoneNumber" class="col-4 col-form-label">Phone Number</label>
+              <div class="col-8">
+                <input id="phoneNumber" formControlName="phoneNumber" name="phoneNumber" placeholder="Phone Number" class="form-control here" type="text">
+                <p *ngIf="!editForm.get('phoneNumber')?.valid && editForm.get('phoneNumber')?.touched" style="color: red">Blank is not allow.</p>
+
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="address" class="col-4 col-form-label">Address</label>
+              <div class="col-8">
+                <input id="address" formControlName="address" name="address" placeholder="Address" class="form-control here" required="required" type="text">
+                <p *ngIf="!editForm.get('address')?.valid && editForm.get('address')?.touched" style="color: red">Blank is not allow.</p>
+
+
+              </div>
+            </div>
+<!--            <div class="form-group row">-->
+<!--              <label for="select" class="col-4 col-form-label">Display Name public as</label>-->
+<!--              <div class="col-8">-->
+<!--                <select id="select" name="select" class="custom-select">-->
+<!--                  <option value="admin">Customer</option>-->
+<!--                </select>-->
+<!--              </div>-->
+<!--            </div>-->
+
+
+
+            <div class="form-group row" formGroupName="appUser">
+              <label for="newpass" class="col-4 col-form-label">New Password</label>
+              <div class="col-8">
+                <input type="password" id="newpass"  type="password" formControlName="password" name="newpass" placeholder="New Password" class="form-control here" >
+              </div>
+            </div>
+
+<!--            <div class="form-group row" >-->
+<!--              <label for="newpass" class="col-4 col-form-label">Confirm Password</label>-->
+<!--              <div class="col-8">-->
+<!--                <input type="password" id="confirmpass1"  type="password"  name="newpass" placeholder="Confirm Password" class="form-control here" >-->
+<!--                <p id="confirmpass" style="display: block;color: red">Invalid password</p>-->
+
+<!--              </div>-->
+<!--            </div>-->
+            <div class="form-group row">
+              <div class="offset-4 col-8">
+                <button name="submit" type="submit" class="btn btn-primary">Update My Profile</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+

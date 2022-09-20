@@ -56,10 +56,18 @@ export class EditSaleComponent implements OnInit {
       }
     }
     console.log(this.obj);
-    this.sellerService.saveSale(this.obj).subscribe(() =>{
-      alert("Update successful!")
-      this.router.navigate(["/seller/sale-management"]);
-    });
+
+
+    if(this.validateEndAt() && this.validateStartAt()){
+
+      this.sellerService.saveSale(this.obj).subscribe(() =>{
+        alert("Update successful!")
+        this.router.navigate(["/seller/sale-management"]);
+      });
+    }else {
+      alert("Please check your form!")
+    }
+
   }
 
   validateStartAt(){

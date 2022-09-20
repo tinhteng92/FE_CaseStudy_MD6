@@ -1,6 +1,6 @@
 <section class="restaurant-detailed-banner">
   <div class="text-center">
-    <img class="img-fluid cover" src="{{product.seller.imageBanner}}">
+    <img class="img-fluid cover" style="background: " src="{{product.seller.imageBanner}}">
   </div>
   <div class="restaurant-detailed-header">
     <div class="container">
@@ -13,16 +13,16 @@
             <p class="text-white mb-0"><i class="icofont-food-cart"></i> {{product.seller.phoneNumber}}</p>
           </div>
         </div>
-        <div class="col-md-4">
-          <div class="restaurant-detailed-header-right text-right">
-            <button class="btn btn-success" type="button"><i class="icofont-clock-time"></i> Giao hàng:
-              25–35 min
-            </button>
-            <h6 class="text-white mb-0 restaurant-detailed-ratings"><span
-              class="generator-bg rounded text-white"><i class="icofont-star"></i> 3.1</span> 23
-              Ratings <i class="ml-3 icofont-speech-comments"></i> 91 reviews</h6>
-          </div>
-        </div>
+<!--        <div class="col-md-4">-->
+<!--          <div class="restaurant-detailed-header-right text-right">-->
+<!--            <button class="btn btn-success" type="button"><i class="icofont-clock-time"></i> Giao hàng:-->
+<!--              25–35 min-->
+<!--            </button>-->
+<!--            <h6 class="text-white mb-0 restaurant-detailed-ratings"><span-->
+<!--              class="generator-bg rounded text-white"><i class="icofont-star"></i> 3.1</span> 23-->
+<!--              Ratings <i class="ml-3 icofont-speech-comments"></i> 91 reviews</h6>-->
+<!--          </div>-->
+<!--        </div>-->
       </div>
     </div>
   </div>
@@ -66,7 +66,7 @@
                 <div class="address-map float-right ml-5">
                   <div class="mapouter">
 
-                    <img width="300" height="170" class="img-fluid" src="{{product.image}}">
+                    <img width="250" height="170" class="img-fluid" src="{{product.image}}">
                   </div>
                 </div>
                 <h5 class="mb-4">{{product.name}}</h5>
@@ -79,7 +79,6 @@
 <!--                  +91 01234-56789, +91 01234-56789</p>-->
 <!--                <br>-->
                 <p class="mb-2 text-black"><i class="icofont-bill-alt text-primary mr-2"></i> <a
-                  href="https://thaotrinh.info/cdn-cgi/l/email-protection"
                   class="__cf_email__"
                   data-cfemail="97fef6faf8e4f6fff6f9d7f0faf6fefbb9f4f8fa">Price: {{product.price}}</a>
                 </p>
@@ -91,21 +90,20 @@
                 <p class="text-black mb-0">{{product.description}}</p>
                 <hr class="clearfix">
 
-                // Show list hình ảnh ở đây
 
 
-                <div
-                  class="owl-carousel owl-theme owl-carousel-five offers-interested-carousel mb-3">
-                  <div class="item" *ngFor="let imgP of productImageList">
-                    <div class="mall-category-item">
-                      <a href="#">
-                        <img class="img-fluid" src="{{imgP.image}}">
-                        <h6>Burgers</h6>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-                <a class=" btn btn-success" (click)="addToCart(product.id)" >Add to cart</a>
+<!--                <div-->
+<!--                  class="owl-carousel owl-theme owl-carousel-five offers-interested-carousel mb-3">-->
+<!--                  <div class="item" *ngFor="let imgP of productImageList">-->
+<!--                    <div class="mall-category-item">-->
+<!--                      <a href="#">-->
+<!--                        <img class="img-fluid" src="{{imgP.image}}">-->
+<!--                        <h6>Burgers</h6>-->
+<!--                      </a>-->
+<!--                    </div>-->
+<!--                  </div>-->
+<!--                </div>-->
+                <a class=" btn btn-success" (click)="addToCart(product.id)" style="margin-left: 150px">Add to cart</a>
               </div>
 
 
@@ -136,29 +134,29 @@
                         <div class="reviews-members-body">
                           <p>{{c.message}}</p>
                         </div>
-                        <div class="reviews-members-footer">
-                          <a class="total-like" style="color: palevioletred"><i class="icofont-thumbs-up"></i>
-                            856M</a> <a class="total-like" style="color: palevioletred"><i
-                          class="icofont-thumbs-down"></i> 158K</a>
-                          <span class="total-like-user-main ml-2" dir="rtl">
-                                                        <a data-toggle="tooltip" data-placement="top"
-                                                           title="Gurdeep Osahan" ><img
-                                                          alt="Generic placeholder image" src="assets/img/user/5.png"
-                                                          class="total-like-user rounded-pill"></a>
-                                                        <a data-toggle="tooltip" data-placement="top"
-                                                           title="Gurdeep Singh" ><img
-                                                          alt="Generic placeholder image" src="assets/img/user/2.png"
-                                                          class="total-like-user rounded-pill"></a>
-                                                        <a data-toggle="tooltip" data-placement="top"
-                                                           title="Askbootstrap" ><img
-                                                          alt="Generic placeholder image" src="assets/img/user/3.png"
-                                                          class="total-like-user rounded-pill"></a>
-                                                        <a data-toggle="tooltip" data-placement="top" title="Osahan"
-                                                           ><img alt="Generic placeholder image"
-                                                                         src="assets/img/user/4.png"
-                                                                         class="total-like-user rounded-pill"></a>
-                                                    </span>
-                        </div>
+<!--                        <div class="reviews-members-footer">-->
+<!--                          <a class="total-like" style="color: palevioletred"><i class="icofont-thumbs-up"></i>-->
+<!--                            856M</a> <a class="total-like" style="color: palevioletred"><i-->
+<!--                          class="icofont-thumbs-down"></i> 158K</a>-->
+<!--                          <span class="total-like-user-main ml-2" dir="rtl">-->
+<!--                                                        <a data-toggle="tooltip" data-placement="top"-->
+<!--                                                           title="Gurdeep Osahan" ><img-->
+<!--                                                          alt="Generic placeholder image" src="assets/img/user/5.png"-->
+<!--                                                          class="total-like-user rounded-pill"></a>-->
+<!--                                                        <a data-toggle="tooltip" data-placement="top"-->
+<!--                                                           title="Gurdeep Singh" ><img-->
+<!--                                                          alt="Generic placeholder image" src="assets/img/user/2.png"-->
+<!--                                                          class="total-like-user rounded-pill"></a>-->
+<!--                                                        <a data-toggle="tooltip" data-placement="top"-->
+<!--                                                           title="Askbootstrap" ><img-->
+<!--                                                          alt="Generic placeholder image" src="assets/img/user/3.png"-->
+<!--                                                          class="total-like-user rounded-pill"></a>-->
+<!--                                                        <a data-toggle="tooltip" data-placement="top" title="Osahan"-->
+<!--                                                           ><img alt="Generic placeholder image"-->
+<!--                                                                         src="assets/img/user/4.png"-->
+<!--                                                                         class="total-like-user rounded-pill"></a>-->
+<!--                                                    </span>-->
+<!--                        </div>-->
                       </div>
                     </div>
                   </div>
@@ -290,8 +288,7 @@
                   <div
                     class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
                     <div class="list-card-image">
-                      <div class="star position-absolute"><span class="badge badge-success"><i
-                                  class="icofont-star"></i> 3.1 ({{p.sold}}+)</span></div>
+                      <div class="star position-absolute"><span class="badge badge-success"> ({{p.sold}}+)</span></div>
                       <div class="favourite-heart text-danger position-absolute"><a
                         href="#"><i class="icofont-heart"></i></a></div>
                       <div class="member-plan position-absolute"><span
@@ -302,14 +299,21 @@
                     </div>
                     <div class="p-3 position-relative">
                       <div class="list-card-body">
-                        <h6 class="mb-1"><a href="#" class="text-black">{{p.name}}
-                        </a>
-                        </h6>
-                        <p class="text-gray mb-2">{{p.seller.name}}</p>
-                        <p class="text-gray time mb-0"><a
-                          class="btn btn-link btn-sm text-black" ><span
-                          class="badge badge-primary">Price</span>{{p.price}} </a>
-                        </p>
+                        <h6 class="mb-1" style="text-align: center"><a [routerLink]="['/detail-product', p.id]"
+                                                                       class="text-black">{{p.name}}</a></h6>
+                        <br>
+                        <a [routerLink]="['/seller-detail', p.seller.id]" class="text-gray mb-3 time"><span
+                          class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2"><i
+                          class="icofont-home"></i> {{p.seller.name}}</span> </a>
+                        <br>
+                        <br>
+                        <!--                  <span class="float-right text-black-50"> {{}}</span>-->
+                        <p  class="text-gray mb-3"><span><i class="icofont-address-book"></i></span> {{p.seller.address}}</p>
+
+                        <div class="list-card-badge" style="text-align: right
+">
+                          <span class="badge badge-success">Price</span> {{product.price}}$
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -343,7 +347,7 @@
               <div class="media">
                 <div class="mr-2"><i class="icofont-ui-press text-success food-item"></i></div>
                 <div class="media-body">
-                  <a  class=" text-success mr-2" href="#">{{sale.name}}</a>
+                  <a  class=" text-success mr-2">{{sale.name}}</a>
                 </div>
               </div>
             </div>

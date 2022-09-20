@@ -5,11 +5,13 @@ import {Customer} from "../../model/Customer";
 import {Seller} from "../../model/Seller";
 import {ProductComment} from "../../model/ProductComment";
 import {OrderDetail} from "../../model/OrderDetail";
+import {Sale} from "../../model/Sale";
 
 @Injectable({
   providedIn: 'root'
 })
 export class CustomerService {
+  API = 'http://localhost:8080/customers';
 
   constructor(private http:HttpClient) { }
 
@@ -32,4 +34,13 @@ export class CustomerService {
   changeIsRatedInOrderDetail(idOrderDetail: number):Observable<OrderDetail>{
     return this.http.post<OrderDetail>("http://localhost:8080/customers/changeIsRatedInOrderDetail",idOrderDetail);
   }
+
+  showCustomerDetail(id: number): Observable<any>{
+    return this.http.get<any>(this.API + `/customer/${id}`)
+  }
+
+  saveCustomer(customer: Customer): Observable<Sale> {
+    return this.http.post<Customer>(this.API + '/edit-customer', customer);
+  }
+
 }

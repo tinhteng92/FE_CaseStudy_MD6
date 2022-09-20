@@ -3,6 +3,7 @@ import {Seller} from "../../model/Seller";
 import {ProductCategoryService} from "../../service/product-category/product-category.service";
 import {ActivatedRoute, ParamMap} from "@angular/router";
 import {Product} from "../../model/Product";
+import {Sale} from "../../model/Sale";
 
 @Component({
   selector: 'app-detail-seller',
@@ -13,6 +14,8 @@ export class DetailSellerComponent implements OnInit {
   seller!: Seller;
   id!: any;
   products: Product[] = [];
+  saleList: Sale[] = [];
+  p: any;
 
   constructor(private productService: ProductCategoryService, private activatedRoute: ActivatedRoute) {
   }
@@ -28,6 +31,10 @@ export class DetailSellerComponent implements OnInit {
         this.products = data;
         console.log(data)
       });
+      this.productService.showSaleList(this.id).subscribe(sales => {
+        this.saleList = sales;
+        console.log(sales)
+      })
 
     })
   }
