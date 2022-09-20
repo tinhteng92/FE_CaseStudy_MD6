@@ -29,7 +29,7 @@ export class DeleteProductComponent implements OnInit {
     this.sellerService.deleteProduct(idProduct).subscribe((data) => {
       let timerInterval: string | number | NodeJS.Timer | undefined
       Swal.fire({
-        title: 'Auto close alert!',
+        title: 'The product is being deleted!',
         html: 'I will close in <b></b> milliseconds.',
         timer: 2000,
         timerProgressBar: true,

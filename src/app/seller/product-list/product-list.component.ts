@@ -35,4 +35,17 @@ export class ProductListComponent implements OnInit {
     })
   }
 
+  showProductsByPriceASC(){
+    this.sellerService.showProductsByPriceASC(this.loginService.getUserToken().id).subscribe((data) => {
+      this.products = data;
+      console.log(this.products)
+    })
+  }
+
+  showProductsByPriceDESC(){
+    this.sellerService.showProductsByPriceDESC(this.loginService.getUserToken().id).subscribe((data) => {
+      this.products = data;
+      console.log(this.products)
+    })
+  }
 }

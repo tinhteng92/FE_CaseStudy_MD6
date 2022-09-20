@@ -1,40 +1,63 @@
 <div class="tab-pane fade show active" id="orders" role="tabpanel"
      aria-labelledby="orders-tab"></div>
-  <h4 class="font-weight-bold mt-0 mb-4 mb-0 text-black text-primary pt-2">Shop's List Product</h4>
-  <div class="bg-white card mb-4 order-list shadow-sm"*ngFor="let product of products |paginate: {itemsPerPage :4, currentPage :p}" >
-    <div class="gold-members p-4" >
-<!--      <a href="#">-->
-        <div class="media">
-          <img class="mr-4" style="width: 100px;height: 100px;border-radius: 5px" src="{{product.image}}" alt="Generic placeholder image">
-          <div class="media-body">
-            <span class="float-right text-info">Quantity available in Shop: {{product.quantityStorage}}<i class="icofont-check-circled text-success"></i></span>
-            <h6 class="mb-2">
-              <h6  class="text-black text-info">{{product.name}}
-              </h6>
-            </h6>
-            <p class="text-info"><i class="icofont-list"></i>Product Category: <i class="mb-0 text-black text-primary pt-2">{{product.productCategory.nameCategory}}</i></p>
-            <p class="mb-0 text-black text-primary pt-2">Product Description: {{product.description}}
-            <p class="mb-0 text-black text-primary pt-2">Sold: {{product.sold}}
-            <p class="text-black text-info">Product Status: <a class="mb-0 text-black text-primary pt-2" *ngIf="product.isDelete == true; then thenBlock else elseBlock"></a>
-<!--            <p>Product Status: <a class="mb-0 text-black text-primary pt-2" *ngIf="product.isDelete == false"><span class="status text-warning"  >&bull;</span>Already Exist</a>-->
-            <ng-template #thenBlock><span class="status text-warning"  >&bull;</span><i class="mb-0 text-black text-primary pt-2">Removed from the store.</i></ng-template>
-            <ng-template #elseBlock><span class="status text-success"  >&bull;</span><i class="mb-0 text-black text-primary pt-2">Already Exist.</i></ng-template>
-            </p>
-            <hr>
-            <div class="float-right">
-              <a data-toggle="modal" data-target="#edit-product-modal" [routerLink]="'edit-product/'+product.id" class="btn btn-sm btn-outline-primary" href="#"><a><i
-                class="icofont-edit-alt"></i> EDIT</a></a>
-              <a data-toggle="modal" data-target="#delete-product-modal" [routerLink]="'delete-product/'+product.id" class="btn btn-sm btn-primary mr-2" href="#"><a><i
-                class="icofont-delete-alt"></i> REMOVE</a></a>
-            </div>
-            <p class="mb-0 text-black text-primary pt-2"><span
-              class="text-black font-weight-bold">Price: </span>${{product.price}}
-            </p>
-          </div>
-        </div>
-<!--      </a>-->
+<div class="col-md-12">
+  <div class="dropdown float-right">
+    <a class="btn btn-outline-info dropdown-toggle btn-sm border-white-btn" href="#" role="button"
+       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Sort by: <span class="text-theme">Price Product</span> &nbsp;&nbsp;
+    </a>
+    <div class="dropdown-menu dropdown-menu-right shadow-sm border-0 ">
+      <a class="dropdown-item" (click)="showProductsByPriceASC()">Price Up</a>
+      <a class="dropdown-item" (click)="showProductsByPriceDESC()">Price Down</a>
+      <!--            <a class="dropdown-item" href="#">Rating</a>-->
     </div>
   </div>
+</div>
+<h4 class="font-weight-bold mt-0 mb-4 mb-0 text-black text-primary pt-2">Shop's List Product</h4>
+<div class="bg-white card mb-4 order-list shadow-sm"
+     *ngFor="let product of products |paginate: {itemsPerPage :4, currentPage :p}">
+  <div class="gold-members p-4">
+
+    <!--      <a href="#">-->
+    <div class="media">
+      <img class="mr-4" style="width: 100px;height: 100px;border-radius: 5px" src="{{product.image}}"
+           alt="Generic placeholder image">
+      <div class="media-body">
+        <span class="float-right text-info">Quantity available in Shop: {{product.quantityStorage}}<i
+          class="icofont-check-circled text-success"></i></span>
+        <h6 class="mb-2">
+          <h6 class="text-black text-info">{{product.name}}
+          </h6>
+        </h6>
+        <p class="text-info"><i class="icofont-list"></i>Product Category: <i
+          class="mb-0 text-black text-primary pt-2">{{product.productCategory.nameCategory}}</i></p>
+        <p class="mb-0 text-black text-primary pt-2">Product Description: {{product.description}}
+        <p class="mb-0 text-black text-primary pt-2">Sold: {{product.sold}}
+        <p class="text-black text-info">Product Status: <a class="mb-0 text-black text-primary pt-2"
+                                                           *ngIf="product.isDelete == true; then thenBlock else elseBlock"></a>
+          <!--            <p>Product Status: <a class="mb-0 text-black text-primary pt-2" *ngIf="product.isDelete == false"><span class="status text-warning"  >&bull;</span>Already Exist</a>-->
+          <ng-template #thenBlock><span class="status text-warning">&bull;</span><i
+            class="mb-0 text-black text-primary pt-2">Removed from the store.</i></ng-template>
+          <ng-template #elseBlock><span class="status text-success">&bull;</span><i
+            class="mb-0 text-black text-primary pt-2">Already Exist.</i></ng-template>
+        </p>
+        <hr>
+        <div class="float-right">
+          <a data-toggle="modal" data-target="#edit-product-modal" [routerLink]="'edit-product/'+product.id"
+             class="btn btn-sm btn-outline-primary" href="#"><a><i
+            class="icofont-edit-alt"></i> EDIT</a></a>
+          <a data-toggle="modal" data-target="#delete-product-modal" [routerLink]="'delete-product/'+product.id"
+             class="btn btn-sm btn-primary mr-2" href="#"><a><i
+            class="icofont-delete-alt"></i> REMOVE</a></a>
+        </div>
+        <p class="mb-0 text-black text-primary pt-2"><span
+          class="text-black font-weight-bold">Price: </span>${{product.price}}
+        </p>
+      </div>
+    </div>
+    <!--      </a>-->
+  </div>
+</div>
 <div style="display: flex;justify-content: center;">
   <pagination-controls class="btn btn-sm btn-outline-primary" class="myPagination" (pageChange)="p = $event">
   </pagination-controls>

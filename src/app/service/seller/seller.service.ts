@@ -25,6 +25,16 @@ export class SellerService {
     return this.httpClient.post<Page>(this.API+`/show/${page}`, userName)
   }
 
+  showProductsByPriceASC(idSeller: any):Observable<any>{
+    console.log("lít product service: ",idSeller)
+    return this.httpClient.get<any>(this.API+`/show/${idSeller}/price-up`)
+  }
+
+  showProductsByPriceDESC(idSeller: any):Observable<any>{
+    console.log("lít product service: ",idSeller)
+    return this.httpClient.get<any>(this.API+`/show/${idSeller}/price-down`)
+  }
+
   createProduct(product: any, userId:any): Observable<any>{
     console.log("product",product)
     return this.httpClient.post<any>(this.API+`/save-product/`+userId,product);
