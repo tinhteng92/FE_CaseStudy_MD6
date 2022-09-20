@@ -8,6 +8,8 @@ import {finalize, Observable} from "rxjs";
 import {AngularFireStorage} from "@angular/fire/compat/storage";
 import {ProductCategory} from "../../model/ProductCategory";
 import {ProductCategoryService} from "../../service/product-category/product-category.service";
+import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-edit-product',
@@ -95,7 +97,13 @@ export class EditProductComponent implements OnInit {
       this.sellerService.editProduct(productToEdit,this.id, userID).subscribe((data) => {
         console.log("data");
         console.log(data);
-        alert("Complete Update Product");
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'Your work has been saved',
+          showConfirmButton: false,
+          timer: 1500
+        })
         window.location.reload();
         this.router.navigate(["/seller"]);
       })

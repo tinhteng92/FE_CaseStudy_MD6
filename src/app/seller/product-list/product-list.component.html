@@ -15,6 +15,10 @@
             <p class="text-info"><i class="icofont-list"></i>Product Category: <i class="mb-0 text-black text-primary pt-2">{{product.productCategory.nameCategory}}</i></p>
             <p class="mb-0 text-black text-primary pt-2">Product Description: {{product.description}}
             <p class="mb-0 text-black text-primary pt-2">Sold: {{product.sold}}
+            <p class="text-black text-info">Product Status: <a class="mb-0 text-black text-primary pt-2" *ngIf="product.isDelete == true; then thenBlock else elseBlock"></a>
+<!--            <p>Product Status: <a class="mb-0 text-black text-primary pt-2" *ngIf="product.isDelete == false"><span class="status text-warning"  >&bull;</span>Already Exist</a>-->
+            <ng-template #thenBlock><span class="status text-warning"  >&bull;</span><i class="mb-0 text-black text-primary pt-2">Removed from the store.</i></ng-template>
+            <ng-template #elseBlock><span class="status text-success"  >&bull;</span><i class="mb-0 text-black text-primary pt-2">Already Exist.</i></ng-template>
             </p>
             <hr>
             <div class="float-right">
