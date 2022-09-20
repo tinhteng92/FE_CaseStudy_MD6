@@ -12,12 +12,7 @@
       <div class="modal-body">
         <div style="padding: 20px; border-radius: 20px;">
           <form [formGroup]="editProductForm" (ngSubmit)="editProduct()">
-            <div class="form-label-group mb-4">
-              <input type="text" id="name" formControlName="name" class="form-control" >
-              <label for="name" style="color:black;">New Product's name:</label>
-              <p style="color: red" *ngIf="!editProductForm.get('name')?.valid && editProductForm.get('name')?.touched">
-                Required Information.</p>
-            </div>
+
             <div class="form-label-group mb-4">
               <select id="productCategory" formControlName="productCategory" class="form-control" >
                 <option [selected]="true" [ngValue]="product.productCategory.nameCategory">*Select new Category **</option>
@@ -40,6 +35,12 @@
               <p style="color: red"
                  *ngIf="!editProductForm.get('quantityStorage')?.valid && editProductForm.get('quantityStorage')?.touched">
                 Required Information, at least 1 && maximum 999 Products</p>
+            </div>
+            <div class="form-label-group mb-4">
+              <input type="text" id="name" formControlName="name" class="form-control" >
+              <label for="name" style="color:black;">New Product's name:</label>
+              <p style="color: red" *ngIf="!editProductForm.get('name')?.valid && editProductForm.get('name')?.touched">
+                Required Information.</p>
             </div>
             <div class="form-label-group mb-4">
               <input type="file"

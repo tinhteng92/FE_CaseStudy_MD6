@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Product} from "../../model/Product";
 import {ActivatedRoute, Router} from "@angular/router";
 import {SellerService} from "../../service/seller/seller.service";
@@ -20,21 +20,23 @@ export class EditProductComponent implements OnInit {
 
   id: any;
   product!: Product;
-  productCategories! : ProductCategory[];
+  productCategories!: ProductCategory[];
   editProductForm: any;
+
   constructor(private route: ActivatedRoute, private sellerService: SellerService
-              , private router: Router, private loginService: LoginService, private storage: AngularFireStorage
-              , private productCategoryService: ProductCategoryService) { }
+    , private router: Router, private loginService: LoginService, private storage: AngularFireStorage
+    , private productCategoryService: ProductCategoryService) {
+  }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(paramMap => {
       this.id = paramMap.get('id');
       this.sellerService.getProduct(this.id).subscribe((data) => {
         this.product = data;
-        this.fb=data.img;
-        this.editProductForm= new FormGroup({
+        this.fb = data.img;
+        this.editProductForm = new FormGroup({
           name: new FormControl(data.name, Validators.required),
-          sold: new  FormControl(data.sold),
+          sold: new FormControl(data.sold),
           isDelete: new FormControl(data.isDelete),
           productCategory: new FormControl(data.productCategory),
           price: new FormControl(data.price, Validators.required),
@@ -47,18 +49,21 @@ export class EditProductComponent implements OnInit {
     })
     this.getCategory()
   }
+
   getCategory() {
     this.productCategoryService.getCategory().subscribe(data => {
       this.productCategories = data;
     })
   }
 
-  cancel(){
+  cancel() {
     this.router.navigate(["/seller"]);
   }
+
   title = "cloudsSorage";
-  fb!: string ;
+  fb!: string;
   downloadURL: Observable<string> | undefined;
+
   onFileSelected(event: Event) {
     var n = Date.now();
     // @ts-ignore
@@ -74,7 +79,7 @@ export class EditProductComponent implements OnInit {
           this.downloadURL.subscribe(url => {
             if (url) {
               this.product.image = url;
-              this.fb=url;
+              this.fb = url;
             }
             console.log(this.fb);
           });
@@ -88,24 +93,25 @@ export class EditProductComponent implements OnInit {
   }
 
   editProduct() {
+
     let userID = this.loginService.getUserToken().id;
     console.log(userID)
     this.editProductForm.get("image")?.setValue(this.product.image);
     let productToEdit = this.editProductForm.value;
     console.log("product to edit: ", productToEdit)
+
     if (this.editProductForm.valid) {
-      this.sellerService.editProduct(productToEdit,this.id, userID).subscribe((data) => {
-        console.log("data");
-        console.log(data);
+      this.sellerService.editProduct(productToEdit, this.id, userID).subscribe((data) => {
         Swal.fire({
           position: 'top-end',
           icon: 'success',
           title: 'Your work has been saved',
           showConfirmButton: false,
           timer: 1500
+        }).then((result) => {
+          this.router.navigate(["/seller"]);
+          window.location.reload();
         })
-        window.location.reload();
-        this.router.navigate(["/seller"]);
       })
     } else {
       alert("Please checkout form!");
