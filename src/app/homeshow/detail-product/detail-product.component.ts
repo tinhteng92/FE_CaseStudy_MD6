@@ -94,10 +94,13 @@ export class DetailProductComponent implements OnInit{
         alert("Comment success!")
         this.customerService.findProductCommentListByProductId(Number(this.id)).subscribe(data =>{
           this.commentList = data;
-        })
+        });
 
+        this.customerService.changeIsRatedInOrderDetail(Number(localStorage.getItem("idOrderDetail"))).subscribe(orderDetail => {
+          localStorage.removeItem("idOrderDetail");
+        })
       })
-    })
+    });
 
     this.allowComment = false;
     localStorage.removeItem("allowComment"+ this.id);

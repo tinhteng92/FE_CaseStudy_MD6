@@ -90,8 +90,12 @@ export class NavbarComponent implements OnInit{
   }
 
   checkLogin(){
-    if(this.loginService.getUserToken() == null )
-      return false
-    else return true
+    if(this.loginService.getUserToken() == null ) {
+      return false;
+    }
+    else {
+      return true;
+      }
+
   }
 }

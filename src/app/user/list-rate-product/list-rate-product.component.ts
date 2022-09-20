@@ -33,12 +33,20 @@ export class ListRateProductComponent implements OnInit {
 
         this.orderService.findOrderDetailsByOrderId(this.idOrder).subscribe(data =>{
           this.orderDetail = data;
+          console.log(this.orderDetail)
+
+          let change = false;
+          for (let i = 0; i < this.orderDetail.length; i++) {
+            change = Boolean(this.orderDetail[i].isRated);
+            this.orderDetail[i].isRated = change;
+          }
         })
     });
   }
 
-  allowComment(idProduct: number) {
+  allowComment(idProduct: number, idOrderDetail: number) {
     localStorage.setItem("allowComment" + idProduct, "true");
+    localStorage.setItem("idOrderDetail", String(idOrderDetail));
   }
 
 }

@@ -4,6 +4,7 @@ import {Observable} from "rxjs";
 import {Customer} from "../../model/Customer";
 import {Seller} from "../../model/Seller";
 import {ProductComment} from "../../model/ProductComment";
+import {OrderDetail} from "../../model/OrderDetail";
 
 @Injectable({
   providedIn: 'root'
@@ -26,5 +27,9 @@ export class CustomerService {
 
   findProductCommentListByProductId(idProduct: number):Observable<ProductComment[]>{
     return this.http.post<ProductComment[]>("http://localhost:8080/customers/findProductCommentListByProductId",idProduct);
+  }
+
+  changeIsRatedInOrderDetail(idOrderDetail: number):Observable<OrderDetail>{
+    return this.http.post<OrderDetail>("http://localhost:8080/customers/changeIsRatedInOrderDetail",idOrderDetail);
   }
 }
