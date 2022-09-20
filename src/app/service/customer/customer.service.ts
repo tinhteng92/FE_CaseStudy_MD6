@@ -4,11 +4,13 @@ import {Observable} from "rxjs";
 import {Customer} from "../../model/Customer";
 import {Seller} from "../../model/Seller";
 import {ProductComment} from "../../model/ProductComment";
+import {Sale} from "../../model/Sale";
 
 @Injectable({
   providedIn: 'root'
 })
 export class CustomerService {
+  API = 'http://localhost:8080/customers';
 
   constructor(private http:HttpClient) { }
 
@@ -27,4 +29,13 @@ export class CustomerService {
   findProductCommentListByProductId(idProduct: number):Observable<ProductComment[]>{
     return this.http.post<ProductComment[]>("http://localhost:8080/customers/findProductCommentListByProductId",idProduct);
   }
+
+  showCustomerDetail(id: number): Observable<any>{
+    return this.http.get<any>(this.API + `/customer/${id}`)
+  }
+
+  saveCustomer(customer: Customer): Observable<Sale> {
+    return this.http.post<Customer>(this.API + '/edit-customer', customer);
+  }
+
 }

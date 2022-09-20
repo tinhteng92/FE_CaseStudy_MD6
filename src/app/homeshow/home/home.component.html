@@ -1,27 +1,29 @@
-
-<section class="section pt-5 pb-5 bg-white homepage-add-section">
+<section class="section pt-5 pb-5 bg-white homepage-add-section" xmlns="http://www.w3.org/1999/html">
   <div class="container">
     <div class="row">
       <div class="col-md-3 col-6" *ngFor="let category of categoryList">
         <div class="products-box">
-          <a (click)="filterByCategory(category.id)" ><img  alt="" src="{{category.imageCategory}}" class="img-fluid rounded">{{category.nameCategory}}</a>
+          <a (click)="filterByCategory(category.id)"><img alt="" src="{{category.imageCategory}}"
+                                                          class="img-fluid rounded">
+            <br>
+            <br><p style="text-align: center; color: #3ecf8e;">{{category.nameCategory}}</p></a>
         </div>
       </div>
-<!--      <div class="col-md-3 col-6">-->
-<!--        <div class="products-box">-->
-<!--          <a href="listing.html"><img alt="" src="../../../assets/img/category-2.jpg" class="img-fluid rounded">Vegetables</a>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--      <div class="col-md-3 col-6">-->
-<!--        <div class="products-box">-->
-<!--          <a href="listing.html"><img alt="" src="../../../assets/img/category-3.jpg" class="img-fluid rounded">Juices</a>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--      <div class="col-md-3 col-6">-->
-<!--        <div class="products-box">-->
-<!--          <a href="listing.html"><img alt="" src="../../../assets/img/category-4.jpg" class="img-fluid rounded">Dried</a>-->
-<!--        </div>-->
-<!--      </div>-->
+      <!--      <div class="col-md-3 col-6">-->
+      <!--        <div class="products-box">-->
+      <!--          <a href="listing.html"><img alt="" src="../../../assets/img/category-2.jpg" class="img-fluid rounded">Vegetables</a>-->
+      <!--        </div>-->
+      <!--      </div>-->
+      <!--      <div class="col-md-3 col-6">-->
+      <!--        <div class="products-box">-->
+      <!--          <a href="listing.html"><img alt="" src="../../../assets/img/category-3.jpg" class="img-fluid rounded">Juices</a>-->
+      <!--        </div>-->
+      <!--      </div>-->
+      <!--      <div class="col-md-3 col-6">-->
+      <!--        <div class="products-box">-->
+      <!--          <a href="listing.html"><img alt="" src="../../../assets/img/category-4.jpg" class="img-fluid rounded">Dried</a>-->
+      <!--        </div>-->
+      <!--      </div>-->
     </div>
   </div>
 </section>
@@ -35,18 +37,18 @@
             Sort by: <span class="text-theme">Price</span> &nbsp;&nbsp;
           </a>
           <div class="dropdown-menu dropdown-menu-right shadow-sm border-0 ">
-            <a class="dropdown-item" (click)="priceUp()" >Price Up</a>
-            <a class="dropdown-item" (click)="priceDown()" >Price Down</a>
-<!--            <a class="dropdown-item" href="#">Rating</a>-->
+            <a class="dropdown-item" (click)="priceUp()">Price Up</a>
+            <a class="dropdown-item" (click)="priceDown()">Price Down</a>
+            <!--            <a class="dropdown-item" href="#">Rating</a>-->
           </div>
         </div>
 
-        <div class="search-box">
+        <div class="search-box" style="margin-bottom: 30px">
           <i class="icofont-search"></i>
-          <input type="text"  #find (input)="search(find.value)" placeholder="Search&hellip;">
+          <input type="text" #find (input)="search(find.value)" placeholder="Search&hellip;" style="margin-right: 10px">
         </div>
 
-        <h4 class="font-weight-bold mt-0 mb-3">OFFERS <small class="h6 mb-0 ml-2">200 shops
+        <h4 class="font-weight-bold mt-0 mb-3" style="margin-left: 70px">OFFERS <small class="h6 mb-0 ml-2">
         </small>
         </h4>
       </div>
@@ -59,11 +61,11 @@
           </div>
           <div class="filters-body">
             <div id="accordion">
-              <div class="filters-card border-bottom p-4" >
+              <div class="filters-card border-bottom p-4">
                 <div class="custom-control custom-radio" *ngFor="let category of categoryList">
                   <input type="radio" id="{{category.nameCategory}}" name="customRadio" [value]="category.nameCategory"
-                       (change)="filterByCategory(category.id)"   checked="">
-                  <label  for="{{category.nameCategory}}">{{category.nameCategory}}</label>
+                         (change)="filterByCategory(category.id)" checked="">
+                  <label for="{{category.nameCategory}}"> {{category.nameCategory}} </label>
                 </div>
               </div>
             </div>
@@ -73,117 +75,39 @@
 
 
       <div class="col-md-9">
-        <div class="owl-carousel owl-carousel-category owl-theme list-cate-page mb-4">
-          <div class="item">
-            <div class="osahan-category-item">
-              <a href="#">
-                <img class="img-fluid" src="assets/img/list/1.png" alt="">
-                <h6>American</h6>
-                <p>156</p>
-              </a>
-            </div>
-          </div>
-          <div class="item">
-            <div class="osahan-category-item">
-              <a href="#">
-                <img class="img-fluid" src="assets/img/list/2.png" alt="">
-                <h6>Pizza</h6>
-                <p>120</p>
-              </a>
-            </div>
-          </div>
-          <div class="item">
-            <div class="osahan-category-item">
-              <a href="#">
-                <img class="img-fluid" src="assets/img/list/3.png" alt="">
-                <h6>Healthy</h6>
-                <p>130</p>
-              </a>
-            </div>
-          </div>
-          <div class="item">
-            <div class="osahan-category-item">
-              <a href="#">
-                <img class="img-fluid" src="assets/img/list/4.png" alt="">
-                <h6>Vegetarian</h6>
-                <p>120</p>
-              </a>
-            </div>
-          </div>
-          <div class="item">
-            <div class="osahan-category-item">
-              <a href="#">
-                <img class="img-fluid" src="assets/img/list/5.png" alt="">
-                <h6>Chinese</h6>
-                <p>111</p>
-              </a>
-            </div>
-          </div>
-          <div class="item">
-            <div class="osahan-category-item">
-              <a href="#">
-                <img class="img-fluid" src="assets/img/list/6.png" alt="">
-                <h6>Hamburgers</h6>
-                <p>958</p>
-              </a>
-            </div>
-          </div>
-          <div class="item">
-            <div class="osahan-category-item">
-              <a href="#">
-                <img class="img-fluid" src="assets/img/list/7.png" alt="">
-                <h6>Dessert</h6>
-                <p>56</p>
-              </a>
-            </div>
-          </div>
-          <div class="item">
-            <div class="osahan-category-item">
-              <a href="#">
-                <img class="img-fluid" src="assets/img/list/8.png" alt="">
-                <h6>Chicken</h6>
-                <p>40</p>
-              </a>
-            </div>
-          </div>
-          <div class="item">
-            <div class="osahan-category-item">
-              <a href="#">
-                <img class="img-fluid" src="assets/img/list/9.png" alt="">
-                <h6>Indian</h6>
-                <p>156</p>
-              </a>
-            </div>
-          </div>
-        </div>
 
-        <div class="row" >
-          <div class="col-md-4 col-sm-6 mb-4 pb-2" *ngFor=" let product of products |paginate: {itemsPerPage :5, currentPage :p}" >
+        <div class="row">
+          <div class="col-md-4 col-sm-6 mb-4 pb-2"
+               *ngFor=" let product of products |paginate: {itemsPerPage :6, currentPage :p}">
             <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
               <div class="list-card-image">
-                <div class="star position-absolute"><span class="badge badge-success"><i
-                  class="icofont-star"></i> 3.1 ({{product.sold}}+)</span></div>
+                <div class="star position-absolute"><span class="badge badge-success"> ({{product.sold}}+)</span></div>
                 <div class="favourite-heart text-danger position-absolute"><a href="detail.html"><i
                   class="icofont-heart"></i></a></div>
                 <div class="member-plan position-absolute"><span
                   class="badge badge-dark">Promoted</span></div>
-                <a [routerLink]="['/detail-product', product.id]" >
+                <a [routerLink]="['/detail-product', product.id]">
                   <img src="{{product.image}}" class="img-fluid item-img">
                 </a>
               </div>
               <div class="p-3 position-relative">
                 <div class="list-card-body">
-                  <h6 class="mb-1"><a  [routerLink]="['/detail-product', product.id]" class="text-black">{{product.name}}</a></h6>
-<!--                  <p class="text-gray mb-3">Price: {{product.price}}</p>-->
-                  <a [routerLink]="['/seller-detail', product.seller.id]"  class="text-gray mb-3 time"><span
+                  <h6 class="mb-1" style="text-align: center"><a [routerLink]="['/detail-product', product.id]"
+                                      class="text-black">{{product.name}}</a></h6>
+                  <br>
+                  <!--                  <p class="text-gray mb-3">Price: {{product.price}}</p>-->
+                  <a [routerLink]="['/seller-detail', product.seller.id]" class="text-gray mb-3 time"><span
                     class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2"><i
-                    class="icofont-home"></i>{{product.seller.name}}</span> </a>
-<!--                  <span class="float-right text-black-50"> {{}}</span>-->
-                  <p class="text-gray mb-3">Add: {{product.seller.address}}</p>
+                    class="icofont-home"></i> {{product.seller.name}}</span> </a>
+                  <br>
+                  <br>
+                  <!--                  <span class="float-right text-black-50"> {{}}</span>-->
+                  <p  class="text-gray mb-3"><span><i class="icofont-address-book"></i></span> {{product.seller.address}}</p>
 
                 </div>
-                <div class="list-card-badge">
-                  <span class="badge badge-success">Price</span> {{product.price}}
+                <div class="list-card-badge" style="text-align: right
+">
+                  <span class="badge badge-success">Price</span> {{product.price}}$
                 </div>
               </div>
             </div>

@@ -23,14 +23,14 @@
       <label >Start At:</label>
       <input type="date" formControlName="startAt" (ngModelChange)="validateStartAt()" class="form-control"  placeholder="Enter time start at" >
       <p *ngIf="!creatForm.get('startAt')?.valid && creatForm.get('startAt')?.touched" style="color: red">Blank is not allow.</p>
-      <p id="startAt" style="display: block;color: red">Ngay khong hop le</p>
+      <p id="startAt" style="display: block;color: red">Invalid date</p>
 
     </div>
     <div class="form-group">
       <label >End At:</label>
       <input type="date" formControlName="endAt" (ngModelChange)="validateEndAt()"  class="form-control"  placeholder="Enter time end at" >
       <p *ngIf="!creatForm.get('endAt')?.valid && creatForm.get('endAt')?.touched" style="color: red">Blank is not allow.</p>
-      <p id="endAt" style="display: block;color: red">Ngay khong hop le</p>
+      <p id="endAt" style="display: block;color: red">Invalid date</p>
 
 
     </div>

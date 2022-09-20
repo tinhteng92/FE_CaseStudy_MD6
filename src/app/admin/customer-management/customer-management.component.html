@@ -196,7 +196,7 @@
           <div class="col-xs-5">
             <h2><b>Customer List</b></h2>
           </div>
-          <div class="search-box">
+          <div class="search-box" style="margin-left: 100px" >
             <i class="icofont-search"></i>
             <input type="text" class="form-control"  #find (input)="search(find.value)" placeholder="Enter phone number&hellip;">
           </div>
@@ -217,27 +217,29 @@
           </div>
         </div>
       </div>
+      <br>
+      <br>
       <table class="table table-striped table-hover">
         <thead>
         <tr>
-          <th>#</th>
-          <th>Name</th>
-          <th>Phone Number</th>
-          <th>Address</th>
-          <th>Status</th>
-          <th>Action</th>
+          <th style="text-align: center">#</th>
+          <th style="text-align: center">Name</th>
+          <th style="text-align: center">Phone Number</th>
+          <th style="text-align: center">Address</th>
+          <th style="text-align: center">Status</th>
+          <th style="text-align: center">Action</th>
         </tr>
         </thead>
         <tbody>
         <tr *ngFor="let cus of customerList |paginate: {itemsPerPage :5, currentPage :p}, index as i" id="myTab">
-          <td>{{i + 1}}</td>
-          <td><a class="nav-link active" [routerLink]="['/admin/customer-detail', cus.id]"  id="orders-tab" data-toggle="tab" href="#orders" role="tab"
+          <td style="text-align: center">{{i + 1}}</td>
+          <td style="text-align: center"><a class="nav-link active" [routerLink]="['/admin/customer-detail', cus.id]"  id="orders-tab" data-toggle="tab" href="#orders" role="tab"
                  aria-controls="orders" aria-selected="true">
             {{cus.name}}</a></td>
-          <td>{{cus.phoneNumber}}</td>
-          <td>{{cus.address}}</td>
-          <td *ngIf="cus?.isActive === true"><span class="status text-success"  >&bull;</span> Active</td>
-          <td *ngIf="cus?.isActive == false"><span class="status text-warning"  >&bull;</span> Inactive</td>
+          <td style="text-align: center">{{cus.phoneNumber}}</td>
+          <td style="text-align: center">{{cus.address}}</td>
+          <td style="text-align: center" *ngIf="cus?.isActive === true"><span class="status text-success"  >&bull;</span> Active</td>
+          <td style="text-align: center" *ngIf="cus?.isActive == false"><span class="status text-warning"  >&bull;</span> Inactive</td>
           <button type="button" class="btn btn-primary" *ngIf="cus?.isActive == true" (click)="controlCustomer(cus.id)">BAN</button>
           <button type="button" class="btn btn-warning"  *ngIf="cus?.isActive === false" (click)="controlCustomer(cus.id)">UNBAN</button>
 
@@ -247,8 +249,8 @@
         </tbody>
       </table>
 
-      <div class="clearfix">
-        <pagination-controls class="btn btn-sm btn-outline-primary" class="myPagination" (pageChange)="p = $event">
+      <div class="clearfix text-center"  >
+        <pagination-controls class="btn btn-sm btn-outline-primary " class="myPagination" (pageChange)="p = $event">
         </pagination-controls>
       </div>
 
